@@ -1,0 +1,236 @@
+**********************************************************************************************************
+    'README': This file describes how to use this repository. It should reside in the top level of the 'group3' project repository, so as to serve as an overall repository layout reference. (Note that this 'README' is for help with using this repository and the git version control system itself, and as such is for internal use only, by the developers and maintainers of this project. It is distinct from the product 'README', which will include build, installation and usage instructions for the final deliverable software package archived within.)
+**********************************************************************************************************
+
+*** CONTENTS *********************************************************************************************
+
+     1. OVERVIEW
+     2. HOW I CREATED THE GITHUB REPOSITORY
+     3. HOW I CONFIGURED THE GITHUB REPOSITORY
+     4. HOW I GENERATED SSH KEYS
+     5. HOW I INSTALLED GIT ON MY MACHINE
+     6. HOW I CONFIGURED GIT ON MY MACHINE
+     7. HOW I SET UP MY LOCAL GIT REPOSITORY
+     8. HOW I UPLOADED MY LOCAL CHANGES TO THE GITHUB REPOSITORY
+     9. HOW TO CLONE THE GITHUB REPOSITORY TO YOUR OWN MACHINE
+    10. HOW TO USE VERSION CONTROL
+    11. HOW TO CONTACT THE PROJECT OWNER
+
+*** 1. OVERVIEW ******************************************************************************************
+
+This repository (including this document) is under version control, using 'Git':
+
+    http://git-scm.com/
+    http://en.wikipedia.org/wiki/Git_(software)
+
+It resides on servers administered by 'GitHub', a web-based hosting service for collaborative revision control of software development projects using Git:
+
+    https://github.com/
+    http://en.wikipedia.org/wiki/Github
+
+The developers of this project registered to use GitHub's free Web-hosting service, which does not allow making repository access private; any GitHub member has read access to repositories provided through this service. Currently, this project is under development by two undergraduate students as part of their coursework at Portland State University, in Portland, OR, USA.
+
+*** 2. HOW I CREATED THE GITHUB REPOSITORY ***************************************************************
+
+I went to 'https://github.com/plans', and clicked on the button for the first option provided under 'Plans & Pricing', 'Create a Free Account'. On the following page, I entered a username, email address, and password to sign up for a free GitHub account. Once I created the account, and was logged into my GitHub account, I clicked on the 'New Repository' button on the right side of my Dashboard (GitHub user home page). I was prompted to enter a project name, optional description, and optional Homepage URL for the new repository. I gave it the project name 'group3', and described it as "A simple data processing utility, written in Java." I provided no Homepage URL.
+
+*** 3. HOW I CONFIGURED THE GITHUB REPOSITORY ************************************************************
+
+While logged in to GitHub, and starting from the Dashboard, I clicked on the link to the repository I just created, on the right side of the page. On the repository page, I clicked on the 'Admin' button, near the upper-right corner of the page, accross from the repository name.
+
+On the repository administration -> 'Repository Options' page, I found that the checkboxes for including the use of a wiki, and for issue tracking, were both selected by default. I left them checked, but checked an additional option to restrict wiki edits to collaborators only, since otherwise it would be open to editing by any GitHub member.
+
+Under 'Repository Options', I clicked 'Collaborators', which directed me to a page promting me to add a collaborator. I entered my project partner's GitHub username.
+
+Back on the 'group3' repository homepage, I clicked the 'Wiki' tab in the grey toolbar near the top of the page. I was sent to a page asking if I wanted to "Create your own git-powered wiki?" I clicked the 'Create Wiki Now' button directly beneath. It directed me to a newly created 'Home' page for the wiki, with the message "Welcome to the group3 wiki!" I thought this would be a good place for us developers to communicate with each other about the project.
+
+*** 4. HOW I GENERATED SSH KEYS **************************************************************************
+
+I followed the instructions on the following Webpage to generate ssh keys for use with GitHub, since that seems to be the preferred method of connecting:
+
+    http://help.github.com/linux-key-setup/
+
+This is the output of the commands I ran:
+
+    [pjinslee@localhost ~]$ cd .ssh/
+    [pjinslee@localhost .ssh]$ ls -a
+    .  ..  known_hosts
+    [pjinslee@localhost .ssh]$ ssh-keygen -t rsa -C "pjinslee@gmail.com"
+    Generating public/private rsa key pair.
+    Enter file in which to save the key (/home/pjinslee/.ssh/id_rsa): 
+    Enter passphrase (empty for no passphrase): 
+    Enter same passphrase again: 
+    Your identification has been saved in /home/pjinslee/.ssh/id_rsa.
+    Your public key has been saved in /home/pjinslee/.ssh/id_rsa.pub.
+    The key fingerprint is:
+    22:2d:77:33:ab:c0:5e:00:9b:2f:b4:e2:fb:c1:bb:f1 pjinslee@gmail.com
+    The key's randomart image is:
+    +--[ RSA 2048]----+
+    |                 |
+    |                 |
+    |  .              |
+    |   + .           |
+    |  + + + S        |
+    | ..+ = o +       |
+    |. o++ . .        |
+    |.. o=o .         |
+    | oo+oE.          |
+    +-----------------+
+    [pjinslee@localhost .ssh]$ ls -a
+    .  ..  id_rsa  id_rsa.pub  known_hosts
+    [pjinslee@localhost .ssh]$ cat id_rsa.pub 
+    ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAxSz1PYBxRLFfa/8Z2aoXPrJPuVsT3X6kxekc23rpP+lbO14uGv4MOmnXwcYUYJ1+b2wNKgrqGgIXXlaer3XzLmm5GkgHzXq+YY+JY1FeO0eUeu419ARaql09mHmv7VFbPzCXHnKMQUImC7O3cigVRaQ6S8DGua6t9f32qr6UP3YgIhuxl6UUPjJdLkYo5PoHhj/R5/nrP16FewWTmef7dz6UNRlQ0NBaCRInChTDw9z0uszeOOpXXrCX7SVUwhky5xqU10np0LSoDnLoRzJphvnIKqFgLWDfe+TwhuULWw7tQOY4tkkbOIwOL7pGsfQjWfE7AbBBHLkw0zSK/N1XIQ== pjinslee@gmail.com
+
+I added this public key to the GitHub account settings, as per the instructions. I then tried to connect using ssh:
+
+    [pjinslee@localhost .ssh]$ ssh git@github.com
+    PTY allocation request failed on channel 0
+    Hi pjinslee! You've successfully authenticated, but GitHub does not provide shell access.
+                                                                                             Connection to github.com closed.
+    [pjinslee@localhost .ssh]$ 
+
+Success!
+
+*** 5. HOW I INSTALLED GIT ON MY MACHINE *****************************************************************
+
+Git must be installed on your local machine before it will be able to communicate with the repository on the server. To install git on my Fedora 11 GNU/Linux platform, I ran the following 'yum' command with root priveleges. Rerunning this command on my machine produced the following output, since it had already been installed:
+
+    [root@localhost ~]# yum install git
+    Loaded plugins: refresh-packagekit
+    Setting up Install Process
+    Package git-1.6.2.5-1.fc11.i586 already installed and latest version
+    Nothing to do
+    [root@localhost ~]# 
+
+*** 6. HOW I CONFIGURED GIT ON MY MACHINE ****************************************************************
+
+At this point I used quickstart instructions provided by GitHub about how to use git, and confirmed them against the first four Google hits I found for the search 'git tutorial':
+
+    http://www.kernel.org/pub/software/scm/git/docs/gittutorial.html
+    http://www.kernel.org/pub/software/scm/git/docs/v1.2.6/tutorial.html
+    http://www.vogella.de/articles/Git/article.html
+    http://book.git-scm.com/
+
+After downloading and installing git, it should be configured by adding global settings to the ".gitconfig" file, located in the user home directory. At the least it should contain a username and email. You can provide these with the following commands:
+
+    $ git config --global user.name "Your Name Comes Here"
+    $ git config --global user.email you@yourdomain.example.com
+
+You can check what global configuration settings have been made by running the following command. Here are the results it produced in my case:
+
+    [pjinslee@localhost ~]$ git config --list
+    user.email=pjinslee@gmail.com
+    user.name=pjinslee
+
+You can also configure lots of default behaviors and other things in this file, like custom text-color highlighting, etc. Run 'git config --help' to see all the options.
+
+*** 7. HOW I SET UP MY LOCAL GIT REPOSITORY **************************************************************
+
+I decided upon the following initial directory tree structure and file layout for the project repository:
+
+    /group3             (the project root)
+        /README         (this document)
+        /branches       (we probably won't use this)
+        /tags           (we probably won't use this)
+        /trunk          (stores the baseline for all our project work products)
+            /COPYING    (the MIT license, our declaration of copyrights)
+            /README     (product overview, manifest, build and installation instructions, etc.)
+            /bin        (final executable .jar file(s); we probably won't use this until submitting the product)
+            /docs       (documentation that will be included with the final product)
+            /src        (product source code)
+            /test       (testcase source code)
+            /.gitignore (a configuration file used to tell git to ignore the 'bin' directory; we will remove it before submitting the final product)
+
+I created the directory tree above on my own machine, including all but the top level README (this document), and then ran the following commands:
+
+    [pjinslee@localhost ~]$ cd group3/
+    [pjinslee@localhost group3]$ git init
+    Initialized empty Git repository in /home/pjinslee/group3/.git/
+    [pjinslee@localhost group3]$ ls -a
+    .  ..  branches  .git  tags  trunk
+    [pjinslee@localhost group3]$ ls -a trunk/
+    .  ..  bin  COPYING  docs  .gitignore  README  src  test
+    [pjinslee@localhost group3]$ git add .
+    [pjinslee@localhost group3]$ git status
+    # On branch master
+    #
+    # Initial commit
+    #
+    # Changes to be committed:
+    #   (use "git rm --cached <file>..." to unstage)
+    #
+    #	new file:   trunk/.gitignore
+    #	new file:   trunk/COPYING
+    #	new file:   trunk/README
+    #
+    [pjinslee@localhost group3]$ git commit -m "Initial commit, including a tentative directory tree, a copyright license, an empty README, and a git configuration file."
+    [master (root-commit) 90b3ec1] Initial commit, including a tentative directory tree, a copyright license, an empty README, and a git configuration file.
+     3 files changed, 27 insertions(+), 0 deletions(-)
+     create mode 100644 trunk/.gitignore
+     create mode 100644 trunk/COPYING
+     create mode 100644 trunk/README
+    [pjinslee@localhost group3]$ git status
+    # On branch master
+    nothing to commit (working directory clean)
+    [pjinslee@localhost group3]$
+
+Note that only the files, and directories that contain files, got committed. Unused directories will not show up in the repository until we put something in them that gets committed.
+
+*** 8. HOW I UPLOADED MY LOCAL CHANGES TO THE GITHUB REPOSITORY ******************************************
+
+I ran the following commands to update the empty GitHub repository with the directories and files I had just added to my local repository. The first command gives the GitHub URL the nickname 'origin', which can then be used as an alias in all later commands. The 'master' is the default name for the local repository. (I guess the way to think of the 'push' command would be, "git should push local changes to the origin from the master"):
+
+    [pjinslee@localhost group3]$ git remote add origin git@github.com:pjinslee/group3.git
+    [pjinslee@localhost group3]$ git push origin master
+    Counting objects: 6, done.
+    Compressing objects: 100% (4/4), done.
+    Writing objects: 100% (6/6), 1.17 KiB, done.
+    Total 6 (delta 0), reused 0 (delta 0)
+    To git@github.com:pjinslee/group3.git
+     * [new branch]      master -> master
+    [pjinslee@localhost group3]$ 
+
+*** 9. HOW TO CLONE THE GITHUB REPOSITORY TO YOUR OWN MACHINE ********************************************
+
+Be sure your working directory is the one to which you want the new repository mirror downloaded, then execute the following command. You should see similar (but not identical) output. Note that after running this command, the 'group3' repository folder appeared on my Desktop:
+
+    [pjinslee@localhost Desktop]$ git clone https://github.com/pjinslee/group3.git
+    Initialized empty Git repository in /home/pjinslee/Desktop/group3/.git/
+
+    got 90b3ec1b07f47c728bb4050018639b470af62d34
+    walk 90b3ec1b07f47c728bb4050018639b470af62d34
+    got b731db099db179eac7848751c2ccdb96b0d120dc
+    got fc1dadf652178aaf52b41c561cef653d483551bc
+    got fe99505dcc596021c60d6bae1c540899827c68f6
+    got 8c84fef314ab3e261c79a4cf8856fc83274c6ac6
+    got 3eeefab2079a8ec7e9991d7094773f9deee7d540
+    [pjinslee@localhost Desktop]$ 
+
+*** 10. HOW TO USE VERSION CONTROL ***********************************************************************
+
+Once you've created a clone on your local machine, (you should only have to do this once), you can start working on the local copy of the project, and then commit and push those changes whenever you are ready. To be sure you are working on the latest code from the GitHub repository, you should run the following command to pull the latest changes down to your local machine. Note that in this example the local repository is already up to date, because I had just cloned it, as shown in the previous section:
+
+[pjinslee@localhost Desktop]$ cd group3
+[pjinslee@localhost group3]$ git pull https://github.com/pjinslee/group3.git master
+From https://github.com/pjinslee/group3
+ * branch            master     -> FETCH_HEAD
+Already up-to-date.
+[pjinslee@localhost group3]$ 
+
+Add files and directories, commit those changes to your local repository (as shown in section 7 above), and then push those changes to the GitHub repository (as shown in section 8 above). Then start the cycle over again; get the most recent revision from GitHub, communicate via the wiki about who will be doing what, make modifications to your local repository, and then commit those changes to GitHub.
+
+Three important tips to remember about version control in general, which you will find repeated frequently in discussions of "best practices":
+    1. Be careful about COPYING, MOVING, or DELETING files and directories that are ALREADY UNDER VERSION CONTROL (meaning, "anything in a repository that's already been committed"), as you may accidentally delete the '.git' hidden files which git uses to keep track of what is going on in these directories. It's best to use the git versions of these commands to be sure git is being informed about how you're shifting stuff around. Or, if you don't have any local changes that you've made or are concerned about losing, you can simply delete everything, and clone the entire project repository all over again, and start from scratch. Or you could just delete certain files or directories, and then pull the most recent revision from GitHub to have the most up to date versions of those files and directories restored in your local repository.
+    2. ALWAYS MAKE SURE YOUR WORK DOES NOT OVERLAP WITH THAT OF THE OTHER COLLABORATORS. This is to avoid duplication of effort, as well as coding conflicts. We should use the wiki for communicating about who is working on what and when, so that we can then safely make commits without worrying about overwriting each other's work. Before working in your local repository, its important to check that it is up to date with the GitHub repostory. Either use the 'pull' command to get the most recent revision, or at least check the wiki to be sure that other collaborators are not working on the same files that you are.
+    3. ALWAYS INCLUDE MEANINGFUL, CLEAR, AND INFORMATIVE COMMIT MESSAGES. Git forces you to include some sort of a message each time you make a commit, so be sure it's something that somebody else can make sense of, just like documenting your code with useful comments. If things get mixed up, being able to track our changes in the log messages will be critical to getting back on our feet again.
+
+For basic help with commands, run 'man git' at the command line. The tutorial links in section 6 might also be helpful.
+
+*** 11. HOW TO CONTACT THE PROJECT OWNER ******************************************************************
+
+Send an email to: <pjinslee@gmail.com>
+
+**********************************************************************************************************
+    END 'README'
+**********************************************************************************************************
+
