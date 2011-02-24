@@ -15,6 +15,7 @@ import chocansimulator.datamangement.BillManager;
 import chocansimulator.datamangement.Id;
 import chocansimulator.datamangement.Member;
 import chocansimulator.datamangement.MemberManager;
+import chocansimulator.datamangement.ProviderManager;
 import chocansimulator.datamangement.ServiceCode;
 import chocansimulator.datamangement.ServiceCodeManager;
 import java.io.File;
@@ -35,13 +36,17 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
     public static final String chocAnProviderData = chocAnDataDir + "/provider.dat";
     public static final String chocAnBillData = chocAnDataDir + "/bill.dat";
     public static final char chocAnFileDelimiter = '^';
+    public static final ServiceCodeManager svcMan = new ServiceCodeManager(chocAnServiceData);
+    public static final MemberManager memberMan = new MemberManager(chocAnMemberData);
+    public static final ProviderManager providerMan = new ProviderManager(chocAnProviderData);
+    public static final BillManager billMan = new BillManager(chocAnBillData);
 
     /** Creates new form TopLevelMenu */
     public ChocAnUserInterface() {
         
         initComponents();
         initChocAn();
-        testIt();
+        //testIt();
 
     }
 
@@ -80,30 +85,55 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         ChocAnPanel = new javax.swing.JTabbedPane();
         MemberTabbedPanel = new javax.swing.JPanel();
+        memberDataManagerPanels = new javax.swing.JTabbedPane();
+        memberAddPanel = new javax.swing.JPanel();
+        nameLabel = new javax.swing.JLabel();
+        addressLabel = new javax.swing.JLabel();
+        cityLabel = new javax.swing.JLabel();
+        stateLabel = new javax.swing.JLabel();
+        zipLabel = new javax.swing.JLabel();
+        nameText = new javax.swing.JTextField();
+        addressText = new javax.swing.JTextField();
+        cityText = new javax.swing.JTextField();
+        stateText = new javax.swing.JTextField();
+        zipText = new javax.swing.JTextField();
+        memberAddButton = new javax.swing.JButton();
+        memberUpdatePanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        memberAddPanel1 = new javax.swing.JPanel();
+        nameLabel1 = new javax.swing.JLabel();
+        addressLabel1 = new javax.swing.JLabel();
+        cityLabel1 = new javax.swing.JLabel();
+        stateLabel1 = new javax.swing.JLabel();
+        zipLabel1 = new javax.swing.JLabel();
+        nameText1 = new javax.swing.JTextField();
+        addressText1 = new javax.swing.JTextField();
+        cityText1 = new javax.swing.JTextField();
+        stateText1 = new javax.swing.JTextField();
+        zipText1 = new javax.swing.JTextField();
+        memberAddButton1 = new javax.swing.JButton();
+        memberDeletePanel = new javax.swing.JPanel();
         ProviderTabbedPanel = new javax.swing.JPanel();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
-        jPanel6 = new javax.swing.JPanel();
-        jPanel10 = new javax.swing.JPanel();
-        jPanel11 = new javax.swing.JPanel();
         ServiceCodeTabbedPanel = new javax.swing.JPanel();
-        svcCodeTabbedPane = new javax.swing.JTabbedPane();
-        svcCodeAddPanel = new javax.swing.JPanel();
+        svcDataManagerPanels = new javax.swing.JTabbedPane();
+        svcAddPanel = new javax.swing.JPanel();
         descLabel = new javax.swing.JLabel();
         feeLabel = new javax.swing.JLabel();
         descText = new javax.swing.JTextField();
         feeText = new javax.swing.JTextField();
-        svcCodeAddButton = new javax.swing.JButton();
-        jPanel7 = new javax.swing.JPanel();
+        svcAddButton = new javax.swing.JButton();
+        svcUpdatePanel = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jPanel8 = new javax.swing.JPanel();
+        svcUpNumLabel = new javax.swing.JLabel();
+        svcUpDescLabel = new javax.swing.JLabel();
+        svcUpFeeLabel = new javax.swing.JLabel();
+        svcUpNumText = new javax.swing.JTextField();
+        svcUpDescText = new javax.swing.JTextField();
+        svcUpFeeText = new javax.swing.JTextField();
+        svcUpSearchButton = new javax.swing.JButton();
+        svcUpdateButton = new javax.swing.JButton();
+        svcDeletePanel = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -122,10 +152,15 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        GlobalMessageLabel = new javax.swing.JLabel();
+        globalMessageLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CHOCHOLICS");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                exitChocAn(evt);
+            }
+        });
 
         ChocAnPanel.setMinimumSize(new java.awt.Dimension(108, 140));
         ChocAnPanel.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -134,80 +169,219 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
             }
         });
 
+        nameLabel.setText("Name:");
+
+        addressLabel.setText("Address:");
+
+        cityLabel.setText("City:");
+
+        stateLabel.setText("State:");
+
+        zipLabel.setText("Zip:");
+
+        memberAddButton.setText("Add");
+
+        javax.swing.GroupLayout memberAddPanelLayout = new javax.swing.GroupLayout(memberAddPanel);
+        memberAddPanel.setLayout(memberAddPanelLayout);
+        memberAddPanelLayout.setHorizontalGroup(
+            memberAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(memberAddPanelLayout.createSequentialGroup()
+                .addGroup(memberAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nameLabel)
+                    .addComponent(addressLabel))
+                .addGap(18, 18, 18)
+                .addGroup(memberAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(nameText)
+                    .addComponent(addressText, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE))
+                .addContainerGap(98, Short.MAX_VALUE))
+            .addGroup(memberAddPanelLayout.createSequentialGroup()
+                .addComponent(cityLabel)
+                .addGap(6, 6, 6)
+                .addComponent(cityText, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(stateLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(stateText, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(zipLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(zipText, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(142, 142, 142))
+            .addGroup(memberAddPanelLayout.createSequentialGroup()
+                .addGap(174, 174, 174)
+                .addComponent(memberAddButton)
+                .addContainerGap(189, Short.MAX_VALUE))
+        );
+        memberAddPanelLayout.setVerticalGroup(
+            memberAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(memberAddPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(memberAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nameLabel)
+                    .addComponent(nameText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(memberAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addressLabel)
+                    .addComponent(addressText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(memberAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cityLabel)
+                    .addComponent(cityText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(zipText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(zipLabel)
+                    .addComponent(stateText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stateLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                .addComponent(memberAddButton)
+                .addContainerGap())
+        );
+
+        memberDataManagerPanels.addTab("Add", memberAddPanel);
+
+        jLabel1.setText("Number:");
+
+        nameLabel1.setText("Name:");
+
+        addressLabel1.setText("Address:");
+
+        cityLabel1.setText("City:");
+
+        stateLabel1.setText("State:");
+
+        zipLabel1.setText("Zip:");
+
+        memberAddButton1.setText("Add");
+
+        javax.swing.GroupLayout memberAddPanel1Layout = new javax.swing.GroupLayout(memberAddPanel1);
+        memberAddPanel1.setLayout(memberAddPanel1Layout);
+        memberAddPanel1Layout.setHorizontalGroup(
+            memberAddPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(memberAddPanel1Layout.createSequentialGroup()
+                .addGroup(memberAddPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nameLabel1)
+                    .addComponent(addressLabel1))
+                .addGap(18, 18, 18)
+                .addGroup(memberAddPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(nameText1)
+                    .addComponent(addressText1, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE))
+                .addContainerGap(82, Short.MAX_VALUE))
+            .addGroup(memberAddPanel1Layout.createSequentialGroup()
+                .addComponent(cityLabel1)
+                .addGap(6, 6, 6)
+                .addComponent(cityText1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(stateLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(stateText1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(zipLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(zipText1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(memberAddPanel1Layout.createSequentialGroup()
+                .addGap(174, 174, 174)
+                .addComponent(memberAddButton1)
+                .addContainerGap(173, Short.MAX_VALUE))
+        );
+        memberAddPanel1Layout.setVerticalGroup(
+            memberAddPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(memberAddPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(memberAddPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nameLabel1)
+                    .addComponent(nameText1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(memberAddPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addressLabel1)
+                    .addComponent(addressText1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(memberAddPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cityLabel1)
+                    .addComponent(cityText1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(zipText1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(zipLabel1)
+                    .addComponent(stateText1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stateLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addComponent(memberAddButton1)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout memberUpdatePanelLayout = new javax.swing.GroupLayout(memberUpdatePanel);
+        memberUpdatePanel.setLayout(memberUpdatePanelLayout);
+        memberUpdatePanelLayout.setHorizontalGroup(
+            memberUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(memberUpdatePanelLayout.createSequentialGroup()
+                .addGroup(memberUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(memberUpdatePanelLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(memberAddPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+        memberUpdatePanelLayout.setVerticalGroup(
+            memberUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(memberUpdatePanelLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(memberUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(memberAddPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        memberDataManagerPanels.addTab("Update", memberUpdatePanel);
+
+        javax.swing.GroupLayout memberDeletePanelLayout = new javax.swing.GroupLayout(memberDeletePanel);
+        memberDeletePanel.setLayout(memberDeletePanelLayout);
+        memberDeletePanelLayout.setHorizontalGroup(
+            memberDeletePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 402, Short.MAX_VALUE)
+        );
+        memberDeletePanelLayout.setVerticalGroup(
+            memberDeletePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 282, Short.MAX_VALUE)
+        );
+
+        memberDataManagerPanels.addTab("Delete", memberDeletePanel);
+
         javax.swing.GroupLayout MemberTabbedPanelLayout = new javax.swing.GroupLayout(MemberTabbedPanel);
         MemberTabbedPanel.setLayout(MemberTabbedPanelLayout);
         MemberTabbedPanelLayout.setHorizontalGroup(
             MemberTabbedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 437, Short.MAX_VALUE)
+            .addGroup(MemberTabbedPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(memberDataManagerPanels, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         MemberTabbedPanelLayout.setVerticalGroup(
             MemberTabbedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+            .addGroup(MemberTabbedPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(memberDataManagerPanels)
+                .addContainerGap())
         );
 
         ChocAnPanel.addTab("Member", MemberTabbedPanel);
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 405, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 215, Short.MAX_VALUE)
-        );
-
-        jTabbedPane2.addTab("Add", jPanel6);
-
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 405, Short.MAX_VALUE)
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 215, Short.MAX_VALUE)
-        );
-
-        jTabbedPane2.addTab("Update", jPanel10);
-
-        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
-        jPanel11.setLayout(jPanel11Layout);
-        jPanel11Layout.setHorizontalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 405, Short.MAX_VALUE)
-        );
-        jPanel11Layout.setVerticalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 215, Short.MAX_VALUE)
-        );
-
-        jTabbedPane2.addTab("Delete", jPanel11);
 
         javax.swing.GroupLayout ProviderTabbedPanelLayout = new javax.swing.GroupLayout(ProviderTabbedPanel);
         ProviderTabbedPanel.setLayout(ProviderTabbedPanelLayout);
         ProviderTabbedPanelLayout.setHorizontalGroup(
             ProviderTabbedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ProviderTabbedPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 437, Short.MAX_VALUE)
         );
         ProviderTabbedPanelLayout.setVerticalGroup(
             ProviderTabbedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ProviderTabbedPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 333, Short.MAX_VALUE)
         );
 
         ChocAnPanel.addTab("Provider", ProviderTabbedPanel);
 
-        svcCodeTabbedPane.addFocusListener(new java.awt.event.FocusAdapter() {
+        svcDataManagerPanels.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                svcCodeTabbedPaneFocusGained(evt);
+                svcDataManagerPanelsFocusGained(evt);
             }
         });
 
@@ -219,70 +393,75 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
 
         feeText.setText(" ");
 
-        svcCodeAddButton.setText("Add");
-        svcCodeAddButton.addActionListener(new java.awt.event.ActionListener() {
+        svcAddButton.setText("Add");
+        svcAddButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                svcCodeAddButtonActionPerformed(evt);
+                svcAddButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout svcCodeAddPanelLayout = new javax.swing.GroupLayout(svcCodeAddPanel);
-        svcCodeAddPanel.setLayout(svcCodeAddPanelLayout);
-        svcCodeAddPanelLayout.setHorizontalGroup(
-            svcCodeAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(svcCodeAddPanelLayout.createSequentialGroup()
-                .addGroup(svcCodeAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(svcCodeAddPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout svcAddPanelLayout = new javax.swing.GroupLayout(svcAddPanel);
+        svcAddPanel.setLayout(svcAddPanelLayout);
+        svcAddPanelLayout.setHorizontalGroup(
+            svcAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(svcAddPanelLayout.createSequentialGroup()
+                .addGroup(svcAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(svcAddPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(svcCodeAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(svcAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(descLabel)
                             .addComponent(feeLabel))
                         .addGap(26, 26, 26)
-                        .addGroup(svcCodeAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(svcAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(feeText)
                             .addComponent(descText, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)))
-                    .addGroup(svcCodeAddPanelLayout.createSequentialGroup()
+                    .addGroup(svcAddPanelLayout.createSequentialGroup()
                         .addGap(153, 153, 153)
-                        .addComponent(svcCodeAddButton)))
+                        .addComponent(svcAddButton)))
                 .addContainerGap(116, Short.MAX_VALUE))
         );
-        svcCodeAddPanelLayout.setVerticalGroup(
-            svcCodeAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(svcCodeAddPanelLayout.createSequentialGroup()
+        svcAddPanelLayout.setVerticalGroup(
+            svcAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(svcAddPanelLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addGroup(svcCodeAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(descLabel)
-                    .addComponent(descText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(svcAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(descText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(descLabel))
                 .addGap(21, 21, 21)
-                .addGroup(svcCodeAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(feeLabel)
-                    .addComponent(feeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(svcCodeAddButton)
+                .addGroup(svcAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(svcAddPanelLayout.createSequentialGroup()
+                        .addComponent(feeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(svcAddButton))
+                    .addComponent(feeLabel))
                 .addContainerGap(52, Short.MAX_VALUE))
         );
 
-        svcCodeTabbedPane.addTab("Add", svcCodeAddPanel);
+        svcDataManagerPanels.addTab("Add", svcAddPanel);
 
-        jLabel12.setText("Service Code:");
+        svcUpNumLabel.setText("Service Code:");
 
-        jLabel13.setText("Description:");
+        svcUpDescLabel.setText("Description:");
 
-        jLabel14.setText("Fee:");
+        svcUpFeeLabel.setText("Fee:");
 
-        jTextField9.setText(" ");
+        svcUpNumText.setText(" ");
 
-        jTextField10.setText(" ");
-        jTextField10.setMaximumSize(new java.awt.Dimension(20, 20));
+        svcUpDescText.setMaximumSize(new java.awt.Dimension(20, 20));
 
-        jTextField11.setText(" ");
+        svcUpFeeText.setText(" ");
 
-        jButton10.setText("Search");
-
-        jButton11.setText("Update");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
+        svcUpSearchButton.setText("Search");
+        svcUpSearchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
+                svcUpSearchButtonActionPerformed(evt);
+            }
+        });
+
+        svcUpdateButton.setText("Update");
+        svcUpdateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                svcUpdateButtonActionPerformed(evt);
             }
         });
 
@@ -294,71 +473,63 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                        .addComponent(svcUpDescLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(svcUpNumLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(38, 38, 38))
-                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE))
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(svcUpFeeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE))
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextField10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel9Layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(1, 1, 1)
+                        .addComponent(svcUpNumText, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(41, 41, 41)
-                        .addComponent(jButton10))
-                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(60, 60, 60))
+                        .addComponent(svcUpSearchButton))
+                    .addComponent(svcUpFeeText, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(svcUpDescText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(37, 37, 37))
             .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGap(167, 167, 167)
-                .addComponent(jButton11)
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addGap(158, 158, 158)
+                .addComponent(svcUpdateButton)
+                .addContainerGap(163, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton10))
+                    .addComponent(svcUpNumLabel)
+                    .addComponent(svcUpNumText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(svcUpSearchButton))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(svcUpDescLabel)
+                    .addComponent(svcUpDescText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addComponent(jButton11)
-                .addContainerGap(46, Short.MAX_VALUE))
+                    .addComponent(svcUpFeeLabel)
+                    .addComponent(svcUpFeeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addComponent(svcUpdateButton)
+                .addContainerGap())
         );
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel7Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        javax.swing.GroupLayout svcUpdatePanelLayout = new javax.swing.GroupLayout(svcUpdatePanel);
+        svcUpdatePanel.setLayout(svcUpdatePanelLayout);
+        svcUpdatePanelLayout.setHorizontalGroup(
+            svcUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(svcUpdatePanelLayout.createSequentialGroup()
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 255, Short.MAX_VALUE)
-            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel7Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        svcUpdatePanelLayout.setVerticalGroup(
+            svcUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(svcUpdatePanelLayout.createSequentialGroup()
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        svcCodeTabbedPane.addTab("Update", jPanel7);
+        svcDataManagerPanels.addTab("Update", svcUpdatePanel);
 
         jLabel6.setText("Service Code:");
 
@@ -386,72 +557,74 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
+        javax.swing.GroupLayout svcDeletePanelLayout = new javax.swing.GroupLayout(svcDeletePanel);
+        svcDeletePanel.setLayout(svcDeletePanelLayout);
+        svcDeletePanelLayout.setHorizontalGroup(
+            svcDeletePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(svcDeletePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGroup(svcDeletePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(svcDeletePanelLayout.createSequentialGroup()
                         .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
+                    .addGroup(svcDeletePanelLayout.createSequentialGroup()
                         .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(38, 38, 38))
                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE))
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(svcDeletePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(svcDeletePanelLayout.createSequentialGroup()
+                        .addGroup(svcDeletePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel8Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, svcDeletePanelLayout.createSequentialGroup()
                                 .addGap(1, 1, 1)
                                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(41, 41, 41)
                         .addComponent(jButton7))
-                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButton8)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(248, 248, 248))
+            .addGroup(svcDeletePanelLayout.createSequentialGroup()
+                .addGap(162, 162, 162)
+                .addComponent(jButton8)
+                .addContainerGap(178, Short.MAX_VALUE))
         );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
+        svcDeletePanelLayout.setVerticalGroup(
+            svcDeletePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(svcDeletePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(svcDeletePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton7))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(svcDeletePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(svcDeletePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(jButton8)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
-        svcCodeTabbedPane.addTab("Delete", jPanel8);
+        svcDataManagerPanels.addTab("Delete", svcDeletePanel);
 
         javax.swing.GroupLayout ServiceCodeTabbedPanelLayout = new javax.swing.GroupLayout(ServiceCodeTabbedPanel);
         ServiceCodeTabbedPanel.setLayout(ServiceCodeTabbedPanelLayout);
         ServiceCodeTabbedPanelLayout.setHorizontalGroup(
             ServiceCodeTabbedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ServiceCodeTabbedPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(svcCodeTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ServiceCodeTabbedPanelLayout.createSequentialGroup()
+                .addContainerGap(17, Short.MAX_VALUE)
+                .addComponent(svcDataManagerPanels, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         ServiceCodeTabbedPanelLayout.setVerticalGroup(
             ServiceCodeTabbedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ServiceCodeTabbedPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(svcCodeTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addComponent(svcDataManagerPanels, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         ChocAnPanel.addTab("Service Code", ServiceCodeTabbedPanel);
@@ -490,7 +663,7 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
                 .addGroup(ReportsTabbedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton6)
                     .addComponent(jButton5))
-                .addContainerGap(166, Short.MAX_VALUE))
+                .addContainerGap(222, Short.MAX_VALUE))
         );
 
         ChocAnPanel.addTab("Reports", ReportsTabbedPanel);
@@ -533,46 +706,47 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
                     .addGroup(TerminalTabbedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton1)))
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addContainerGap(158, Short.MAX_VALUE))
         );
 
         ChocAnPanel.addTab("Terminal", TerminalTabbedPanel);
 
-        GlobalMessageLabel.setText("Message Field");
+        globalMessageLabel.setText("Message Field");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addComponent(GlobalMessageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(globalMessageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addComponent(ChocAnPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(90, Short.MAX_VALUE)
-                .addComponent(ChocAnPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(ChocAnPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(GlobalMessageLabel)
-                .addGap(14, 14, 14))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ChocAnPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(globalMessageLabel)
+                .addGap(185, 185, 185))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void ChocAnPanelFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ChocAnPanelFocusGained
-        jLabel5.setVisible(false);
-        jTextField2.setVisible(false);
-        providerDeleteButton.setVisible(false);
-        addProviderPanel.setVisible(false);
+        //jLabel5.setVisible(false);
+        //jTextField2.setVisible(false);
+        //providerDeleteButton.setVisible(false);
+        //addProviderPanel.setVisible(false);
         //System.out.println("in tabbed panel 2 focus gained");
-        GlobalMessageLabel.setText("Message Field");
+        globalMessageLabel.setText("Message Field");
     }
 
     private void testIt() {
@@ -600,26 +774,9 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
             Logger.getLogger(ChocAnUserInterface.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        ServiceCodeManager svcM = new ServiceCodeManager(chocAnServiceData);
-        //svcM.print();
+        //svcMan.print();
 
-        ServiceCode tempSVC = new ServiceCode();
-        tempSVC.setDescription("test");
-        tempSVC.setFee((float) 21.99);
-        svcM.addData(tempSVC);
-        svcM.print();
-
-        tempSVC = new ServiceCode();
-        tempSVC.setDescription("test2");
-        tempSVC.setFee((float) 22.99);
-        svcM.addData(tempSVC);
-        svcM.print();
-
-        try {
-            Id.singletonId(ChocAnUserInterface.chocAnId).destroy();
-        } catch (IOException ex) {
-            Logger.getLogger(ChocAnUserInterface.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
 
         BillManager bm = new BillManager(chocAnBillData);
 
@@ -629,13 +786,13 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
 }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    private void svcCodeTabbedPaneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_svcCodeTabbedPaneFocusGained
+    private void svcDataManagerPanelsFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_svcDataManagerPanelsFocusGained
         jLabel7.setVisible(false);
         jLabel8.setVisible(false);
         jTextField4.setVisible(false);
         jTextField5.setVisible(false);
         jButton8.setVisible(false);
-    }//GEN-LAST:event_svcCodeTabbedPaneFocusGained
+    }//GEN-LAST:event_svcDataManagerPanelsFocusGained
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
@@ -659,25 +816,67 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         }
 }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
-}//GEN-LAST:event_jButton11ActionPerformed
+    private void svcUpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_svcUpdateButtonActionPerformed
+        ServiceCode s = null;
+        int i = Integer.parseInt(svcUpNumText.getText().trim());
+        s = (ServiceCode) svcMan.search(i);
+        if (s == null) {
+            globalMessageLabel.setText("Service Code not found update not completed.");
+        } else {
+            s.setDescription(svcUpDescText.getText());
 
-    private void svcCodeAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_svcCodeAddButtonActionPerformed
-        int num = Id.singletonId(ChocAnUserInterface.chocAnId).getProviderId();
+            String wrk = svcUpFeeText.getText();
+            float f = Float.valueOf(wrk.trim()).floatValue();
+            s.setFee(f);
+            globalMessageLabel.setText("Service Code updated.");
+        }
+}//GEN-LAST:event_svcUpdateButtonActionPerformed
 
-        String wrkStr = new String();
+    private void svcAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_svcAddButtonActionPerformed
 
-        wrkStr = "Num: " + num + " Service:" + descText.getText() + " Fee: " +
-                feeText.getText() + " added.";
-        GlobalMessageLabel.setText(wrkStr);
-    }//GEN-LAST:event_svcCodeAddButtonActionPerformed
+        //ServiceCodeManager svcM = new ServiceCodeManager(chocAnServiceData);
+
+        //TODO- validate fields
+
+        ServiceCode tempSvc = new ServiceCode();
+
+        tempSvc.setDescription(descText.getText());
+        String wrk = feeText.getText();
+        float f = Float.valueOf(wrk.trim()).floatValue();
+        tempSvc.setFee(f);
+        svcMan.addData(tempSvc);
+        globalMessageLabel.setText("Service Code " + tempSvc.getNumber() +
+                                   " has been added");
+        testIt();
+    }//GEN-LAST:event_svcAddButtonActionPerformed
+
+    private void exitChocAn(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_exitChocAn
+        try {
+            Id.singletonId(chocAnId).destroy();
+        } catch (IOException ex) {
+            //Error handling here
+        }
+
+
+    }//GEN-LAST:event_exitChocAn
+
+    private void svcUpSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_svcUpSearchButtonActionPerformed
+        ServiceCode s = null;
+        int i = Integer.parseInt(svcUpNumText.getText().trim());
+        s = (ServiceCode) svcMan.search(i);
+        if (s == null) {
+            globalMessageLabel.setText("Service Code not found.");
+        } else {
+            svcUpDescText.setText(s.getDescription());
+            svcUpFeeText.setText(String.valueOf(s.getFee()));
+        }
+    }//GEN-LAST:event_svcUpSearchButtonActionPerformed
 
     /**
     * @param args the command line arguments
     */
     public static void main(String args[]) {
-        //public static Id number;
+  
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 
@@ -688,20 +887,26 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane ChocAnPanel;
-    private javax.swing.JLabel GlobalMessageLabel;
     private javax.swing.JPanel MemberTabbedPanel;
     private javax.swing.JPanel ProviderTabbedPanel;
     private javax.swing.JPanel ReportsTabbedPanel;
     private javax.swing.JPanel ServiceCodeTabbedPanel;
     private javax.swing.JPanel TerminalTabbedPanel;
+    private javax.swing.JLabel addressLabel;
+    private javax.swing.JLabel addressLabel1;
+    private javax.swing.JTextField addressText;
+    private javax.swing.JTextField addressText1;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JLabel cityLabel;
+    private javax.swing.JLabel cityLabel1;
+    private javax.swing.JTextField cityText;
+    private javax.swing.JTextField cityText1;
     private javax.swing.JLabel descLabel;
     private javax.swing.JTextField descText;
     private javax.swing.JLabel feeLabel;
     private javax.swing.JTextField feeText;
+    private javax.swing.JLabel globalMessageLabel;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -709,30 +914,49 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField9;
-    private javax.swing.JButton svcCodeAddButton;
-    private javax.swing.JPanel svcCodeAddPanel;
-    private javax.swing.JTabbedPane svcCodeTabbedPane;
+    private javax.swing.JButton memberAddButton;
+    private javax.swing.JButton memberAddButton1;
+    private javax.swing.JPanel memberAddPanel;
+    private javax.swing.JPanel memberAddPanel1;
+    private javax.swing.JTabbedPane memberDataManagerPanels;
+    private javax.swing.JPanel memberDeletePanel;
+    private javax.swing.JPanel memberUpdatePanel;
+    private javax.swing.JLabel nameLabel;
+    private javax.swing.JLabel nameLabel1;
+    private javax.swing.JTextField nameText;
+    private javax.swing.JTextField nameText1;
+    private javax.swing.JLabel stateLabel;
+    private javax.swing.JLabel stateLabel1;
+    private javax.swing.JTextField stateText;
+    private javax.swing.JTextField stateText1;
+    private javax.swing.JButton svcAddButton;
+    private javax.swing.JPanel svcAddPanel;
+    private javax.swing.JTabbedPane svcDataManagerPanels;
+    private javax.swing.JPanel svcDeletePanel;
+    private javax.swing.JLabel svcUpDescLabel;
+    private javax.swing.JTextField svcUpDescText;
+    private javax.swing.JLabel svcUpFeeLabel;
+    private javax.swing.JTextField svcUpFeeText;
+    private javax.swing.JLabel svcUpNumLabel;
+    private javax.swing.JTextField svcUpNumText;
+    private javax.swing.JButton svcUpSearchButton;
+    private javax.swing.JButton svcUpdateButton;
+    private javax.swing.JPanel svcUpdatePanel;
+    private javax.swing.JLabel zipLabel;
+    private javax.swing.JLabel zipLabel1;
+    private javax.swing.JTextField zipText;
+    private javax.swing.JTextField zipText1;
     // End of variables declaration//GEN-END:variables
 
 }

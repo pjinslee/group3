@@ -83,4 +83,10 @@ public class BillManager extends ManageData {
         return records;
     }
 
+    public Object search (int number) {
+        //TODO -- this is probably not correct
+        return (new Object());
+
+    }
+
 }

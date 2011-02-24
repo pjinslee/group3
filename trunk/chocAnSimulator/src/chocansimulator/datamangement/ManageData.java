@@ -36,6 +36,7 @@ public abstract class ManageData {
 
     abstract void readFile();
     abstract void writeFile() throws Exception;
+    abstract Object search(int number);
 
     public boolean addData(Object o) {
         records.add(o);

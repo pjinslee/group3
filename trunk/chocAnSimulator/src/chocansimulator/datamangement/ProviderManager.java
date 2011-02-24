@@ -74,5 +74,19 @@ public class ProviderManager extends ManageData {
         
     }
 
+    public Object search(int number) {
+        Iterator itr = records.iterator();
+        Provider p = null;
+
+        while (itr.hasNext()) {
+            p = (Provider) itr.next();
+            if ( p.getNumber() == number ) {
+                break;
+            }
+        }
+
+        return p;
+    }
+
 
 }

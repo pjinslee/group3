@@ -74,5 +74,19 @@ public class MemberManager extends ManageData {
         
     }
 
+    public Object search(int number) {
+        Iterator itr = records.iterator();
+        Member m = null;
+
+        while (itr.hasNext()) {
+            m = (Member) itr.next();
+            if ( m.getNumber() == number ) {
+                break;
+            }
+        }
+
+        return m;
+    }
+
 
 }

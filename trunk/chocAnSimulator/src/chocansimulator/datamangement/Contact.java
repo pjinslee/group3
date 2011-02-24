@@ -53,14 +53,15 @@ public class Contact {
     @Override
     public String toString() {
        return(getNumber() + " " + getStatus() + " " + getName() + " " +
-              getAddress() + " " + getCity() + " " + getState() + " " + getZip());
+              getAddress() + " " + getCity() + " " + getState() + " " +
+              getZip());
 
     }
 
     public String fileDataToString() {
        return(getNumber() + "^" + getStatus() + "^" + getName() + "^" +
-              getAddress() + "^" + getCity() + "^" + getState() + "^" + getZip() +
-              "\n");
+              getAddress() + "^" + getCity() + "^" + getState() + "^" + getZip()
+              + "\n");
 
     }
 

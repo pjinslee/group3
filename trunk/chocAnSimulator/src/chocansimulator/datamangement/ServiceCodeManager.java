@@ -74,5 +74,17 @@ public class ServiceCodeManager extends ManageData {
         
     }
 
+    public Object search(int number) {
+        Iterator itr = records.iterator();
+        ServiceCode svc = null;
 
+        while (itr.hasNext()) {
+            svc = (ServiceCode) itr.next();
+            if ( svc.getNumber() == number ) {
+                break;
+            }
+        }
+
+        return svc;
+    }
 }
