@@ -1,13 +1,6 @@
 <?xml version="1.1" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
-  <NonVisualComponents>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="TopLevelMenu_buttonGroup1"/>
-      </AuxValues>
-    </Component>
-  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="title" type="java.lang.String" value="CHOCHOLICS"/>
@@ -33,29 +26,26 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="81" pref="81" max="-2" attributes="0"/>
-                      <Component id="globalMessageLabel" pref="515" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
-                      <Component id="ChocAnPanel" min="-2" pref="445" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+              <Component id="globalMessageLabel" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="438" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+              <Component id="ChocAnPanel" min="-2" pref="471" max="-2" attributes="0"/>
+              <EmptySpace pref="77" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="ChocAnPanel" min="-2" pref="371" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+              <Component id="ChocAnPanel" pref="306" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="globalMessageLabel" min="-2" pref="48" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="globalMessageLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="185" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -67,9 +57,6 @@
           <Dimension value="[108, 140]"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="ChocAnPanelFocusGained"/>
-      </Events>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
@@ -88,7 +75,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="memberDataManagerPanels" min="-2" pref="410" max="-2" attributes="0"/>
-                      <EmptySpace pref="15" max="32767" attributes="0"/>
+                      <EmptySpace pref="41" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -96,7 +83,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="memberDataManagerPanels" max="32767" attributes="0"/>
+                      <Component id="memberDataManagerPanels" pref="244" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -121,34 +108,36 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="nameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="addressLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="memberAddNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="memberAddAddressLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="nameText" max="32767" attributes="1"/>
-                                  <Component id="addressText" alignment="0" pref="226" max="32767" attributes="1"/>
+                                  <Component id="memberAddNameText" max="32767" attributes="1"/>
+                                  <Component id="memberAddAddressText" alignment="0" pref="226" max="32767" attributes="1"/>
                               </Group>
                               <EmptySpace pref="98" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="cityLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="memberAddCityLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                              <Component id="cityText" min="-2" pref="136" max="-2" attributes="0"/>
+                              <Component id="memberAddCityText" min="-2" pref="136" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="stateLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="memberAddStateLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="stateText" min="-2" pref="32" max="-2" attributes="0"/>
+                              <Component id="memberAddStateText" min="-2" pref="32" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="zipLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="memberAddZipLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="zipText" min="-2" pref="56" max="-2" attributes="0"/>
+                              <Component id="memberAddZipText" min="-2" pref="56" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="142" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="174" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
                               <Component id="memberAddButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="189" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                              <Component id="memberAddClearButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="134" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -157,70 +146,84 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="nameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="nameText" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="memberAddNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="memberAddNameText" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="addressLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="addressText" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="memberAddAddressLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="memberAddAddressText" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="cityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cityText" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="zipText" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="zipLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="stateText" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="stateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="memberAddCityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="memberAddCityText" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="memberAddZipText" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="memberAddZipLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="memberAddStateText" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="memberAddStateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="91" max="32767" attributes="0"/>
-                              <Component id="memberAddButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="15" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="memberAddButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="memberAddClearButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="nameLabel">
+                    <Component class="javax.swing.JLabel" name="memberAddNameLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Name:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="addressLabel">
+                    <Component class="javax.swing.JLabel" name="memberAddAddressLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Address:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="cityLabel">
+                    <Component class="javax.swing.JLabel" name="memberAddCityLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="City:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="stateLabel">
+                    <Component class="javax.swing.JLabel" name="memberAddStateLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="State:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="zipLabel">
+                    <Component class="javax.swing.JLabel" name="memberAddZipLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Zip:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="nameText">
+                    <Component class="javax.swing.JTextField" name="memberAddNameText">
                     </Component>
-                    <Component class="javax.swing.JTextField" name="addressText">
+                    <Component class="javax.swing.JTextField" name="memberAddAddressText">
                     </Component>
-                    <Component class="javax.swing.JTextField" name="cityText">
+                    <Component class="javax.swing.JTextField" name="memberAddCityText">
                     </Component>
-                    <Component class="javax.swing.JTextField" name="stateText">
+                    <Component class="javax.swing.JTextField" name="memberAddStateText">
                     </Component>
-                    <Component class="javax.swing.JTextField" name="zipText">
+                    <Component class="javax.swing.JTextField" name="memberAddZipText">
                     </Component>
                     <Component class="javax.swing.JButton" name="memberAddButton">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Add"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="memberAddButtonActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="memberAddClearButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Clear"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="memberAddClearButtonActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -236,152 +239,159 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jTextField2" min="-2" pref="94" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
+                              <Component id="memberUpdateButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                              <Component id="memberUpClearButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="110" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="memberUpNameLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="345" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="memberUpNumLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                      <Component id="memberUpNumText" min="-2" pref="92" max="-2" attributes="0"/>
+                                      <EmptySpace pref="69" max="32767" attributes="0"/>
+                                      <Component id="memberUpSearchButton" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="memberAddPanel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="memberUpCityLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                      <Component id="memberUpCityText" min="-2" pref="136" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                      <Component id="memberUpStateLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="memberUpStateText" min="-2" pref="32" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="memberUpZipLabel" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="memberUpAddressLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="memberUpNameText" alignment="0" pref="222" max="32767" attributes="1"/>
+                                          <Component id="memberUpAddressText" alignment="0" pref="222" max="32767" attributes="1"/>
+                                      </Group>
+                                  </Group>
                               </Group>
-                              <EmptySpace pref="16" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="memberUpZipText" min="-2" pref="56" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="memberUpNumText" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="memberUpNumLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="memberUpSearchButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="memberAddPanel1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="memberUpNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="memberUpNameText" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="memberUpAddressLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="memberUpAddressText" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="memberUpZipText" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="memberUpZipLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="memberUpStateText" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="memberUpStateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="memberUpCityText" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="memberUpCityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="14" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="memberUpdateButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="memberUpClearButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="jLabel1">
+                    <Component class="javax.swing.JLabel" name="memberUpNameLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Name:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="memberUpAddressLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Address:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="memberUpCityLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="City:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="memberUpStateLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="State:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="memberUpZipLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Zip:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="memberUpNameText">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="memberUpAddressText">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="memberUpCityText">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="memberUpStateText">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="memberUpZipText">
+                    </Component>
+                    <Component class="javax.swing.JButton" name="memberUpdateButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Update"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="memberUpdateButtonActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="memberUpClearButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Clear"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="memberUpClearButtonActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="memberUpNumLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Number:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField2">
+                    <Component class="javax.swing.JTextField" name="memberUpNumText">
                     </Component>
-                    <Container class="javax.swing.JPanel" name="memberAddPanel1">
-
-                      <Layout>
-                        <DimensionLayout dim="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="nameLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="addressLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="nameText1" alignment="0" max="32767" attributes="1"/>
-                                      <Component id="addressText1" alignment="0" pref="226" max="32767" attributes="1"/>
-                                  </Group>
-                                  <EmptySpace pref="82" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="cityLabel1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                                  <Component id="cityText1" min="-2" pref="136" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="stateLabel1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="stateText1" min="-2" pref="32" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="zipLabel1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="zipText1" min="-2" pref="56" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="174" max="-2" attributes="0"/>
-                                  <Component id="memberAddButton1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="173" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                        </DimensionLayout>
-                        <DimensionLayout dim="1">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="nameLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="nameText1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="addressLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="addressText1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="cityLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="cityText1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="zipText1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="zipLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="stateText1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="stateLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace pref="24" max="32767" attributes="0"/>
-                                  <Component id="memberAddButton1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                        </DimensionLayout>
-                      </Layout>
-                      <SubComponents>
-                        <Component class="javax.swing.JLabel" name="nameLabel1">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="Name:"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="addressLabel1">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="Address:"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="cityLabel1">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="City:"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="stateLabel1">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="State:"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="zipLabel1">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="Zip:"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JTextField" name="nameText1">
-                        </Component>
-                        <Component class="javax.swing.JTextField" name="addressText1">
-                        </Component>
-                        <Component class="javax.swing.JTextField" name="cityText1">
-                        </Component>
-                        <Component class="javax.swing.JTextField" name="stateText1">
-                        </Component>
-                        <Component class="javax.swing.JTextField" name="zipText1">
-                        </Component>
-                        <Component class="javax.swing.JButton" name="memberAddButton1">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="Add"/>
-                          </Properties>
-                        </Component>
-                      </SubComponents>
-                    </Container>
+                    <Component class="javax.swing.JButton" name="memberUpSearchButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Search"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="memberUpSearchButtonActionPerformed"/>
+                      </Events>
+                    </Component>
                   </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="memberDeletePanel">
@@ -396,15 +406,160 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="402" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
+                              <Component id="memberDeleteButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                              <Component id="memberDelClearButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="113" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="memberDelNameLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="345" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="memberDelNumLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                      <Component id="memberDelNumText" min="-2" pref="92" max="-2" attributes="0"/>
+                                      <EmptySpace pref="69" max="32767" attributes="0"/>
+                                      <Component id="memberDelSearchButton" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="memberDelCityLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                      <Component id="memberDelCityText" min="-2" pref="136" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                      <Component id="memberDelStateLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="memberDelStateText" min="-2" pref="32" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="memberDelZipLabel" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="memberDelAddressLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="memberDelNameText" alignment="0" pref="222" max="32767" attributes="1"/>
+                                          <Component id="memberDelAddressText" alignment="0" pref="222" max="32767" attributes="1"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="memberDelZipText" min="-2" pref="56" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="282" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="memberDelNumText" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="memberDelNumLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="memberDelSearchButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="memberDelNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="memberDelNameText" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="memberDelAddressLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="memberDelAddressText" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="memberDelZipText" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="memberDelZipLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="memberDelStateText" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="memberDelStateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="memberDelCityText" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="memberDelCityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="14" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="memberDeleteButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="memberDelClearButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JLabel" name="memberDelNameLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Name:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="memberDelAddressLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Address:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="memberDelCityLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="City:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="memberDelStateLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="State:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="memberDelZipLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Zip:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="memberDelNameText">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="memberDelAddressText">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="memberDelCityText">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="memberDelStateText">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="memberDelZipText">
+                    </Component>
+                    <Component class="javax.swing.JButton" name="memberDeleteButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Delete"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="memberDeleteButtonActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="memberDelClearButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Clear"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="memberDelClearButtonActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="memberDelNumLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Number:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="memberDelNumText">
+                    </Component>
+                    <Component class="javax.swing.JButton" name="memberDelSearchButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Search"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="memberDelSearchButtonActionPerformed"/>
+                      </Events>
+                    </Component>
+                  </SubComponents>
                 </Container>
               </SubComponents>
             </Container>
@@ -422,12 +577,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="437" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="463" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="333" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="268" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -445,7 +600,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="17" max="32767" attributes="0"/>
+                      <EmptySpace pref="43" max="32767" attributes="0"/>
                       <Component id="svcDataManagerPanels" min="-2" pref="408" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -456,16 +611,13 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="svcDataManagerPanels" min="-2" pref="247" max="-2" attributes="0"/>
-                      <EmptySpace pref="74" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
             <Container class="javax.swing.JTabbedPane" name="svcDataManagerPanels">
-              <Events>
-                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="svcDataManagerPanelsFocusGained"/>
-              </Events>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
               <SubComponents>
@@ -482,23 +634,20 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="descLabel" min="-2" max="-2" attributes="0"/>
-                                          <Component id="feeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="feeText" max="32767" attributes="1"/>
-                                          <Component id="descText" alignment="0" pref="162" max="32767" attributes="1"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="153" max="-2" attributes="0"/>
+                                  <Component id="descLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="feeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" alignment="0" attributes="1">
                                       <Component id="svcAddButton" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="svcAddClearButton" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                                  <Component id="svcAddFeeText" max="32767" attributes="1"/>
+                                  <Component id="svcAddDescText" alignment="0" pref="162" max="32767" attributes="1"/>
                               </Group>
                               <EmptySpace pref="116" max="32767" attributes="0"/>
                           </Group>
@@ -509,15 +658,18 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="descText" min="-2" max="-2" attributes="0"/>
+                                  <Component id="svcAddDescText" min="-2" max="-2" attributes="0"/>
                                   <Component id="descLabel" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="feeText" min="-2" max="-2" attributes="0"/>
+                                      <Component id="svcAddFeeText" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="svcAddButton" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="svcAddButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="svcAddClearButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                                   <Component id="feeLabel" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -537,12 +689,12 @@
                         <Property name="text" type="java.lang.String" value="Fee:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="descText">
+                    <Component class="javax.swing.JTextField" name="svcAddDescText">
                       <Properties>
                         <Property name="text" type="java.lang.String" value=" "/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="feeText">
+                    <Component class="javax.swing.JTextField" name="svcAddFeeText">
                       <Properties>
                         <Property name="text" type="java.lang.String" value=" "/>
                       </Properties>
@@ -553,6 +705,14 @@
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="svcAddButtonActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="svcAddClearButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Clear"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="svcAddClearButtonActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -616,9 +776,11 @@
                                   <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="158" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
                                   <Component id="svcUpdateButton" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="163" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                                  <Component id="svcUpdateClearButton" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="130" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -642,7 +804,10 @@
                                       <Component id="svcUpFeeText" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace pref="33" max="32767" attributes="0"/>
-                                  <Component id="svcUpdateButton" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="svcUpdateButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="svcUpdateClearButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -697,11 +862,19 @@
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="svcUpdateButtonActionPerformed"/>
                           </Events>
                         </Component>
+                        <Component class="javax.swing.JButton" name="svcUpdateClearButton">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Clear"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="svcUpdateClearButtonActionPerformed"/>
+                          </Events>
+                        </Component>
                       </SubComponents>
                     </Container>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JPanel" name="svcDeletePanel">
+                <Container class="javax.swing.JPanel" name="jPanel10">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                       <JTabbedPaneConstraints tabName="Delete">
@@ -713,113 +886,124 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="jLabel7" pref="121" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="svcDelDescLabel" pref="137" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel6" max="32767" attributes="0"/>
+                                      <Component id="svcDelNumLabel" pref="111" max="32767" attributes="0"/>
                                       <EmptySpace min="38" pref="38" max="38" attributes="0"/>
                                   </Group>
-                                  <Component id="jLabel8" alignment="0" pref="133" max="32767" attributes="0"/>
+                                  <Component id="svcDelFeeLabel" alignment="0" pref="149" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="jTextField4" alignment="0" max="32767" attributes="1"/>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                              <Component id="jTextField3" min="-2" pref="100" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                      <Component id="svcDelNumText" min="-2" pref="100" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                                      <Component id="jButton7" min="-2" max="-2" attributes="0"/>
+                                      <Component id="svcDelSearchButton" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jTextField5" alignment="0" min="-2" pref="101" max="-2" attributes="0"/>
+                                  <Component id="svcDelFeeText" alignment="0" min="-2" pref="101" max="-2" attributes="0"/>
+                                  <Component id="svcDelDescText" alignment="0" max="32767" attributes="1"/>
                               </Group>
-                              <EmptySpace min="-2" pref="248" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="162" max="-2" attributes="0"/>
-                              <Component id="jButton8" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="178" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
+                              <Component id="svcDeleteButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                              <Component id="svcDelClearButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="149" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jButton7" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="svcDelNumLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="svcDelNumText" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="svcDelSearchButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="svcDelDescLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="svcDelDescText" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="svcDelFeeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="svcDelFeeText" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="33" max="32767" attributes="0"/>
-                              <Component id="jButton8" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="svcDeleteButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="svcDelClearButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="jLabel6">
+                    <Component class="javax.swing.JLabel" name="svcDelNumLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Service Code:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel7">
+                    <Component class="javax.swing.JLabel" name="svcDelDescLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Description:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel8">
+                    <Component class="javax.swing.JLabel" name="svcDelFeeLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Fee:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField3">
+                    <Component class="javax.swing.JTextField" name="svcDelNumText">
                       <Properties>
                         <Property name="text" type="java.lang.String" value=" "/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField4">
+                    <Component class="javax.swing.JTextField" name="svcDelDescText">
+                      <Properties>
+                        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[20, 20]"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="svcDelFeeText">
                       <Properties>
                         <Property name="text" type="java.lang.String" value=" "/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField5">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value=" "/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JButton" name="jButton7">
+                    <Component class="javax.swing.JButton" name="svcDelSearchButton">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Search"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton7ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="svcDelSearchButtonActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton8">
+                    <Component class="javax.swing.JButton" name="svcDeleteButton">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Delete"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton8ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="svcDeleteButtonActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="svcDelClearButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Clear"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="svcDelClearButtonActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -843,15 +1027,15 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton3" alignment="0" min="-2" max="-2" attributes="1"/>
-                          <Component id="jButton6" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="memberRptButton" alignment="0" min="-2" max="-2" attributes="1"/>
+                          <Component id="providerRptButton" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jButton4" max="32767" attributes="1"/>
-                          <Component id="jButton5" alignment="0" pref="161" max="32767" attributes="1"/>
+                          <Component id="eftRptButton" max="32767" attributes="1"/>
+                          <Component id="summaryRptButton" alignment="0" pref="161" max="32767" attributes="1"/>
                       </Group>
-                      <EmptySpace pref="59" max="32767" attributes="0"/>
+                      <EmptySpace pref="85" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -860,39 +1044,51 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="memberRptButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="eftRptButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButton6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="providerRptButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="summaryRptButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="222" max="32767" attributes="0"/>
+                      <EmptySpace pref="157" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="jButton3">
+            <Component class="javax.swing.JButton" name="memberRptButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Run Member Report"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="memberRptButtonActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton4">
+            <Component class="javax.swing.JButton" name="eftRptButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Run EFT Report"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eftRptButtonActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton5">
+            <Component class="javax.swing.JButton" name="summaryRptButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Run Summary Report"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="summaryRptButtonActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton6">
+            <Component class="javax.swing.JButton" name="providerRptButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Run Provider Report"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="providerRptButtonActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -911,16 +1107,16 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jComboBox1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="terminalComboBox" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                              <Component id="terminalNumLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField1" min="-2" pref="82" max="-2" attributes="0"/>
+                              <Component id="terminalNumTextField" min="-2" pref="82" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                              <Component id="terminalRunButton" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="157" max="32767" attributes="0"/>
+                      <EmptySpace pref="183" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -928,22 +1124,22 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                      <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                      <Component id="terminalComboBox" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                          <Component id="terminalNumLabel" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="terminalNumTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="terminalRunButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="158" max="32767" attributes="0"/>
+                      <EmptySpace pref="93" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JComboBox" name="jComboBox1">
+            <Component class="javax.swing.JComboBox" name="terminalComboBox">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="5">
@@ -956,17 +1152,17 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="terminalComboBoxActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel4">
+            <Component class="javax.swing.JLabel" name="terminalNumLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Enter Number"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField1">
+            <Component class="javax.swing.JTextField" name="terminalNumTextField">
             </Component>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="terminalRunButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Run"/>
               </Properties>

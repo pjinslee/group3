@@ -30,7 +30,9 @@ public class EFTReport implements Reports {
     public void sortReportRecords() {
         //TODO
     }
-    public void createReport() {
+
+    public boolean createReport() {
         //TODO
+        return true;
     }
-}
+    }

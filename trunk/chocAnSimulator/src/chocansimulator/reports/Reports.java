@@ -16,6 +16,6 @@ public interface Reports {
     public void formatDetail();
     public List getReportRecords();
     public void sortReportRecords();
-    public void createReport();
+    public boolean createReport();
 
 }
