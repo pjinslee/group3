@@ -62,7 +62,6 @@ public abstract class ManageData {
 
     public void print() {
         Object o;
-           //TODO-only works for contacts
         Iterator itr = records.iterator();
 
         while (itr.hasNext()) {

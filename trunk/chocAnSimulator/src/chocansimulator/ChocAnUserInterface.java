@@ -11,16 +11,26 @@
 
 package chocansimulator;
 
+import chocansimulator.datamangement.Bill;
 import chocansimulator.datamangement.BillManager;
 import chocansimulator.datamangement.Id;
 import chocansimulator.datamangement.Member;
 import chocansimulator.datamangement.MemberManager;
+import chocansimulator.datamangement.Provider;
 import chocansimulator.datamangement.ProviderManager;
 import chocansimulator.datamangement.ServiceCode;
 import chocansimulator.datamangement.ServiceCodeManager;
+import chocansimulator.reports.EFTReport;
 import chocansimulator.reports.MemberReport;
+import chocansimulator.reports.ProviderReport;
+import chocansimulator.reports.ServiceCodeDirectoryReport;
+import chocansimulator.reports.SummaryReport;
 import java.io.File;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -118,6 +128,52 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         memberDelNumText = new javax.swing.JTextField();
         memberDelSearchButton = new javax.swing.JButton();
         ProviderTabbedPanel = new javax.swing.JPanel();
+        ProviderDataManagerPanels = new javax.swing.JTabbedPane();
+        providerAddPanel = new javax.swing.JPanel();
+        providerAddNameLabel = new javax.swing.JLabel();
+        providerAddAddressLabel = new javax.swing.JLabel();
+        providerAddCityLabel = new javax.swing.JLabel();
+        providerAddStateLabel = new javax.swing.JLabel();
+        providerAddZipLabel = new javax.swing.JLabel();
+        providerAddNameText = new javax.swing.JTextField();
+        providerAddAddressText = new javax.swing.JTextField();
+        providerAddCityText = new javax.swing.JTextField();
+        providerAddStateText = new javax.swing.JTextField();
+        providerAddZipText = new javax.swing.JTextField();
+        providerAddButton = new javax.swing.JButton();
+        providerAddClearButton = new javax.swing.JButton();
+        providerUpdatePanel = new javax.swing.JPanel();
+        providerUpNameLabel = new javax.swing.JLabel();
+        providerUpAddressLabel = new javax.swing.JLabel();
+        providerUpCityLabel = new javax.swing.JLabel();
+        providerUpStateLabel = new javax.swing.JLabel();
+        providerUpZipLabel = new javax.swing.JLabel();
+        providerUpNameText = new javax.swing.JTextField();
+        providerUpAddressText = new javax.swing.JTextField();
+        providerUpCityText = new javax.swing.JTextField();
+        providerUpStateText = new javax.swing.JTextField();
+        providerUpZipText = new javax.swing.JTextField();
+        providerUpdateButton = new javax.swing.JButton();
+        providerUpClearButton = new javax.swing.JButton();
+        providerUpNumLabel = new javax.swing.JLabel();
+        providerUpNumText = new javax.swing.JTextField();
+        providerUpSearchButton = new javax.swing.JButton();
+        providerDeletePanel = new javax.swing.JPanel();
+        providerDelNameLabel = new javax.swing.JLabel();
+        providerDelAddressLabel = new javax.swing.JLabel();
+        providerDelCityLabel = new javax.swing.JLabel();
+        providerDelStateLabel = new javax.swing.JLabel();
+        providerDelZipLabel = new javax.swing.JLabel();
+        providerDelNameText = new javax.swing.JTextField();
+        providerDelAddressText = new javax.swing.JTextField();
+        providerDelCityText = new javax.swing.JTextField();
+        providerDelStateText = new javax.swing.JTextField();
+        providerDelZipText = new javax.swing.JTextField();
+        providerDeleteButton = new javax.swing.JButton();
+        providerDelClearButton = new javax.swing.JButton();
+        providerDelNumLabel = new javax.swing.JLabel();
+        providerDelNumText = new javax.swing.JTextField();
+        providerDelSearchButton = new javax.swing.JButton();
         ServiceCodeTabbedPanel = new javax.swing.JPanel();
         svcDataManagerPanels = new javax.swing.JTabbedPane();
         svcAddPanel = new javax.swing.JPanel();
@@ -154,10 +210,37 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         summaryRptButton = new javax.swing.JButton();
         providerRptButton = new javax.swing.JButton();
         TerminalTabbedPanel = new javax.swing.JPanel();
-        terminalComboBox = new javax.swing.JComboBox();
-        terminalNumLabel = new javax.swing.JLabel();
-        terminalNumTextField = new javax.swing.JTextField();
-        terminalRunButton = new javax.swing.JButton();
+        terminalDataManagerPanels = new javax.swing.JTabbedPane();
+        valMemPanel = new javax.swing.JPanel();
+        valMemLabel = new javax.swing.JLabel();
+        valMemText = new javax.swing.JTextField();
+        valMemButton = new javax.swing.JButton();
+        valMemClearButton = new javax.swing.JButton();
+        valProPanel = new javax.swing.JPanel();
+        valProLabel = new javax.swing.JLabel();
+        valProText = new javax.swing.JTextField();
+        valProButton = new javax.swing.JButton();
+        valProClearButton = new javax.swing.JButton();
+        valSvcPanel = new javax.swing.JPanel();
+        valSvcLabel = new javax.swing.JLabel();
+        valSvcText = new javax.swing.JTextField();
+        valSvcButton = new javax.swing.JButton();
+        valSvcClearButton = new javax.swing.JButton();
+        addBillPanel = new javax.swing.JPanel();
+        dateLabel = new javax.swing.JLabel();
+        memNumLabel = new javax.swing.JLabel();
+        proNumLabel = new javax.swing.JLabel();
+        svcLabel = new javax.swing.JLabel();
+        commentLabel = new javax.swing.JLabel();
+        billDateText = new javax.swing.JTextField();
+        billMemNumText = new javax.swing.JTextField();
+        billProNumText = new javax.swing.JTextField();
+        billSvcText = new javax.swing.JTextField();
+        billCommentText = new javax.swing.JTextField();
+        addBillButton = new javax.swing.JButton();
+        billClearButton = new javax.swing.JButton();
+        proDirPanel = new javax.swing.JPanel();
+        runProDirButton = new javax.swing.JButton();
         globalMessageLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -492,15 +575,326 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
 
         ChocAnPanel.addTab("Member", MemberTabbedPanel);
 
+        providerAddNameLabel.setText("Name:");
+
+        providerAddAddressLabel.setText("Address:");
+
+        providerAddCityLabel.setText("City:");
+
+        providerAddStateLabel.setText("State:");
+
+        providerAddZipLabel.setText("Zip:");
+
+        providerAddButton.setText("Add");
+        providerAddButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                providerAddButtonActionPerformed(evt);
+            }
+        });
+
+        providerAddClearButton.setText("Clear");
+        providerAddClearButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                providerAddClearButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout providerAddPanelLayout = new javax.swing.GroupLayout(providerAddPanel);
+        providerAddPanel.setLayout(providerAddPanelLayout);
+        providerAddPanelLayout.setHorizontalGroup(
+            providerAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(providerAddPanelLayout.createSequentialGroup()
+                .addGroup(providerAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(providerAddNameLabel)
+                    .addComponent(providerAddAddressLabel))
+                .addGap(18, 18, 18)
+                .addGroup(providerAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(providerAddNameText)
+                    .addComponent(providerAddAddressText, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE))
+                .addContainerGap(98, Short.MAX_VALUE))
+            .addGroup(providerAddPanelLayout.createSequentialGroup()
+                .addComponent(providerAddCityLabel)
+                .addGap(6, 6, 6)
+                .addComponent(providerAddCityText, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(providerAddStateLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(providerAddStateText, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(providerAddZipLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(providerAddZipText, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(142, 142, 142))
+            .addGroup(providerAddPanelLayout.createSequentialGroup()
+                .addGap(112, 112, 112)
+                .addComponent(providerAddButton)
+                .addGap(68, 68, 68)
+                .addComponent(providerAddClearButton)
+                .addContainerGap(134, Short.MAX_VALUE))
+        );
+        providerAddPanelLayout.setVerticalGroup(
+            providerAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(providerAddPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(providerAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(providerAddNameLabel)
+                    .addComponent(providerAddNameText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(providerAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(providerAddAddressLabel)
+                    .addComponent(providerAddAddressText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(providerAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(providerAddCityLabel)
+                    .addComponent(providerAddCityText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(providerAddZipText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(providerAddZipLabel)
+                    .addComponent(providerAddStateText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(providerAddStateLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addGroup(providerAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(providerAddButton)
+                    .addComponent(providerAddClearButton))
+                .addContainerGap())
+        );
+
+        ProviderDataManagerPanels.addTab("Add", providerAddPanel);
+
+        providerUpNameLabel.setText("Name:");
+
+        providerUpAddressLabel.setText("Address:");
+
+        providerUpCityLabel.setText("City:");
+
+        providerUpStateLabel.setText("State:");
+
+        providerUpZipLabel.setText("Zip:");
+
+        providerUpdateButton.setText("Update");
+        providerUpdateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                providerUpdateButtonActionPerformed(evt);
+            }
+        });
+
+        providerUpClearButton.setText("Clear");
+        providerUpClearButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                providerUpClearButtonActionPerformed(evt);
+            }
+        });
+
+        providerUpNumLabel.setText("Number:");
+
+        providerUpSearchButton.setText("Search");
+        providerUpSearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                providerUpSearchButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout providerUpdatePanelLayout = new javax.swing.GroupLayout(providerUpdatePanel);
+        providerUpdatePanel.setLayout(providerUpdatePanelLayout);
+        providerUpdatePanelLayout.setHorizontalGroup(
+            providerUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(providerUpdatePanelLayout.createSequentialGroup()
+                .addGap(112, 112, 112)
+                .addComponent(providerUpdateButton)
+                .addGap(68, 68, 68)
+                .addComponent(providerUpClearButton)
+                .addContainerGap(110, Short.MAX_VALUE))
+            .addGroup(providerUpdatePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(providerUpNameLabel)
+                .addContainerGap(345, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, providerUpdatePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(providerUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, providerUpdatePanelLayout.createSequentialGroup()
+                        .addComponent(providerUpNumLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(providerUpNumText, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                        .addComponent(providerUpSearchButton))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, providerUpdatePanelLayout.createSequentialGroup()
+                        .addComponent(providerUpCityLabel)
+                        .addGap(6, 6, 6)
+                        .addComponent(providerUpCityText, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(providerUpStateLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(providerUpStateText, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(providerUpZipLabel))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, providerUpdatePanelLayout.createSequentialGroup()
+                        .addComponent(providerUpAddressLabel)
+                        .addGap(18, 18, 18)
+                        .addGroup(providerUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(providerUpNameText, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                            .addComponent(providerUpAddressText, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE))))
+                .addGap(18, 18, 18)
+                .addComponent(providerUpZipText, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
+        );
+        providerUpdatePanelLayout.setVerticalGroup(
+            providerUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(providerUpdatePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(providerUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(providerUpNumText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(providerUpNumLabel)
+                    .addComponent(providerUpSearchButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(providerUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(providerUpNameLabel)
+                    .addComponent(providerUpNameText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(providerUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(providerUpAddressLabel)
+                    .addComponent(providerUpAddressText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(providerUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(providerUpZipText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(providerUpZipLabel)
+                    .addComponent(providerUpStateText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(providerUpStateLabel)
+                    .addComponent(providerUpCityText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(providerUpCityLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addGroup(providerUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(providerUpdateButton)
+                    .addComponent(providerUpClearButton))
+                .addContainerGap())
+        );
+
+        ProviderDataManagerPanels.addTab("Update", providerUpdatePanel);
+
+        providerDelNameLabel.setText("Name:");
+
+        providerDelAddressLabel.setText("Address:");
+
+        providerDelCityLabel.setText("City:");
+
+        providerDelStateLabel.setText("State:");
+
+        providerDelZipLabel.setText("Zip:");
+
+        providerDeleteButton.setText("Delete");
+        providerDeleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                providerDeleteButtonActionPerformed(evt);
+            }
+        });
+
+        providerDelClearButton.setText("Clear");
+        providerDelClearButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                providerDelClearButtonActionPerformed(evt);
+            }
+        });
+
+        providerDelNumLabel.setText("Number:");
+
+        providerDelSearchButton.setText("Search");
+        providerDelSearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                providerDelSearchButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout providerDeletePanelLayout = new javax.swing.GroupLayout(providerDeletePanel);
+        providerDeletePanel.setLayout(providerDeletePanelLayout);
+        providerDeletePanelLayout.setHorizontalGroup(
+            providerDeletePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(providerDeletePanelLayout.createSequentialGroup()
+                .addGap(112, 112, 112)
+                .addComponent(providerDeleteButton)
+                .addGap(68, 68, 68)
+                .addComponent(providerDelClearButton)
+                .addContainerGap(113, Short.MAX_VALUE))
+            .addGroup(providerDeletePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(providerDelNameLabel)
+                .addContainerGap(345, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, providerDeletePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(providerDeletePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, providerDeletePanelLayout.createSequentialGroup()
+                        .addComponent(providerDelNumLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(providerDelNumText, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                        .addComponent(providerDelSearchButton))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, providerDeletePanelLayout.createSequentialGroup()
+                        .addComponent(providerDelCityLabel)
+                        .addGap(6, 6, 6)
+                        .addComponent(providerDelCityText, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(providerDelStateLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(providerDelStateText, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(providerDelZipLabel))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, providerDeletePanelLayout.createSequentialGroup()
+                        .addComponent(providerDelAddressLabel)
+                        .addGap(18, 18, 18)
+                        .addGroup(providerDeletePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(providerDelNameText, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                            .addComponent(providerDelAddressText, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE))))
+                .addGap(18, 18, 18)
+                .addComponent(providerDelZipText, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
+        );
+        providerDeletePanelLayout.setVerticalGroup(
+            providerDeletePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(providerDeletePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(providerDeletePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(providerDelNumText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(providerDelNumLabel)
+                    .addComponent(providerDelSearchButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(providerDeletePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(providerDelNameLabel)
+                    .addComponent(providerDelNameText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(providerDeletePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(providerDelAddressLabel)
+                    .addComponent(providerDelAddressText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(providerDeletePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(providerDelZipText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(providerDelZipLabel)
+                    .addComponent(providerDelStateText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(providerDelStateLabel)
+                    .addComponent(providerDelCityText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(providerDelCityLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addGroup(providerDeletePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(providerDeleteButton)
+                    .addComponent(providerDelClearButton))
+                .addContainerGap())
+        );
+
+        ProviderDataManagerPanels.addTab("Delete", providerDeletePanel);
+
         javax.swing.GroupLayout ProviderTabbedPanelLayout = new javax.swing.GroupLayout(ProviderTabbedPanel);
         ProviderTabbedPanel.setLayout(ProviderTabbedPanelLayout);
         ProviderTabbedPanelLayout.setHorizontalGroup(
             ProviderTabbedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 463, Short.MAX_VALUE)
+            .addGroup(ProviderTabbedPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ProviderDataManagerPanels, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         ProviderTabbedPanelLayout.setVerticalGroup(
             ProviderTabbedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 268, Short.MAX_VALUE)
+            .addGroup(ProviderTabbedPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ProviderDataManagerPanels, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         ChocAnPanel.addTab("Provider", ProviderTabbedPanel);
@@ -544,7 +938,7 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
                         .addComponent(svcAddClearButton))
                     .addComponent(svcAddFeeText)
                     .addComponent(svcAddDescText, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addContainerGap(147, Short.MAX_VALUE))
         );
         svcAddPanelLayout.setVerticalGroup(
             svcAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -659,7 +1053,7 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
             svcUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(svcUpdatePanelLayout.createSequentialGroup()
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         svcUpdatePanelLayout.setVerticalGroup(
             svcUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -725,13 +1119,13 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
                         .addComponent(svcDelSearchButton))
                     .addComponent(svcDelFeeText, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(svcDelDescText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(37, 37, 37))
+                .addGap(68, 68, 68))
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addGap(88, 88, 88)
                 .addComponent(svcDeleteButton)
                 .addGap(54, 54, 54)
                 .addComponent(svcDelClearButton)
-                .addContainerGap(149, Short.MAX_VALUE))
+                .addContainerGap(180, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -763,8 +1157,8 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         ServiceCodeTabbedPanelLayout.setHorizontalGroup(
             ServiceCodeTabbedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ServiceCodeTabbedPanelLayout.createSequentialGroup()
-                .addContainerGap(43, Short.MAX_VALUE)
-                .addComponent(svcDataManagerPanels, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(svcDataManagerPanels, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
                 .addContainerGap())
         );
         ServiceCodeTabbedPanelLayout.setVerticalGroup(
@@ -836,16 +1230,281 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
 
         ChocAnPanel.addTab("Reports", ReportsTabbedPanel);
 
-        terminalComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Validate Member", "Validate Provider", "Validate Service Code", "Request Service Directory", "Send Bill" }));
-        terminalComboBox.addActionListener(new java.awt.event.ActionListener() {
+        valMemLabel.setText("Member Number:");
+
+        valMemButton.setText("Validate");
+        valMemButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                terminalComboBoxActionPerformed(evt);
+                valMemButtonActionPerformed(evt);
             }
         });
 
-        terminalNumLabel.setText("Enter Number");
+        valMemClearButton.setText("Clear");
+        valMemClearButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                valMemClearButtonActionPerformed(evt);
+            }
+        });
 
-        terminalRunButton.setText("Run");
+        javax.swing.GroupLayout valMemPanelLayout = new javax.swing.GroupLayout(valMemPanel);
+        valMemPanel.setLayout(valMemPanelLayout);
+        valMemPanelLayout.setHorizontalGroup(
+            valMemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(valMemPanelLayout.createSequentialGroup()
+                .addGroup(valMemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(valMemPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(valMemLabel))
+                    .addGroup(valMemPanelLayout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addComponent(valMemButton)))
+                .addGroup(valMemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(valMemPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(valMemText, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(valMemPanelLayout.createSequentialGroup()
+                        .addGap(118, 118, 118)
+                        .addComponent(valMemClearButton)))
+                .addContainerGap(113, Short.MAX_VALUE))
+        );
+        valMemPanelLayout.setVerticalGroup(
+            valMemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(valMemPanelLayout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addGroup(valMemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(valMemLabel)
+                    .addComponent(valMemText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addGroup(valMemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(valMemButton)
+                    .addComponent(valMemClearButton))
+                .addGap(40, 40, 40))
+        );
+
+        terminalDataManagerPanels.addTab("Val Member", valMemPanel);
+
+        valProLabel.setText("Provider Number:");
+
+        valProButton.setText("Validate");
+        valProButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                valProButtonActionPerformed(evt);
+            }
+        });
+
+        valProClearButton.setText("Clear");
+        valProClearButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                valProClearButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout valProPanelLayout = new javax.swing.GroupLayout(valProPanel);
+        valProPanel.setLayout(valProPanelLayout);
+        valProPanelLayout.setHorizontalGroup(
+            valProPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(valProPanelLayout.createSequentialGroup()
+                .addGroup(valProPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(valProPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(valProLabel))
+                    .addGroup(valProPanelLayout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addComponent(valProButton)))
+                .addGroup(valProPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(valProPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(valProText, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(176, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, valProPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(valProClearButton)
+                        .addGap(110, 110, 110))))
+        );
+        valProPanelLayout.setVerticalGroup(
+            valProPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(valProPanelLayout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addGroup(valProPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(valProLabel)
+                    .addComponent(valProText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addGroup(valProPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(valProButton)
+                    .addComponent(valProClearButton))
+                .addGap(40, 40, 40))
+        );
+
+        terminalDataManagerPanels.addTab("Val Provider", valProPanel);
+
+        valSvcLabel.setText("Service Code:");
+
+        valSvcButton.setText("Validate");
+        valSvcButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                valSvcButtonActionPerformed(evt);
+            }
+        });
+
+        valSvcClearButton.setText("Clear");
+        valSvcClearButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                valSvcClearButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout valSvcPanelLayout = new javax.swing.GroupLayout(valSvcPanel);
+        valSvcPanel.setLayout(valSvcPanelLayout);
+        valSvcPanelLayout.setHorizontalGroup(
+            valSvcPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(valSvcPanelLayout.createSequentialGroup()
+                .addGroup(valSvcPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(valSvcPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(valSvcLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(valSvcText, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(valSvcPanelLayout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addComponent(valSvcButton)
+                        .addGap(117, 117, 117)
+                        .addComponent(valSvcClearButton)))
+                .addContainerGap(130, Short.MAX_VALUE))
+        );
+        valSvcPanelLayout.setVerticalGroup(
+            valSvcPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(valSvcPanelLayout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addGroup(valSvcPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(valSvcLabel)
+                    .addComponent(valSvcText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addGroup(valSvcPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(valSvcButton)
+                    .addComponent(valSvcClearButton))
+                .addGap(41, 41, 41))
+        );
+
+        terminalDataManagerPanels.addTab("Val Svc Code", valSvcPanel);
+
+        dateLabel.setText("Service date:");
+
+        memNumLabel.setText("Member #:");
+
+        proNumLabel.setText("Provider #:");
+
+        svcLabel.setText("Service Code:");
+
+        commentLabel.setText("Comments:");
+
+        addBillButton.setText("Add Bill");
+        addBillButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBillButtonActionPerformed(evt);
+            }
+        });
+
+        billClearButton.setText("Clear");
+        billClearButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                billClearButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout addBillPanelLayout = new javax.swing.GroupLayout(addBillPanel);
+        addBillPanel.setLayout(addBillPanelLayout);
+        addBillPanelLayout.setHorizontalGroup(
+            addBillPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addBillPanelLayout.createSequentialGroup()
+                .addGroup(addBillPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(addBillPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(addBillPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(addBillPanelLayout.createSequentialGroup()
+                                .addComponent(dateLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(billDateText, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(memNumLabel)))
+                    .addGroup(addBillPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(addBillPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addBillPanelLayout.createSequentialGroup()
+                                .addComponent(commentLabel)
+                                .addGap(27, 27, 27)
+                                .addComponent(billCommentText, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addBillPanelLayout.createSequentialGroup()
+                                .addComponent(svcLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(addBillPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(addBillPanelLayout.createSequentialGroup()
+                                        .addComponent(billMemNumText, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(proNumLabel)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(billProNumText, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(billSvcText, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(addBillPanelLayout.createSequentialGroup()
+                        .addGap(78, 78, 78)
+                        .addComponent(addBillButton)
+                        .addGap(137, 137, 137)
+                        .addComponent(billClearButton)))
+                .addContainerGap())
+        );
+        addBillPanelLayout.setVerticalGroup(
+            addBillPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addBillPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(addBillPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dateLabel)
+                    .addComponent(billDateText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(addBillPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(memNumLabel)
+                    .addComponent(billMemNumText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(proNumLabel)
+                    .addComponent(billProNumText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(addBillPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(svcLabel)
+                    .addComponent(billSvcText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(addBillPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(commentLabel)
+                    .addComponent(billCommentText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(addBillPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addBillButton)
+                    .addComponent(billClearButton))
+                .addContainerGap())
+        );
+
+        terminalDataManagerPanels.addTab("Bill", addBillPanel);
+
+        runProDirButton.setText("Run Provider Directory");
+        runProDirButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                runProDirButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout proDirPanelLayout = new javax.swing.GroupLayout(proDirPanel);
+        proDirPanel.setLayout(proDirPanelLayout);
+        proDirPanelLayout.setHorizontalGroup(
+            proDirPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(proDirPanelLayout.createSequentialGroup()
+                .addGap(126, 126, 126)
+                .addComponent(runProDirButton)
+                .addContainerGap(142, Short.MAX_VALUE))
+        );
+        proDirPanelLayout.setVerticalGroup(
+            proDirPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(proDirPanelLayout.createSequentialGroup()
+                .addGap(69, 69, 69)
+                .addComponent(runProDirButton)
+                .addContainerGap(115, Short.MAX_VALUE))
+        );
+
+        terminalDataManagerPanels.addTab("Provider Dir", proDirPanel);
 
         javax.swing.GroupLayout TerminalTabbedPanelLayout = new javax.swing.GroupLayout(TerminalTabbedPanel);
         TerminalTabbedPanel.setLayout(TerminalTabbedPanelLayout);
@@ -853,28 +1512,15 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
             TerminalTabbedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TerminalTabbedPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(TerminalTabbedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(terminalComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(TerminalTabbedPanelLayout.createSequentialGroup()
-                        .addComponent(terminalNumLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(terminalNumTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(terminalRunButton)))
-                .addContainerGap(183, Short.MAX_VALUE))
+                .addComponent(terminalDataManagerPanels, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         TerminalTabbedPanelLayout.setVerticalGroup(
             TerminalTabbedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TerminalTabbedPanelLayout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(terminalComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70)
-                .addGroup(TerminalTabbedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(terminalNumLabel)
-                    .addGroup(TerminalTabbedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(terminalNumTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(terminalRunButton)))
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(terminalDataManagerPanels, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         ChocAnPanel.addTab("Terminal", TerminalTabbedPanel);
@@ -907,11 +1553,9 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void terminalComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_terminalComboBoxActionPerformed
-        // TODO add your handling code here:
-}//GEN-LAST:event_terminalComboBoxActionPerformed
-
     private void svcUpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_svcUpdateButtonActionPerformed
+        //TODO - validate fields
+
         ServiceCode s = null;
         int i = Integer.parseInt(svcUpNumText.getText().trim());
         s = (ServiceCode) svcMan.search(i);
@@ -966,12 +1610,10 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
             svcUpNumText.setEnabled(false);
             svcUpSearchButton.setEnabled(false);
         }
-
         
     }//GEN-LAST:event_svcUpSearchButtonActionPerformed
 
     private void svcUpdateClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_svcUpdateClearButtonActionPerformed
-
         svcUpDescText.setText("");
         svcUpFeeText.setText("");
         svcUpNumText.setText("");
@@ -1053,6 +1695,8 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
 }//GEN-LAST:event_memberUpClearButtonActionPerformed
 
     private void memberUpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_memberUpdateButtonActionPerformed
+        //TODO - validate fields
+
         Member m = null;
         int i = Integer.parseInt(memberUpNumText.getText().trim());
         m = (Member) memberMan.search(i);
@@ -1141,9 +1785,9 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_memberDelSearchButtonActionPerformed
 
     private void memberRptButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_memberRptButtonActionPerformed
-        MemberReport mr = new MemberReport();
-        mr.createReport();
-        if (mr.createReport()) {
+        MemberReport r = new MemberReport();
+        r.createReport();
+        if (r.createReport()) {
             globalMessageLabel.setText("Member reports are available.");
         } else {
             globalMessageLabel.setText("Member reports could not be run.");
@@ -1151,16 +1795,254 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_memberRptButtonActionPerformed
 
     private void providerRptButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_providerRptButtonActionPerformed
-        // TODO add your handling code here:
+        ProviderReport r = new ProviderReport();
+        r.createReport();
+        if (r.createReport()) {
+            globalMessageLabel.setText("Provider reports are available.");
+        } else {
+            globalMessageLabel.setText("Provider reports could not be run.");
+        }
     }//GEN-LAST:event_providerRptButtonActionPerformed
 
     private void eftRptButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eftRptButtonActionPerformed
-        // TODO add your handling code here:
+        EFTReport r = new EFTReport();
+        r.createReport();
+        if (r.createReport()) {
+            globalMessageLabel.setText("EFT reports are available.");
+        } else {
+            globalMessageLabel.setText("EFT reports could not be run.");
+        }
     }//GEN-LAST:event_eftRptButtonActionPerformed
 
     private void summaryRptButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_summaryRptButtonActionPerformed
-        // TODO add your handling code here:
+        SummaryReport r = new SummaryReport();
+        r.createReport();
+        if (r.createReport()) {
+            globalMessageLabel.setText("Summary reports are available.");
+        } else {
+            globalMessageLabel.setText("Summary reports could not be run.");
+        }
     }//GEN-LAST:event_summaryRptButtonActionPerformed
+
+    private void providerAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_providerAddButtonActionPerformed
+        //TODO- validate fields
+
+        Provider p = new Provider();
+
+        p.setName(providerAddNameText.getText());
+        p.setAddress(providerAddAddressText.getText());
+        p.setCity(providerAddCityText.getText());
+        p.setState(providerAddStateText.getText());
+        int i = Integer.parseInt(providerAddZipText.getText().trim());
+        p.setZip(i);
+        providerMan.addData(p);
+        globalMessageLabel.setText("Provider " + p.getNumber() +
+                " has been added");
+    }//GEN-LAST:event_providerAddButtonActionPerformed
+
+    private void providerAddClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_providerAddClearButtonActionPerformed
+        providerAddNameText.setText("");
+        providerAddAddressText.setText("");
+        providerAddCityText.setText("");
+        providerAddStateText.setText("");
+        providerAddZipText.setText("");
+    }//GEN-LAST:event_providerAddClearButtonActionPerformed
+
+    private void providerUpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_providerUpdateButtonActionPerformed
+        //TODO - validate fields
+
+        Provider p = null;
+        int i = Integer.parseInt(providerUpNumText.getText().trim());
+        p = (Provider) providerMan.search(i);
+        if (p == null) {
+            globalMessageLabel.setText("Provider not found.");
+        } else {
+            p.setName(providerUpNameText.getText());
+            p.setAddress(providerUpAddressText.getText());
+            p.setCity(providerUpCityText.getText());
+            p.setState(providerUpStateText.getText());
+            int k = Integer.parseInt(providerUpZipText.getText().trim());
+            p.setZip(k);
+            providerUpNumText.setEnabled(false);
+            providerUpSearchButton.setEnabled(false);
+            globalMessageLabel.setText("Provider has been updated.");
+
+        }
+    }//GEN-LAST:event_providerUpdateButtonActionPerformed
+
+    private void providerUpClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_providerUpClearButtonActionPerformed
+        providerUpNameText.setText("");
+        providerUpAddressText.setText("");
+        providerUpCityText.setText("");
+        providerUpStateText.setText("");
+        providerUpZipText.setText("");
+        providerUpNumText.setEnabled(true);
+        providerUpSearchButton.setEnabled(true);
+    }//GEN-LAST:event_providerUpClearButtonActionPerformed
+
+    private void providerUpSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_providerUpSearchButtonActionPerformed
+        Provider p = null;
+        int i = Integer.parseInt(providerUpNumText.getText().trim());
+        p = (Provider) providerMan.search(i);
+        if (p == null) {
+            globalMessageLabel.setText("Provider not found.");
+        } else {
+            providerUpNameText.setText(p.getName());
+            providerUpAddressText.setText(p.getAddress());
+            providerUpCityText.setText(p.getCity());
+            providerUpStateText.setText(p.getState());
+            providerUpZipText.setText(String.valueOf(p.getZip()));
+            providerUpNumText.setEnabled(false);
+            providerUpSearchButton.setEnabled(false);
+            globalMessageLabel.setText("Provider ready to update.");
+        }
+    }//GEN-LAST:event_providerUpSearchButtonActionPerformed
+
+    private void providerDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_providerDeleteButtonActionPerformed
+        Provider p = null;
+        int i = Integer.parseInt(providerDelNumText.getText().trim());
+        p = (Provider) providerMan.search(i);
+        if (p == null) {
+            globalMessageLabel.setText("Provider not found.");
+        } else {
+            p.setStatus(0);
+            providerUpNumText.setEnabled(false);
+            providerUpSearchButton.setEnabled(false);
+            globalMessageLabel.setText("Provider has been disabled.");
+        }
+    }//GEN-LAST:event_providerDeleteButtonActionPerformed
+
+    private void providerDelClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_providerDelClearButtonActionPerformed
+        providerDelNameText.setText("");
+        providerDelAddressText.setText("");
+        providerDelCityText.setText("");
+        providerDelStateText.setText("");
+        providerDelZipText.setText("");
+        providerDelNumText.setEnabled(true);
+        providerDelSearchButton.setEnabled(true);
+    }//GEN-LAST:event_providerDelClearButtonActionPerformed
+
+    private void providerDelSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_providerDelSearchButtonActionPerformed
+        Provider p = null;
+        int i = Integer.parseInt(providerDelNumText.getText().trim());
+        p = (Provider) memberMan.search(i);
+        if (p == null) {
+            globalMessageLabel.setText("Provider not found.");
+        } else {
+            providerDelNameText.setText(p.getName());
+            providerDelAddressText.setText(p.getAddress());
+            providerDelCityText.setText(p.getCity());
+            providerDelStateText.setText(p.getState());
+            providerDelZipText.setText(String.valueOf(p.getZip()));
+            providerDelNumText.setEnabled(false);
+            providerDelSearchButton.setEnabled(false);
+            globalMessageLabel.setText("Provider has been found.");
+
+        }
+    }//GEN-LAST:event_providerDelSearchButtonActionPerformed
+
+    private void valMemButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valMemButtonActionPerformed
+        Member m = null;
+        int i = Integer.parseInt(valMemText.getText().trim());
+        m = (Member) memberMan.search(i);
+        if (m == null) {
+            globalMessageLabel.setText("Member not found.");
+        } else {
+            if ( m.getStatus() == 0 ) {
+                globalMessageLabel.setText("Invalid Member");
+            } else {
+                if ( m.getStatus() == 1 ) {
+                    globalMessageLabel.setText("Validated");
+                } else {
+                    globalMessageLabel.setText("Member Suspended");
+                }
+            }
+        }
+    }//GEN-LAST:event_valMemButtonActionPerformed
+
+    private void valMemClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valMemClearButtonActionPerformed
+        valMemText.setText("");
+    }//GEN-LAST:event_valMemClearButtonActionPerformed
+
+    private void valProButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valProButtonActionPerformed
+        Provider p = null;
+        int i = Integer.parseInt(valProText.getText().trim());
+        p = (Provider) providerMan.search(i);
+        if (p == null) {
+            globalMessageLabel.setText("Provider not found.");
+        } else {
+            if ( p.getStatus() == 0 ) {
+                globalMessageLabel.setText("Invalid Provider");
+            } else {
+                globalMessageLabel.setText("Validated");
+            }
+        }
+    }//GEN-LAST:event_valProButtonActionPerformed
+
+    private void valProClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valProClearButtonActionPerformed
+        valProText.setText("");
+    }//GEN-LAST:event_valProClearButtonActionPerformed
+
+    private void valSvcButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valSvcButtonActionPerformed
+        ServiceCode s = null;
+        int i = Integer.parseInt(String.valueOf(s.getFee()).trim());
+        s = (ServiceCode) svcMan.search(i);
+        if (s == null) {
+            globalMessageLabel.setText("Service Code not found.");
+        } else {
+            if ( s.getStatus() == 0 ) {
+                globalMessageLabel.setText("Invalid Service Code");
+            } else {
+                globalMessageLabel.setText("Fee: " + String.valueOf(s.getFee()));
+            }
+        }
+    }//GEN-LAST:event_valSvcButtonActionPerformed
+
+    private void valSvcClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valSvcClearButtonActionPerformed
+        valSvcText.setText("");
+    }//GEN-LAST:event_valSvcClearButtonActionPerformed
+
+    private void addBillButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBillButtonActionPerformed
+        //TODO- validate fields
+        Bill b = new Bill();
+
+        DateFormat dfServiceDate = new SimpleDateFormat("mm/dd/yyyy");
+        try {
+            Date svcDate = dfServiceDate.parse(billDateText.getText());
+            b.setServiceDate(svcDate);
+        } catch (ParseException ex) {
+            globalMessageLabel.setText("Invalid service date(mm/dd/yyyy), bill not added.");
+            return;
+        }
+
+        int i = Integer.parseInt(billMemNumText.getText().trim());
+        b.setMemberNumber(i);
+        i = Integer.parseInt(billProNumText.getText().trim());
+        b.setProviderNumber(i);
+        i = Integer.parseInt(billSvcText.getText().trim());
+        b.setServiceCode(i);
+        b.setComment(billCommentText.getText());
+        billMan.addData(b);
+        globalMessageLabel.setText("Bill has been added.");
+    }//GEN-LAST:event_addBillButtonActionPerformed
+
+    private void billClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_billClearButtonActionPerformed
+        billDateText.setText("");
+        billMemNumText.setText("");
+        billProNumText.setText("");
+        billSvcText.setText("");
+        billCommentText.setText("");
+    }//GEN-LAST:event_billClearButtonActionPerformed
+
+    private void runProDirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runProDirButtonActionPerformed
+        ServiceCodeDirectoryReport r = new ServiceCodeDirectoryReport();
+        r.createReport();
+        if (r.createReport()) {
+            globalMessageLabel.setText("Service code directory now available.");
+        } else {
+            globalMessageLabel.setText("Service code directory could not be run.");
+        }
+    }//GEN-LAST:event_runProDirButtonActionPerformed
 
     /**
     * @param args the command line arguments
@@ -1178,16 +2060,28 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane ChocAnPanel;
     private javax.swing.JPanel MemberTabbedPanel;
+    private javax.swing.JTabbedPane ProviderDataManagerPanels;
     private javax.swing.JPanel ProviderTabbedPanel;
     private javax.swing.JPanel ReportsTabbedPanel;
     private javax.swing.JPanel ServiceCodeTabbedPanel;
     private javax.swing.JPanel TerminalTabbedPanel;
+    private javax.swing.JButton addBillButton;
+    private javax.swing.JPanel addBillPanel;
+    private javax.swing.JButton billClearButton;
+    private javax.swing.JTextField billCommentText;
+    private javax.swing.JTextField billDateText;
+    private javax.swing.JTextField billMemNumText;
+    private javax.swing.JTextField billProNumText;
+    private javax.swing.JTextField billSvcText;
+    private javax.swing.JLabel commentLabel;
+    private javax.swing.JLabel dateLabel;
     private javax.swing.JLabel descLabel;
     private javax.swing.JButton eftRptButton;
     private javax.swing.JLabel feeLabel;
     private javax.swing.JLabel globalMessageLabel;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JLabel memNumLabel;
     private javax.swing.JLabel memberAddAddressLabel;
     private javax.swing.JTextField memberAddAddressText;
     private javax.swing.JButton memberAddButton;
@@ -1235,7 +2129,55 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
     private javax.swing.JTextField memberUpZipText;
     private javax.swing.JButton memberUpdateButton;
     private javax.swing.JPanel memberUpdatePanel;
+    private javax.swing.JPanel proDirPanel;
+    private javax.swing.JLabel proNumLabel;
+    private javax.swing.JLabel providerAddAddressLabel;
+    private javax.swing.JTextField providerAddAddressText;
+    private javax.swing.JButton providerAddButton;
+    private javax.swing.JLabel providerAddCityLabel;
+    private javax.swing.JTextField providerAddCityText;
+    private javax.swing.JButton providerAddClearButton;
+    private javax.swing.JLabel providerAddNameLabel;
+    private javax.swing.JTextField providerAddNameText;
+    private javax.swing.JPanel providerAddPanel;
+    private javax.swing.JLabel providerAddStateLabel;
+    private javax.swing.JTextField providerAddStateText;
+    private javax.swing.JLabel providerAddZipLabel;
+    private javax.swing.JTextField providerAddZipText;
+    private javax.swing.JLabel providerDelAddressLabel;
+    private javax.swing.JTextField providerDelAddressText;
+    private javax.swing.JLabel providerDelCityLabel;
+    private javax.swing.JTextField providerDelCityText;
+    private javax.swing.JButton providerDelClearButton;
+    private javax.swing.JLabel providerDelNameLabel;
+    private javax.swing.JTextField providerDelNameText;
+    private javax.swing.JLabel providerDelNumLabel;
+    private javax.swing.JTextField providerDelNumText;
+    private javax.swing.JButton providerDelSearchButton;
+    private javax.swing.JLabel providerDelStateLabel;
+    private javax.swing.JTextField providerDelStateText;
+    private javax.swing.JLabel providerDelZipLabel;
+    private javax.swing.JTextField providerDelZipText;
+    private javax.swing.JButton providerDeleteButton;
+    private javax.swing.JPanel providerDeletePanel;
     private javax.swing.JButton providerRptButton;
+    private javax.swing.JLabel providerUpAddressLabel;
+    private javax.swing.JTextField providerUpAddressText;
+    private javax.swing.JLabel providerUpCityLabel;
+    private javax.swing.JTextField providerUpCityText;
+    private javax.swing.JButton providerUpClearButton;
+    private javax.swing.JLabel providerUpNameLabel;
+    private javax.swing.JTextField providerUpNameText;
+    private javax.swing.JLabel providerUpNumLabel;
+    private javax.swing.JTextField providerUpNumText;
+    private javax.swing.JButton providerUpSearchButton;
+    private javax.swing.JLabel providerUpStateLabel;
+    private javax.swing.JTextField providerUpStateText;
+    private javax.swing.JLabel providerUpZipLabel;
+    private javax.swing.JTextField providerUpZipText;
+    private javax.swing.JButton providerUpdateButton;
+    private javax.swing.JPanel providerUpdatePanel;
+    private javax.swing.JButton runProDirButton;
     private javax.swing.JButton summaryRptButton;
     private javax.swing.JButton svcAddButton;
     private javax.swing.JButton svcAddClearButton;
@@ -1252,6 +2194,7 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
     private javax.swing.JTextField svcDelNumText;
     private javax.swing.JButton svcDelSearchButton;
     private javax.swing.JButton svcDeleteButton;
+    private javax.swing.JLabel svcLabel;
     private javax.swing.JLabel svcUpDescLabel;
     private javax.swing.JTextField svcUpDescText;
     private javax.swing.JLabel svcUpFeeLabel;
@@ -1262,10 +2205,22 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
     private javax.swing.JButton svcUpdateButton;
     private javax.swing.JButton svcUpdateClearButton;
     private javax.swing.JPanel svcUpdatePanel;
-    private javax.swing.JComboBox terminalComboBox;
-    private javax.swing.JLabel terminalNumLabel;
-    private javax.swing.JTextField terminalNumTextField;
-    private javax.swing.JButton terminalRunButton;
+    private javax.swing.JTabbedPane terminalDataManagerPanels;
+    private javax.swing.JButton valMemButton;
+    private javax.swing.JButton valMemClearButton;
+    private javax.swing.JLabel valMemLabel;
+    private javax.swing.JPanel valMemPanel;
+    private javax.swing.JTextField valMemText;
+    private javax.swing.JButton valProButton;
+    private javax.swing.JButton valProClearButton;
+    private javax.swing.JLabel valProLabel;
+    private javax.swing.JPanel valProPanel;
+    private javax.swing.JTextField valProText;
+    private javax.swing.JButton valSvcButton;
+    private javax.swing.JButton valSvcClearButton;
+    private javax.swing.JLabel valSvcLabel;
+    private javax.swing.JPanel valSvcPanel;
+    private javax.swing.JTextField valSvcText;
     // End of variables declaration//GEN-END:variables
 
 }
