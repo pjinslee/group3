@@ -66,13 +66,14 @@ public class Bill {
     }
 
     
+    @Override
     public String toString() {
        DateFormat dfServiceDate = new SimpleDateFormat("mm dd yyyy");
        DateFormat dfTimeStamp = new SimpleDateFormat("mm dd yyyy HH:mm:ss");
 
        return(dfServiceDate.format(getServiceDate()) + " " +
                getProviderNumber() + " " + getMemberNumber() + " " +
-               getServiceCode() + " " + getComment() + " " +
+               getServiceCode() + " " + getFee() + " " + getComment() + " " +
                dfTimeStamp.format(getTimeStamp()));
 
     }
@@ -83,7 +84,7 @@ public class Bill {
            
         return(dfServiceDate.format(getServiceDate()) + "^" +
                getProviderNumber() + "^" + getMemberNumber() + "^" +
-               getServiceCode() + "^" + getComment() + "^" +
+               getServiceCode() + "^" + getFee() + "^" + getComment() + "^" +
                dfTimeStamp.format(getTimeStamp()) + "\n");
 
     }

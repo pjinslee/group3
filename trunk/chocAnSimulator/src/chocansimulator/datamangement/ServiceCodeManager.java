@@ -35,8 +35,7 @@ public class ServiceCodeManager extends ManageData {
         try {
             record = new Scanner(new FileReader(fileName));
         } catch (FileNotFoundException ex) {
-           // Logger.getLogger(MemberManager.class.getName()).log(Level.WARNING, null, ex);
-            System.out.println("no file found");
+            System.out.println("no service codes found");
             return;
         }
 
@@ -45,7 +44,6 @@ public class ServiceCodeManager extends ManageData {
             while ( record.hasNextLine() ){
                 ServiceCode svc = new ServiceCode(record.nextLine());
                 records.add(svc);
-                //System.out.println(svc.toString());
             }
         }
         finally {
@@ -81,10 +79,10 @@ public class ServiceCodeManager extends ManageData {
         while (itr.hasNext()) {
             svc = (ServiceCode) itr.next();
             if ( svc.getNumber() == number ) {
-                break;
+                return svc;
             }
         }
 
-        return svc;
+        return null;
     }
 }

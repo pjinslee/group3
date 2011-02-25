@@ -19,20 +19,11 @@ public abstract class ManageData {
     protected String fileName;
     protected List records;
 
-
-    public ManageData() {
-        records = new ArrayList();
-    }
-
     public ManageData(String fileName) {
         records = new ArrayList();
         this.fileName = fileName;
-
     }
 
-    public void destroy() {
-        //TODO - Write data out to file
-    }
 
     abstract void readFile();
     abstract void writeFile() throws Exception;
@@ -44,13 +35,13 @@ public abstract class ManageData {
     }
 
     public boolean deleteData(int number) {
-        Contact c;
+        Contact o;
         //TODO - only works for contacts
         Iterator itr = records.iterator();
 
         while ( itr.hasNext() ) {
-            c = (Contact) itr.next();
-            if ( c.getNumber() == number ) {
+            o = (Contact) itr.next();
+            if ( o.getNumber() == number ) {
                 itr.remove();
                 System.out.println("found " + number + " to delete");
                 return true;

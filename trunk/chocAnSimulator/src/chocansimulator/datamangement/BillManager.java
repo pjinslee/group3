@@ -32,14 +32,13 @@ public class BillManager extends ManageData {
     }
 
     protected void readFile() {
-        //Scanner record = new Scanner(new FileReader(this.fileName));
+
         Scanner record = null;
 
         try {
             record = new Scanner(new FileReader(fileName));
         } catch (FileNotFoundException ex) {
-           // Logger.getLogger(MemberManager.class.getName()).log(Level.WARNING, null, ex);
-            System.out.println("no file found");
+            System.out.println("no bills found");
             return;
         }
 
@@ -48,7 +47,6 @@ public class BillManager extends ManageData {
             while ( record.hasNextLine() ){
                 Bill wrkBill = new Bill(record.nextLine());
                 records.add(wrkBill);
-                System.out.println(wrkBill.toString());
             }
         }
         finally {
@@ -58,16 +56,16 @@ public class BillManager extends ManageData {
     }
 
     public void writeFile() throws IOException {
-        Member m;
+        Bill b;
         BufferedWriter out = new BufferedWriter(new OutputStreamWriter(
                              new FileOutputStream(fileName)));
         
         Iterator itr = records.iterator();
 
         while (itr.hasNext()) {
-            m = (Member) itr.next();
+            b = (Bill) itr.next();
             try {
-                out.write(m.fileDataToString());
+                out.write(b.fileDataToString());
             } catch ( IOException ex ) {
                 Logger.getLogger(BillManager.class.getName()).log(Level.SEVERE, null, ex);
             }

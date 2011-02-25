@@ -35,8 +35,7 @@ public class MemberManager extends ManageData {
         try {
             record = new Scanner(new FileReader(fileName));
         } catch (FileNotFoundException ex) {
-           // Logger.getLogger(MemberManager.class.getName()).log(Level.WARNING, null, ex);
-            System.out.println("no file found");
+            System.out.println("no members found");
             return;
         }
 
@@ -45,7 +44,7 @@ public class MemberManager extends ManageData {
             while ( record.hasNextLine() ){
                 Member wrkMem = new Member(record.nextLine());
                 records.add(wrkMem);
-                System.out.println(wrkMem.toString());
+
             }
         }
         finally {
@@ -81,11 +80,11 @@ public class MemberManager extends ManageData {
         while (itr.hasNext()) {
             m = (Member) itr.next();
             if ( m.getNumber() == number ) {
-                break;
+                return m;
             }
         }
 
-        return m;
+        return null;
     }
 
 

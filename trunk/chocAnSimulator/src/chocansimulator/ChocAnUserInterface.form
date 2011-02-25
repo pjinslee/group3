@@ -8,9 +8,6 @@
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
   </SyntheticProperties>
-  <Events>
-    <EventHandler event="windowClosed" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="exitChocAn"/>
-  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -26,25 +23,30 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
-              <Component id="globalMessageLabel" max="32767" attributes="0"/>
-              <EmptySpace min="-2" pref="438" max="-2" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="202" max="32767" attributes="0"/>
+              <Component id="exitButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="194" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
-              <Component id="ChocAnPanel" min="-2" pref="471" max="-2" attributes="0"/>
-              <EmptySpace pref="77" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="globalMessageLabel" alignment="0" max="32767" attributes="1"/>
+                  <Component id="ChocAnPanel" alignment="0" pref="471" max="32767" attributes="1"/>
+              </Group>
+              <EmptySpace pref="22" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-              <Component id="ChocAnPanel" pref="306" max="32767" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="globalMessageLabel" min="-2" pref="48" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="ChocAnPanel" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="globalMessageLabel" pref="30" max="32767" attributes="1"/>
+              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+              <Component id="exitButton" min="-2" max="-2" attributes="1"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -83,7 +85,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="memberDataManagerPanels" pref="244" max="32767" attributes="0"/>
+                      <Component id="memberDataManagerPanels" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -163,7 +165,7 @@
                                   <Component id="memberAddStateText" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="memberAddStateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="15" max="32767" attributes="0"/>
+                              <EmptySpace pref="53" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="memberAddButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="memberAddClearButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -315,7 +317,7 @@
                                   <Component id="memberUpCityText" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="memberUpCityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="14" max="32767" attributes="0"/>
+                              <EmptySpace pref="52" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="memberUpdateButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="memberUpClearButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -482,7 +484,7 @@
                                   <Component id="memberDelCityText" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="memberDelCityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="14" max="32767" attributes="0"/>
+                              <EmptySpace pref="52" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="memberDeleteButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="memberDelClearButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -587,10 +589,10 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="268" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="306" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="ProviderDataManagerPanels" pref="244" max="32767" attributes="0"/>
+                      <Component id="ProviderDataManagerPanels" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -670,7 +672,7 @@
                                   <Component id="providerAddStateText" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="providerAddStateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="15" max="32767" attributes="0"/>
+                              <EmptySpace pref="53" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="providerAddButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="providerAddClearButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -822,7 +824,7 @@
                                   <Component id="providerUpCityText" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="providerUpCityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="14" max="32767" attributes="0"/>
+                              <EmptySpace pref="52" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="providerUpdateButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="providerUpClearButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -989,7 +991,7 @@
                                   <Component id="providerDelCityText" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="providerDelCityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="14" max="32767" attributes="0"/>
+                              <EmptySpace pref="52" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="providerDeleteButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="providerDelClearButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1096,7 +1098,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="svcDataManagerPanels" min="-2" pref="247" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="47" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1537,7 +1539,7 @@
                           <Component id="providerRptButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="summaryRptButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="157" max="32767" attributes="0"/>
+                      <EmptySpace pref="195" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1600,7 +1602,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="terminalDataManagerPanels" pref="252" max="32767" attributes="0"/>
+                      <Component id="terminalDataManagerPanels" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -1656,7 +1658,7 @@
                                   <Component id="valMemLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="valMemText" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="71" max="32767" attributes="0"/>
+                              <EmptySpace pref="101" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="valMemButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="valMemClearButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1738,7 +1740,7 @@
                                   <Component id="valProLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="valProText" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="71" max="32767" attributes="0"/>
+                              <EmptySpace pref="101" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="valProButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="valProClearButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1813,7 +1815,7 @@
                                   <Component id="valSvcLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="valSvcText" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="70" max="32767" attributes="0"/>
+                              <EmptySpace pref="100" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="valSvcButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="valSvcClearButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1845,6 +1847,46 @@
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="valSvcClearButtonActionPerformed"/>
+                      </Events>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JPanel" name="proDirPanel">
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                      <JTabbedPaneConstraints tabName="Provider Dir">
+                        <Property name="tabTitle" type="java.lang.String" value="Provider Dir"/>
+                      </JTabbedPaneConstraints>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="126" max="-2" attributes="0"/>
+                              <Component id="runProDirButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="142" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+                              <Component id="runProDirButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="145" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JButton" name="runProDirButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Run Provider Directory"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="runProDirButtonActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -1934,7 +1976,7 @@
                                   <Component id="commentLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="billCommentText" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="24" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="addBillButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="billClearButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1998,46 +2040,6 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JPanel" name="proDirPanel">
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                      <JTabbedPaneConstraints tabName="Provider Dir">
-                        <Property name="tabTitle" type="java.lang.String" value="Provider Dir"/>
-                      </JTabbedPaneConstraints>
-                    </Constraint>
-                  </Constraints>
-
-                  <Layout>
-                    <DimensionLayout dim="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="126" max="-2" attributes="0"/>
-                              <Component id="runProDirButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="142" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                    </DimensionLayout>
-                    <DimensionLayout dim="1">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-                              <Component id="runProDirButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="115" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                    </DimensionLayout>
-                  </Layout>
-                  <SubComponents>
-                    <Component class="javax.swing.JButton" name="runProDirButton">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Run Provider Directory"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="runProDirButtonActionPerformed"/>
-                      </Events>
-                    </Component>
-                  </SubComponents>
-                </Container>
               </SubComponents>
             </Container>
           </SubComponents>
@@ -2045,9 +2047,14 @@
       </SubComponents>
     </Container>
     <Component class="javax.swing.JLabel" name="globalMessageLabel">
+    </Component>
+    <Component class="javax.swing.JButton" name="exitButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Message Field"/>
+        <Property name="text" type="java.lang.String" value="Write and Exit"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exitButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

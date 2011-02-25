@@ -56,18 +56,11 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
     public ChocAnUserInterface() {
         
         initComponents();
-        initChocAn();
-        //testIt();
 
-    }
-
-    public void initChocAn() {
-        //MemberManager mm = new MemberManager("/home/debbj/member.dat");
-        System.out.println("User.dir: " + System.getProperty("user.dir"));
-        
         File file = new File(chocAnReportsDir);
         if ( !file.exists())
             file.mkdirs();
+
     }
 
     /** This method is called from within the constructor to
@@ -226,6 +219,8 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         valSvcText = new javax.swing.JTextField();
         valSvcButton = new javax.swing.JButton();
         valSvcClearButton = new javax.swing.JButton();
+        proDirPanel = new javax.swing.JPanel();
+        runProDirButton = new javax.swing.JButton();
         addBillPanel = new javax.swing.JPanel();
         dateLabel = new javax.swing.JLabel();
         memNumLabel = new javax.swing.JLabel();
@@ -239,17 +234,11 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         billCommentText = new javax.swing.JTextField();
         addBillButton = new javax.swing.JButton();
         billClearButton = new javax.swing.JButton();
-        proDirPanel = new javax.swing.JPanel();
-        runProDirButton = new javax.swing.JButton();
         globalMessageLabel = new javax.swing.JLabel();
+        exitButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CHOCHOLICS");
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosed(java.awt.event.WindowEvent evt) {
-                exitChocAn(evt);
-            }
-        });
 
         ChocAnPanel.setMinimumSize(new java.awt.Dimension(108, 140));
 
@@ -329,7 +318,7 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
                     .addComponent(memberAddZipLabel)
                     .addComponent(memberAddStateText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(memberAddStateLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(memberAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(memberAddButton)
                     .addComponent(memberAddClearButton))
@@ -438,7 +427,7 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
                     .addComponent(memberUpStateLabel)
                     .addComponent(memberUpCityText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(memberUpCityLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addGroup(memberUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(memberUpdateButton)
                     .addComponent(memberUpClearButton))
@@ -547,7 +536,7 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
                     .addComponent(memberDelStateLabel)
                     .addComponent(memberDelCityText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(memberDelCityLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addGroup(memberDeletePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(memberDeleteButton)
                     .addComponent(memberDelClearButton))
@@ -569,7 +558,7 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
             MemberTabbedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MemberTabbedPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(memberDataManagerPanels, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+                .addComponent(memberDataManagerPanels)
                 .addContainerGap())
         );
 
@@ -651,7 +640,7 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
                     .addComponent(providerAddZipLabel)
                     .addComponent(providerAddStateText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(providerAddStateLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(providerAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(providerAddButton)
                     .addComponent(providerAddClearButton))
@@ -760,7 +749,7 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
                     .addComponent(providerUpStateLabel)
                     .addComponent(providerUpCityText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(providerUpCityLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addGroup(providerUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(providerUpdateButton)
                     .addComponent(providerUpClearButton))
@@ -869,7 +858,7 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
                     .addComponent(providerDelStateLabel)
                     .addComponent(providerDelCityText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(providerDelCityLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addGroup(providerDeletePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(providerDeleteButton)
                     .addComponent(providerDelClearButton))
@@ -890,10 +879,10 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         );
         ProviderTabbedPanelLayout.setVerticalGroup(
             ProviderTabbedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 268, Short.MAX_VALUE)
+            .addGap(0, 306, Short.MAX_VALUE)
             .addGroup(ProviderTabbedPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ProviderDataManagerPanels, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+                .addComponent(ProviderDataManagerPanels)
                 .addContainerGap())
         );
 
@@ -1166,7 +1155,7 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
             .addGroup(ServiceCodeTabbedPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(svcDataManagerPanels, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         ChocAnPanel.addTab("Service Code", ServiceCodeTabbedPanel);
@@ -1225,7 +1214,7 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
                 .addGroup(ReportsTabbedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(providerRptButton)
                     .addComponent(summaryRptButton))
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addContainerGap(195, Short.MAX_VALUE))
         );
 
         ChocAnPanel.addTab("Reports", ReportsTabbedPanel);
@@ -1274,7 +1263,7 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
                 .addGroup(valMemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(valMemLabel)
                     .addComponent(valMemText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
                 .addGroup(valMemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(valMemButton)
                     .addComponent(valMemClearButton))
@@ -1328,7 +1317,7 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
                 .addGroup(valProPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(valProLabel)
                     .addComponent(valProText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
                 .addGroup(valProPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(valProButton)
                     .addComponent(valProClearButton))
@@ -1378,7 +1367,7 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
                 .addGroup(valSvcPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(valSvcLabel)
                     .addComponent(valSvcText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
                 .addGroup(valSvcPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(valSvcButton)
                     .addComponent(valSvcClearButton))
@@ -1386,6 +1375,32 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         );
 
         terminalDataManagerPanels.addTab("Val Svc Code", valSvcPanel);
+
+        runProDirButton.setText("Run Provider Directory");
+        runProDirButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                runProDirButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout proDirPanelLayout = new javax.swing.GroupLayout(proDirPanel);
+        proDirPanel.setLayout(proDirPanelLayout);
+        proDirPanelLayout.setHorizontalGroup(
+            proDirPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(proDirPanelLayout.createSequentialGroup()
+                .addGap(126, 126, 126)
+                .addComponent(runProDirButton)
+                .addContainerGap(142, Short.MAX_VALUE))
+        );
+        proDirPanelLayout.setVerticalGroup(
+            proDirPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(proDirPanelLayout.createSequentialGroup()
+                .addGap(69, 69, 69)
+                .addComponent(runProDirButton)
+                .addContainerGap(145, Short.MAX_VALUE))
+        );
+
+        terminalDataManagerPanels.addTab("Provider Dir", proDirPanel);
 
         dateLabel.setText("Service date:");
 
@@ -1471,7 +1486,7 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
                 .addGroup(addBillPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(commentLabel)
                     .addComponent(billCommentText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(addBillPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addBillButton)
                     .addComponent(billClearButton))
@@ -1479,32 +1494,6 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         );
 
         terminalDataManagerPanels.addTab("Bill", addBillPanel);
-
-        runProDirButton.setText("Run Provider Directory");
-        runProDirButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                runProDirButtonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout proDirPanelLayout = new javax.swing.GroupLayout(proDirPanel);
-        proDirPanel.setLayout(proDirPanelLayout);
-        proDirPanelLayout.setHorizontalGroup(
-            proDirPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(proDirPanelLayout.createSequentialGroup()
-                .addGap(126, 126, 126)
-                .addComponent(runProDirButton)
-                .addContainerGap(142, Short.MAX_VALUE))
-        );
-        proDirPanelLayout.setVerticalGroup(
-            proDirPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(proDirPanelLayout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addComponent(runProDirButton)
-                .addContainerGap(115, Short.MAX_VALUE))
-        );
-
-        terminalDataManagerPanels.addTab("Provider Dir", proDirPanel);
 
         javax.swing.GroupLayout TerminalTabbedPanelLayout = new javax.swing.GroupLayout(TerminalTabbedPanel);
         TerminalTabbedPanel.setLayout(TerminalTabbedPanelLayout);
@@ -1519,34 +1508,43 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
             TerminalTabbedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TerminalTabbedPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(terminalDataManagerPanels, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+                .addComponent(terminalDataManagerPanels)
                 .addContainerGap())
         );
 
         ChocAnPanel.addTab("Terminal", TerminalTabbedPanel);
 
-        globalMessageLabel.setText("Message Field");
+        exitButton.setText("Write and Exit");
+        exitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(202, Short.MAX_VALUE)
+                .addComponent(exitButton)
+                .addGap(194, 194, 194))
             .addGroup(layout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addComponent(globalMessageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(438, 438, 438))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addComponent(ChocAnPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(globalMessageLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ChocAnPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(ChocAnPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(globalMessageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(ChocAnPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(globalMessageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                .addGap(40, 40, 40)
+                .addComponent(exitButton)
                 .addContainerGap())
         );
 
@@ -1586,16 +1584,6 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         globalMessageLabel.setText("Service Code " + tempSvc.getNumber() +
                                    " has been added");
     }//GEN-LAST:event_svcAddButtonActionPerformed
-
-    private void exitChocAn(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_exitChocAn
-        try {
-            Id.singletonId(chocAnId).destroy();
-        } catch (IOException ex) {
-            //Error handling here
-        }
-
-
-    }//GEN-LAST:event_exitChocAn
 
     private void svcUpSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_svcUpSearchButtonActionPerformed
         ServiceCode s = null;
@@ -2021,9 +2009,12 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         b.setProviderNumber(i);
         i = Integer.parseInt(billSvcText.getText().trim());
         b.setServiceCode(i);
+        ServiceCode s = (ServiceCode)svcMan.search(i);
+        b.setFee(s.getFee());
         b.setComment(billCommentText.getText());
         billMan.addData(b);
-        globalMessageLabel.setText("Bill has been added.");
+        globalMessageLabel.setText("Bill has been added and the fee is "
+                                    + b.getFee());
     }//GEN-LAST:event_addBillButtonActionPerformed
 
     private void billClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_billClearButtonActionPerformed
@@ -2044,6 +2035,20 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_runProDirButtonActionPerformed
 
+    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
+        try {
+            Id.singletonId(chocAnId).writeFile();
+            billMan.writeFile();
+            memberMan.writeFile();
+            providerMan.writeFile();
+            svcMan.writeFile();
+
+        } catch (IOException ex) {
+            System.out.println("Error encountered while writing files.");
+        }
+        System.exit(1);
+    }//GEN-LAST:event_exitButtonActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -2055,6 +2060,7 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
                 new ChocAnUserInterface().setVisible(true);
             }
         });
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -2077,6 +2083,7 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
     private javax.swing.JLabel dateLabel;
     private javax.swing.JLabel descLabel;
     private javax.swing.JButton eftRptButton;
+    private javax.swing.JButton exitButton;
     private javax.swing.JLabel feeLabel;
     private javax.swing.JLabel globalMessageLabel;
     private javax.swing.JPanel jPanel10;

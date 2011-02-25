@@ -35,8 +35,7 @@ public class ProviderManager extends ManageData {
         try {
             record = new Scanner(new FileReader(fileName));
         } catch (FileNotFoundException ex) {
-           // Logger.getLogger(MemberManager.class.getName()).log(Level.WARNING, null, ex);
-            System.out.println("no file found");
+            System.out.println("no providers found");
             return;
         }
 
@@ -45,7 +44,6 @@ public class ProviderManager extends ManageData {
             while ( record.hasNextLine() ){
                 Member wrkMem = new Member(record.nextLine());
                 records.add(wrkMem);
-                System.out.println(wrkMem.toString());
             }
         }
         finally {
@@ -55,16 +53,16 @@ public class ProviderManager extends ManageData {
     }
 
     public void writeFile() throws IOException {
-        Member m;
+        Provider p;
         BufferedWriter out = new BufferedWriter(new OutputStreamWriter(
                              new FileOutputStream(fileName)));
         
         Iterator itr = records.iterator();
 
         while (itr.hasNext()) {
-            m = (Member) itr.next();
+            p = (Provider) itr.next();
             try {
-                out.write(m.fileDataToString());
+                out.write(p.fileDataToString());
             } catch ( IOException ex ) {
                 Logger.getLogger(ProviderManager.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -81,11 +79,11 @@ public class ProviderManager extends ManageData {
         while (itr.hasNext()) {
             p = (Provider) itr.next();
             if ( p.getNumber() == number ) {
-                break;
+                return p;
             }
         }
 
-        return p;
+        return null;
     }
 
 
