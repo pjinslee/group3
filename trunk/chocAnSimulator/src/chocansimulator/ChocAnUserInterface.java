@@ -63,6 +63,49 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
 
     }
 
+    private void validateString(String fieldName, String str, int len) throws FieldException {
+
+        if ( str.trim().length() > len ) {
+            globalMessageLabel.setText(fieldName + " is too long");
+            throw new FieldException();
+        }
+
+        if ( str.trim().isEmpty() )
+            globalMessageLabel.setText(fieldName + " is required)");
+            throw new FieldException();
+
+    }
+
+    private void validateInt(String fieldName, String str, int len) throws FieldException {
+
+        try {
+            int i = Integer.parseInt(str.trim());
+        } catch (NumberFormatException e) {
+              globalMessageLabel.setText(fieldName + " is not a legal number");
+              throw new FieldException();
+        }
+
+        if ( str.trim().length() > len ) {
+            globalMessageLabel.setText(fieldName + " contains too many digits");
+            throw new FieldException();
+        }
+    }
+
+    private void validateFloat(String fieldName, String str, int len) throws FieldException {
+
+        try {
+            float f = Float.valueOf(str.trim()).floatValue();
+        } catch (NumberFormatException e) {
+              globalMessageLabel.setText(fieldName + " is not a legal number");
+              throw new FieldException();
+        }
+
+        if ( str.trim().length() > len + 1 ){
+            globalMessageLabel.setText(fieldName + " contains too many digits");
+            throw new FieldException();
+        }
+    }
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -241,6 +284,12 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         setTitle("CHOCHOLICS");
 
         ChocAnPanel.setMinimumSize(new java.awt.Dimension(108, 140));
+
+        memberDataManagerPanels.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                memberDataManagerPanelsFocusLost(evt);
+            }
+        });
 
         memberAddNameLabel.setText("Name:");
 
@@ -563,6 +612,15 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         );
 
         ChocAnPanel.addTab("Member", MemberTabbedPanel);
+
+        ProviderTabbedPanel.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                ProviderTabbedPanelFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                ProviderTabbedPanelFocusLost(evt);
+            }
+        });
 
         providerAddNameLabel.setText("Name:");
 
@@ -1552,9 +1610,14 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void svcUpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_svcUpdateButtonActionPerformed
-        //TODO - validate fields
-
         ServiceCode s = null;
+        try {
+            validateString("Description", svcUpDescText.getText(), 20);
+            validateFloat("Fee", svcUpFeeText.getText(), 5);
+        } catch (FieldException ex) {
+            return;
+        }
+
         int i = Integer.parseInt(svcUpNumText.getText().trim());
         s = (ServiceCode) svcMan.search(i);
         if (s == null) {
@@ -1571,9 +1634,13 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
 }//GEN-LAST:event_svcUpdateButtonActionPerformed
 
     private void svcAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_svcAddButtonActionPerformed
-
-        //TODO- validate fields
-
+        try {
+            validateString("Description", svcAddDescText.getText(), 20);
+            validateFloat("Fee", svcAddFeeText.getText(), 5);
+        } catch (FieldException ex) {
+            return;
+        }
+        
         ServiceCode tempSvc = new ServiceCode();
 
         tempSvc.setDescription(svcAddDescText.getText());
@@ -1587,6 +1654,12 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
 
     private void svcUpSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_svcUpSearchButtonActionPerformed
         ServiceCode s = null;
+        try {
+            validateInt("Service Code", svcUpNumText.getText(), 9);
+        } catch (FieldException ex) {
+            return;
+        }
+
         int i = Integer.parseInt(svcUpNumText.getText().trim());
         s = (ServiceCode) svcMan.search(i);
         if (s == null) {
@@ -1616,6 +1689,12 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
 
     private void svcDelSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_svcDelSearchButtonActionPerformed
         ServiceCode s = null;
+        try {
+            validateInt("Service Code", svcDelNumText.getText(), 9);
+        } catch (FieldException ex) {
+            return;
+        }
+
         int i = Integer.parseInt(svcDelNumText.getText().trim());
         s = (ServiceCode) svcMan.search(i);
         if (s == null) {
@@ -1630,8 +1709,12 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_svcDelSearchButtonActionPerformed
 
     private void svcDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_svcDeleteButtonActionPerformed
+        try {
+            validateInt("Service Code", svcDelNumText.getText(), 9);
+        } catch (FieldException ex) {
+            return;
+        }
 
-        //TODO- validate fields
         ServiceCode s = null;
         int i = Integer.parseInt(svcDelNumText.getText().trim());
         s = (ServiceCode) svcMan.search(i);
@@ -1655,6 +1738,13 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
 
     private void memberUpSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_memberUpSearchButtonActionPerformed
         Member m = null;
+
+        try {
+            validateInt("Member number", memberUpNumText.getText(), 9);
+        } catch (FieldException ex) {
+            return;
+        }
+
         int i = Integer.parseInt(memberUpNumText.getText().trim());
         m = (Member) memberMan.search(i);
         if (m == null) {
@@ -1678,14 +1768,24 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         memberUpCityText.setText("");
         memberUpStateText.setText("");
         memberUpZipText.setText("");
+        memberUpNumText.setText("");
         memberUpNumText.setEnabled(true);
         memberUpSearchButton.setEnabled(true);
 }//GEN-LAST:event_memberUpClearButtonActionPerformed
 
     private void memberUpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_memberUpdateButtonActionPerformed
-        //TODO - validate fields
-
         Member m = null;
+        try {
+            validateString("Name", memberUpNameText.getText(), 25);
+            validateString("Address", memberUpAddressText.getText(), 25);
+            validateString("City", memberUpCityText.getText(), 14);
+            validateString("State", memberUpStateText.getText(), 2);
+            validateInt("Zip", memberUpZipText.getText(), 5);
+        } catch (FieldException ex) {
+            return;
+        }
+
+
         int i = Integer.parseInt(memberUpNumText.getText().trim());
         m = (Member) memberMan.search(i);
         if (m == null) {
@@ -1713,9 +1813,18 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
 }//GEN-LAST:event_memberAddClearButtonActionPerformed
 
     private void memberAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_memberAddButtonActionPerformed
-        //TODO- validate fields
+
 
         Member m = new Member();
+        try {
+            validateString("Name", memberAddNameText.getText(), 25);
+            validateString("Address", memberAddAddressText.getText(), 25);
+            validateString("City", memberAddCityText.getText(), 14);
+            validateString("State", memberAddStateText.getText(), 2);
+            validateInt("Zip", memberAddZipText.getText(), 5);
+        } catch (FieldException ex) {
+            return;
+        }
 
         m.setName(memberAddNameText.getText());
         m.setAddress(memberAddAddressText.getText());
@@ -1730,6 +1839,9 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
 
     private void memberDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_memberDeleteButtonActionPerformed
         Member m = null;
+
+
+
         int i = Integer.parseInt(memberDelNumText.getText().trim());
         m = (Member) memberMan.search(i);
         if (m == null) {
@@ -1749,12 +1861,20 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         memberDelCityText.setText("");
         memberDelStateText.setText("");
         memberDelZipText.setText("");
+        memberDelNumText.setText("");
         memberDelNumText.setEnabled(true);
         memberDelSearchButton.setEnabled(true);
     }//GEN-LAST:event_memberDelClearButtonActionPerformed
 
     private void memberDelSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_memberDelSearchButtonActionPerformed
         Member m = null;
+
+        try {
+            validateInt("Member number", memberDelNumText.getText(), 9);
+        } catch (FieldException ex) {
+            return;
+        }
+
         int i = Integer.parseInt(memberDelNumText.getText().trim());
         m = (Member) memberMan.search(i);
         if (m == null) {
@@ -1813,10 +1933,18 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_summaryRptButtonActionPerformed
 
     private void providerAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_providerAddButtonActionPerformed
-        //TODO- validate fields
-
         Provider p = new Provider();
-
+        
+        try {
+            validateString("Name", providerAddNameText.getText(), 25);
+            validateString("Address", providerAddAddressText.getText(), 25);
+            validateString("City", providerAddCityText.getText(), 14);
+            validateString("State", providerAddStateText.getText(), 2);
+            validateInt("Zip", providerAddZipText.getText(), 5);
+        } catch (FieldException ex) {
+            return;
+        }
+        
         p.setName(providerAddNameText.getText());
         p.setAddress(providerAddAddressText.getText());
         p.setCity(providerAddCityText.getText());
@@ -1837,9 +1965,18 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_providerAddClearButtonActionPerformed
 
     private void providerUpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_providerUpdateButtonActionPerformed
-        //TODO - validate fields
-
         Provider p = null;
+
+        try {
+            validateString("Name", providerUpNameText.getText(), 25);
+            validateString("Address", providerUpAddressText.getText(), 25);
+            validateString("City", providerUpCityText.getText(), 14);
+            validateString("State", providerUpStateText.getText(), 2);
+            validateInt("Zip", providerUpZipText.getText(), 5);
+        } catch (FieldException ex) {
+            return;
+        }
+
         int i = Integer.parseInt(providerUpNumText.getText().trim());
         p = (Provider) providerMan.search(i);
         if (p == null) {
@@ -1864,12 +2001,20 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         providerUpCityText.setText("");
         providerUpStateText.setText("");
         providerUpZipText.setText("");
+        providerUpNumText.setText("");
         providerUpNumText.setEnabled(true);
         providerUpSearchButton.setEnabled(true);
     }//GEN-LAST:event_providerUpClearButtonActionPerformed
 
     private void providerUpSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_providerUpSearchButtonActionPerformed
         Provider p = null;
+
+        try {
+            validateInt("Provider number", providerUpNumText.getText(), 9);
+        } catch (FieldException ex) {
+            return;
+        }
+
         int i = Integer.parseInt(providerUpNumText.getText().trim());
         p = (Provider) providerMan.search(i);
         if (p == null) {
@@ -1888,6 +2033,13 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
 
     private void providerDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_providerDeleteButtonActionPerformed
         Provider p = null;
+
+        try {
+            validateInt("Provider number", providerDelNumText.getText(), 9);
+        } catch (FieldException ex) {
+            return;
+        }
+
         int i = Integer.parseInt(providerDelNumText.getText().trim());
         p = (Provider) providerMan.search(i);
         if (p == null) {
@@ -1906,12 +2058,20 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         providerDelCityText.setText("");
         providerDelStateText.setText("");
         providerDelZipText.setText("");
+        providerDelNumText.setText("");
         providerDelNumText.setEnabled(true);
         providerDelSearchButton.setEnabled(true);
     }//GEN-LAST:event_providerDelClearButtonActionPerformed
 
     private void providerDelSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_providerDelSearchButtonActionPerformed
         Provider p = null;
+
+        try {
+            validateInt("Provider number", providerDelNumText.getText(), 9);
+        } catch (FieldException ex) {
+            return;
+        }
+
         int i = Integer.parseInt(providerDelNumText.getText().trim());
         p = (Provider) memberMan.search(i);
         if (p == null) {
@@ -1931,6 +2091,13 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
 
     private void valMemButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valMemButtonActionPerformed
         Member m = null;
+
+        try {
+            validateInt("Member number", valMemText.getText(), 9);
+        } catch (FieldException ex) {
+            return;
+        }
+
         int i = Integer.parseInt(valMemText.getText().trim());
         m = (Member) memberMan.search(i);
         if (m == null) {
@@ -1954,6 +2121,13 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
 
     private void valProButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valProButtonActionPerformed
         Provider p = null;
+
+        try {
+            validateInt("Provider number", valProText.getText(), 9);
+        } catch (FieldException ex) {
+            return;
+        }
+
         int i = Integer.parseInt(valProText.getText().trim());
         p = (Provider) providerMan.search(i);
         if (p == null) {
@@ -1973,7 +2147,14 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
 
     private void valSvcButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valSvcButtonActionPerformed
         ServiceCode s = null;
-        int i = Integer.parseInt(String.valueOf(s.getFee()).trim());
+
+        try {
+            validateInt("Service code", valSvcText.getText(), 9);
+        } catch (FieldException ex) {
+            return;
+        }
+
+        int i = Integer.parseInt(String.valueOf(valSvcText.getText()).trim());
         s = (ServiceCode) svcMan.search(i);
         if (s == null) {
             globalMessageLabel.setText("Service Code not found.");
@@ -1991,8 +2172,42 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_valSvcClearButtonActionPerformed
 
     private void addBillButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBillButtonActionPerformed
-        //TODO- validate fields
+
         Bill b = new Bill();
+
+        try {
+            validateInt("Member number", billMemNumText.getText(), 9);
+            validateInt("Provider number", billProNumText.getText(), 9);
+            validateInt("Service Code", billSvcText.getText(), 9);
+        } catch (FieldException ex) {
+            return;
+        }
+
+        if (billCommentText.getText().length() > 100) {
+            globalMessageLabel.setText("Comment too long.");
+            return;
+        }
+
+        int i = Integer.parseInt(billProNumText.getText().trim());
+        Provider p = (Provider) providerMan.search(i);
+        if (p == null) {
+            globalMessageLabel.setText("Provider not found.");
+            return;
+        }
+
+        i = Integer.parseInt(billMemNumText.getText().trim());
+        Member m = (Member) memberMan.search(i);
+        if (m == null) {
+            globalMessageLabel.setText("Member not found.");
+            return;
+        }
+
+        i = Integer.parseInt(billSvcText.getText().trim());
+        ServiceCode s = (ServiceCode) svcMan.search(i);
+        if (s == null) {
+            globalMessageLabel.setText("Service code not found.");
+            return;
+        }
 
         DateFormat dfServiceDate = new SimpleDateFormat("mm/dd/yyyy");
         try {
@@ -2003,13 +2218,12 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
             return;
         }
 
-        int i = Integer.parseInt(billMemNumText.getText().trim());
+        i = Integer.parseInt(billMemNumText.getText().trim());
         b.setMemberNumber(i);
         i = Integer.parseInt(billProNumText.getText().trim());
         b.setProviderNumber(i);
         i = Integer.parseInt(billSvcText.getText().trim());
         b.setServiceCode(i);
-        ServiceCode s = (ServiceCode)svcMan.search(i);
         b.setFee(s.getFee());
         b.setComment(billCommentText.getText());
         billMan.addData(b);
@@ -2048,6 +2262,18 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         }
         System.exit(1);
     }//GEN-LAST:event_exitButtonActionPerformed
+
+    private void memberDataManagerPanelsFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_memberDataManagerPanelsFocusLost
+        globalMessageLabel.setText("HELLO1 window has to collapse");
+    }//GEN-LAST:event_memberDataManagerPanelsFocusLost
+
+    private void ProviderTabbedPanelFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ProviderTabbedPanelFocusLost
+        globalMessageLabel.setText("HELLO2 does not work");
+    }//GEN-LAST:event_ProviderTabbedPanelFocusLost
+
+    private void ProviderTabbedPanelFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ProviderTabbedPanelFocusGained
+        globalMessageLabel.setText("HELLO3");
+    }//GEN-LAST:event_ProviderTabbedPanelFocusGained
 
     /**
     * @param args the command line arguments
