@@ -61,4 +61,8 @@ public abstract class ManageData {
         }
         
     }
+
+    public int numOfRecords() {
+        return records.size();
+    }
 }

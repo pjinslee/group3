@@ -23,7 +23,6 @@ import chocansimulator.datamangement.ServiceCodeManager;
 import chocansimulator.reports.EFTReport;
 import chocansimulator.reports.MemberReport;
 import chocansimulator.reports.ProviderReport;
-import chocansimulator.reports.ServiceCodeDirectoryReport;
 import chocansimulator.reports.SummaryReport;
 import java.io.File;
 import java.io.IOException;
@@ -63,7 +62,34 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         if ( !file.exists())
             file.mkdirs();
 
-        //TODO check size of arrays --
+        if (billMan.numOfRecords() > 0) {
+            if (memberMan.numOfRecords() == 0 || providerMan.numOfRecords() == 0 ||
+                svcMan.numOfRecords() == 0) {
+                    System.out.println("Files have been corrupted can not execute");
+                    System.exit(1);
+            }
+        }
+
+        if  (memberMan.numOfRecords() > 0 ) {
+            if (Id.singletonId(chocAnId).getMemberId() == 1) {
+                System.out.println("member.dat does not match id.dat");
+                System.exit(1);
+            }
+        }
+
+        if  (providerMan.numOfRecords() > 0 ) {
+            if (Id.singletonId(chocAnId).getProviderId() == 1) {
+                System.out.println("provider.dat does not match id.dat");
+                System.exit(1);
+            }
+        }
+
+        if  (svcMan.numOfRecords() > 0 ) {
+            if (Id.singletonId(chocAnId).getServiceCodeId() == 1) {
+                System.out.println("svc.dat does not match id.dat");
+                System.exit(1);
+            }
+        }
 
     }
 
