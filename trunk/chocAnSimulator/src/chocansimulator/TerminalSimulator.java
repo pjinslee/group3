@@ -5,6 +5,11 @@
 
 package chocansimulator;
 
+import chocansimulator.datamangement.Member;
+import chocansimulator.datamangement.Provider;
+import chocansimulator.datamangement.ServiceCode;
+import chocansimulator.reports.ServiceCodeDirectoryReport;
+
 /**
  *
  * @author debbj
@@ -12,17 +17,40 @@ package chocansimulator;
 public class TerminalSimulator {
 
     public int validateMember(int number) {
-        System.out.println("In request validateMember");
-        return 1;
+        Member m = (Member) ChocAnUserInterface.memberMan.search(number);
+
+        if ( m == null )
+            return(-1);
+        else
+            return m.getStatus();
     }
 
-    public void requestServiceDirectory() {
-        System.out.println("In request Service Directory");
+    public int validateProvider(int number) {
+        Provider p = (Provider) ChocAnUserInterface.providerMan.search(number);
+
+        if ( p == null )
+            return(-1);
+        else
+            return p.getStatus();
     }
 
-    public float addBill(Object o) {
-        System.out.println("In addBill");
-        return (float) 1.1;
+    public float validateServiceCode(int number) {
+        ServiceCode s = (ServiceCode) ChocAnUserInterface.svcMan.search(number);
+
+        if ( s == null ) {
+            return(-1);
+        } else {
+            if (s.getStatus() == 0)
+                return 0;
+            else
+                return s.getFee();
+        }
+    }
+
+    public boolean requestServiceDirectory() {
+        ServiceCodeDirectoryReport r = new ServiceCodeDirectoryReport();
+        return r.createReport();
+
     }
 
 }
