@@ -5,17 +5,19 @@
 
 package chocansimulator.reports;
 
+import java.io.IOException;
+import java.util.Date;
+import java.util.Calendar;
 import java.util.List;
-
 /**
  *
  * @author tman
  */
 public interface Reports {
-    public void formatHeader();
-    public void formatDetail();
-    public List getReportRecords();
-    public void sortReportRecords();
+    public List formatHeader(int number, Date from, Date to);
+    public List formatBody(List dataList);
+    public boolean printReport(List preparedReport) throws IOException;
+    public Date getStartingDate(Calendar wrkDate);
     public boolean createReport();
-
 }
+
