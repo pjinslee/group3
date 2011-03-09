@@ -28,6 +28,8 @@ import chocansimulator.datamangement.ServiceCodeManager;
  */
 public class ServiceCodeDirectoryReport implements Reports {
 
+    public static final ServiceCodeManager serviceCodeMan = ServiceCodeManager.singletonServiceCodeManager(chocAnServiceCodeData);
+
     public List formatHeader(int dummyNumber, Date dummyDate, Date now) {
         List header = new ArrayList();
 
@@ -101,12 +103,11 @@ public class ServiceCodeDirectoryReport implements Reports {
     }
 
     public boolean createReport() {
-        ServiceCodeManager serviceCodeMan = ServiceCodeManager.getInstance();
         ServiceCode svc = new ServiceCode();
         List allServiceCodes = new ArrayList();
 
         for (int i = 0;; i++){
-            svc = serviceCodeMan.search(i);
+            svc = (ServiceCode) serviceCodeMan.search(i);
             if (svc == null)
                 break;
             allServiceCodes.add(svc);

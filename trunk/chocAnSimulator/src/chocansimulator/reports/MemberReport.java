@@ -33,13 +33,17 @@ import chocansimulator.datamangement.ServiceCodeManager;
  */
 public class MemberReport implements Reports {
 
+    public static final BillManager billMan = BillManager.singletonBillManager(chocAnBillData);
+    public static final MemberManager memberMan = MemberManager.singletonMemberManager(chocAnMemberData);
+    public static final ProviderManager providerMan = ProviderManager.singletonProviderManager(chocAnProviderData);
+    public static final ServiceCodeManager serviceCodeMan = ServiceCodeManager.singletonServiceCodeManager(chocAnServiceCodeData);
+
     public List formatHeader(int memberNumber, Date starting, Date now) {
         List header = new ArrayList();
 
         DateFormat forFilename = new SimpleDateFormat("mmddyyyy");
         DateFormat df = new SimpleDateFormat("mm-dd-yyyy");
 
-        MemberManager memberMan = MemberManager.getInstance();
         Member m = new Member();
         m = (Member) memberMan.search(memberNumber);
 
@@ -82,10 +86,8 @@ public class MemberReport implements Reports {
         Bill b = new Bill();
         String serviceDate;
         Provider p = new Provider();
-        ProviderManager providerMan = ProviderManager.getInstance();
         String providerName;
         ServiceCode svc = new ServiceCode();
-        ServiceCodeManager serviceCodeMan = ServiceCodeManager.getInstance();
 
         Iterator itr = allSessionsForMember.iterator();
         while (itr.hasNext()) {
@@ -147,13 +149,12 @@ public class MemberReport implements Reports {
         Calendar currentDate = Calendar.getInstance();
         Date startingDate = getStartingDate(currentDate);
 
-        BillManager billMan = BillManager.getInstance();
         Bill b = new Bill();
         int memberNumber = 0;
         List allServicedMembers = new ArrayList();
 
         for (int i = 0;; i++){
-            b = billMan.search(i);
+            b = (Bill) billMan.search(i);
 
             if (b == null)
                 break;
@@ -172,7 +173,7 @@ public class MemberReport implements Reports {
 
             allSessionsForMember.clear();
             for (int i = 0;; i++){
-                b = billMan.search(i);
+                b = (Bill) billMan.search(i);
 
                 if (b == null)
                     break;

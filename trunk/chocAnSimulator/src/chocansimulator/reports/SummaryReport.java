@@ -29,6 +29,9 @@ import chocansimulator.datamangement.ProviderManager;
  */
 public class SummaryReport implements Reports {
 
+    public static final BillManager billMan = BillManager.singletonBillManager(chocAnBillData);
+    public static final ProviderManager providerMan = ProviderManager.singletonProviderManager(chocAnProviderData);
+
     public List formatHeader(int dummyNumber, Date starting, Date now) {
         List header = new ArrayList();
 
@@ -49,7 +52,6 @@ public class SummaryReport implements Reports {
         Bill b = new Bill();
         int pNumber = 0;
         Provider p = new Provider();
-        ProviderManager providerMan = ProviderManager.getInstance();
         String providerName = new String();
         int consultations = 0;
         float feeTotal = 0;
@@ -139,13 +141,12 @@ public class SummaryReport implements Reports {
         Calendar currentDate = Calendar.getInstance();
         Date startingDate = getStartingDate(currentDate);
 
-        BillManager billMan = BillManager.getInstance();
         Bill b = new Bill();
         int providerNumber = 0;
         List allBillingProviders = new ArrayList();
 
         for (int i = 0;; i++){
-            b = billMan.search(i);
+            b = (Bill) billMan.search(i);
 
             if (b == null)
                 break;
@@ -171,7 +172,7 @@ public class SummaryReport implements Reports {
 
             allBillsFromProvider.clear();
             for (int i = 0;; i++){
-                b = billMan.search(i);
+                b = (Bill) billMan.search(i);
 
                 if (b == null)
                     break;

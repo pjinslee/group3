@@ -32,13 +32,16 @@ import chocansimulator.datamangement.ProviderManager;
  */
 public class ProviderReport implements Reports {
 
+    public static final BillManager billMan = BillManager.singletonBillManager(chocAnBillData);
+    public static final MemberManager memberMan = MemberManager.singletonMemberManager(chocAnMemberData);
+    public static final ProviderManager providerMan = ProviderManager.singletonProviderManager(chocAnProviderData);
+
     public List formatHeader(int providerNumber, Date starting, Date now) {
         List header = new ArrayList();
 
         DateFormat forFilename = new SimpleDateFormat("mmddyyyy");
         DateFormat df = new SimpleDateFormat("mm-dd-yyyy");
 
-        ProviderManager providerMan = ProviderManager.getInstance();
         Provider p = new Provider();
         p = (Provider) providerMan.search(providerNumber);
 
@@ -90,7 +93,6 @@ public class ProviderReport implements Reports {
 
         Date t = new Date();
         Member m = new Member();
-        MemberManager memberMan = new MemberManager.getInstance();
         int consultations = 0;
         float feeTotal = 0;
 
@@ -179,13 +181,12 @@ public class ProviderReport implements Reports {
         Calendar currentDate = Calendar.getInstance();
         Date startingDate = getStartingDate(currentDate);
 
-        BillManager billMan = BillManager.getInstance();
         Bill b = new Bill();
         int providerNumber = 0;
         List allBillingProviders = new ArrayList();
 
         for (int i = 0;; i++){
-            b = billMan.search(i);
+            b = (Bill) billMan.search(i);
 
             if (b == null)
                 break;
@@ -204,7 +205,7 @@ public class ProviderReport implements Reports {
 
             allBillsFromProvider.clear();
             for (int i = 0;; i++){
-                b = billMan.search(i);
+                b = (Bill) billMan.search(i);
 
                 if (b == null)
                     break;
