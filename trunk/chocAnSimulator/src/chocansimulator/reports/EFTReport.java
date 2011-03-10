@@ -30,6 +30,7 @@ import chocansimulator.datamangement.ProviderManager;
 public class EFTReport implements Reports {
 
     public static final String chocAnDataDir = "chocAnData";
+    public static final String chocAnReportsDir = "/chocAnReportsDir";
     public static final String chocAnBillData = chocAnDataDir + "/bill.dat";
     public static final String chocAnProviderData = chocAnDataDir + "/provider.dat";
     public static final BillManager billMan = BillManager.singletonBillManager(chocAnBillData);

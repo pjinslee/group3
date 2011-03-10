@@ -29,6 +29,7 @@ import chocansimulator.datamangement.ServiceCodeManager;
 public class ServiceCodeDirectoryReport implements Reports {
 
     public static final String chocAnDataDir = "chocAnData";
+    public static final String chocAnReportsDir = "/chocAnReportsDir";
     public static final String chocAnServiceData = chocAnDataDir + "/svc.dat";
     public static final ServiceCodeManager serviceCodeMan = ServiceCodeManager.singletonServiceCodeManager(chocAnServiceData);
 
@@ -83,7 +84,8 @@ public class ServiceCodeDirectoryReport implements Reports {
 
         String line = new String();
         BufferedWriter out = new BufferedWriter(new OutputStreamWriter(
-                             new FileOutputStream(chocAnReportsDir + "/Service_Directory")));
+                             new FileOutputStream(chocAnReportsDir + "
+/Service_Directory")));
 
         while (itr.hasNext()) {
             try {

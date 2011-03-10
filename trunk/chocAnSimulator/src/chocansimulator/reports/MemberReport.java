@@ -34,6 +34,7 @@ import chocansimulator.datamangement.ServiceCodeManager;
 public class MemberReport implements Reports {
 
     public static final String chocAnDataDir = "chocAnData";
+    public static final String chocAnReportsDir = "/chocAnReportsDir";
     public static final String chocAnBillData = chocAnDataDir + "/bill.dat";
     public static final String chocAnMemberData = chocAnDataDir + "/member.dat";
     public static final String chocAnProviderData = chocAnDataDir + "/provider.dat";
