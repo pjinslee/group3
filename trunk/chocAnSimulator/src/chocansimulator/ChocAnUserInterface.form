@@ -32,8 +32,8 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="globalMessageLabel" alignment="0" pref="499" max="32767" attributes="1"/>
-                          <Component id="ChocAnPanel" alignment="1" pref="499" max="32767" attributes="1"/>
+                          <Component id="globalMessageLabel" alignment="0" pref="534" max="32767" attributes="1"/>
+                          <Component id="ChocAnPanel" alignment="1" pref="534" max="32767" attributes="1"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -83,7 +83,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="memberDataManagerPanels" min="-2" pref="410" max="-2" attributes="0"/>
-                      <EmptySpace pref="69" max="32767" attributes="0"/>
+                      <EmptySpace pref="104" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -148,7 +148,7 @@
                               <Component id="memberAddButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                               <Component id="memberAddClearButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="248" max="32767" attributes="0"/>
+                              <EmptySpace pref="134" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -591,7 +591,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="ProviderDataManagerPanels" min="-2" pref="410" max="-2" attributes="0"/>
-                      <EmptySpace pref="69" max="32767" attributes="0"/>
+                      <EmptySpace pref="104" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -656,7 +656,7 @@
                               <Component id="providerAddButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                               <Component id="providerAddClearButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="248" max="32767" attributes="0"/>
+                              <EmptySpace pref="134" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1098,7 +1098,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="svcDataManagerPanels" pref="467" max="32767" attributes="0"/>
+                      <Component id="svcDataManagerPanels" pref="502" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -1149,7 +1149,7 @@
                                   <Component id="svcAddFeeText" max="32767" attributes="1"/>
                                   <Component id="svcAddDescText" alignment="0" pref="162" max="32767" attributes="1"/>
                               </Group>
-                              <EmptySpace pref="175" max="32767" attributes="0"/>
+                              <EmptySpace pref="210" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1231,7 +1231,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="75" max="32767" attributes="0"/>
+                              <EmptySpace pref="110" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1409,14 +1409,14 @@
                                   <Component id="svcDelFeeText" alignment="0" min="-2" pref="101" max="-2" attributes="0"/>
                                   <Component id="svcDelDescText" alignment="0" max="32767" attributes="1"/>
                               </Group>
-                              <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
                               <Component id="svcDeleteButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                               <Component id="svcDelClearButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="208" max="32767" attributes="0"/>
+                              <EmptySpace pref="243" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1535,7 +1535,7 @@
                           <Component id="eftRptButton" max="32767" attributes="1"/>
                           <Component id="summaryRptButton" alignment="0" pref="161" max="32767" attributes="1"/>
                       </Group>
-                      <EmptySpace pref="113" max="32767" attributes="0"/>
+                      <EmptySpace pref="148" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1606,7 +1606,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="terminalDataManagerPanels" pref="467" max="32767" attributes="0"/>
+                      <Component id="terminalDataManagerPanels" pref="502" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -1662,7 +1662,7 @@
                                       <Component id="valMemClearButton" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="134" max="32767" attributes="0"/>
+                              <EmptySpace pref="169" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1737,7 +1737,7 @@
                                   <Group type="102" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="valProText" min="-2" pref="99" max="-2" attributes="0"/>
-                                      <EmptySpace pref="197" max="32767" attributes="0"/>
+                                      <EmptySpace pref="232" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
@@ -1819,7 +1819,7 @@
                                       <Component id="valSvcClearButton" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="151" max="32767" attributes="0"/>
+                              <EmptySpace pref="186" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1882,7 +1882,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="126" max="-2" attributes="0"/>
                               <Component id="runProDirButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="163" max="32767" attributes="0"/>
+                              <EmptySpace pref="198" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1938,7 +1938,7 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="commentLabel" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                                              <Component id="billCommentText" pref="328" max="32767" attributes="0"/>
+                                              <Component id="billCommentText" pref="363" max="32767" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="svcLabel" min="-2" max="-2" attributes="0"/>

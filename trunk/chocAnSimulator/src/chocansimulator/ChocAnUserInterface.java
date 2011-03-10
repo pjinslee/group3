@@ -643,7 +643,7 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
             .addGroup(MemberTabbedPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(memberDataManagerPanels, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(104, Short.MAX_VALUE))
         );
         MemberTabbedPanelLayout.setVerticalGroup(
             MemberTabbedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -971,7 +971,7 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
             .addGroup(ProviderTabbedPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(ProviderDataManagerPanels, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(104, Short.MAX_VALUE))
         );
         ProviderTabbedPanelLayout.setVerticalGroup(
             ProviderTabbedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1028,7 +1028,7 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
                         .addComponent(svcAddClearButton))
                     .addComponent(svcAddFeeText)
                     .addComponent(svcAddDescText, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addContainerGap(210, Short.MAX_VALUE))
         );
         svcAddPanelLayout.setVerticalGroup(
             svcAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1143,7 +1143,7 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
             svcUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(svcUpdatePanelLayout.createSequentialGroup()
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
         svcUpdatePanelLayout.setVerticalGroup(
             svcUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1209,13 +1209,13 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
                         .addComponent(svcDelSearchButton))
                     .addComponent(svcDelFeeText, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(svcDelDescText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(96, 96, 96))
+                .addGap(131, 131, 131))
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addGap(88, 88, 88)
                 .addComponent(svcDeleteButton)
                 .addGap(54, 54, 54)
                 .addComponent(svcDelClearButton)
-                .addContainerGap(208, Short.MAX_VALUE))
+                .addContainerGap(243, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1248,7 +1248,7 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
             ServiceCodeTabbedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ServiceCodeTabbedPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(svcDataManagerPanels, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
+                .addComponent(svcDataManagerPanels, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
                 .addContainerGap())
         );
         ServiceCodeTabbedPanelLayout.setVerticalGroup(
@@ -1302,7 +1302,7 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
                 .addGroup(ReportsTabbedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(eftRptButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(summaryRptButton, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addContainerGap(148, Short.MAX_VALUE))
         );
         ReportsTabbedPanelLayout.setVerticalGroup(
             ReportsTabbedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1361,7 +1361,7 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
                     .addGroup(valMemPanelLayout.createSequentialGroup()
                         .addGap(118, 118, 118)
                         .addComponent(valMemClearButton)))
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addContainerGap(169, Short.MAX_VALUE))
         );
         valMemPanelLayout.setVerticalGroup(
             valMemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1411,7 +1411,7 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
                     .addGroup(valProPanelLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(valProText, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(197, Short.MAX_VALUE))
+                        .addContainerGap(232, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, valProPanelLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(valProClearButton)
@@ -1465,7 +1465,7 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
                         .addComponent(valSvcButton)
                         .addGap(117, 117, 117)
                         .addComponent(valSvcClearButton)))
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addContainerGap(186, Short.MAX_VALUE))
         );
         valSvcPanelLayout.setVerticalGroup(
             valSvcPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1497,7 +1497,7 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
             .addGroup(proDirPanelLayout.createSequentialGroup()
                 .addGap(126, 126, 126)
                 .addComponent(runProDirButton)
-                .addContainerGap(163, Short.MAX_VALUE))
+                .addContainerGap(198, Short.MAX_VALUE))
         );
         proDirPanelLayout.setVerticalGroup(
             proDirPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1553,7 +1553,7 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addBillPanelLayout.createSequentialGroup()
                                 .addComponent(commentLabel)
                                 .addGap(27, 27, 27)
-                                .addComponent(billCommentText, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE))
+                                .addComponent(billCommentText, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addBillPanelLayout.createSequentialGroup()
                                 .addComponent(svcLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1608,7 +1608,7 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
             TerminalTabbedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TerminalTabbedPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(terminalDataManagerPanels, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
+                .addComponent(terminalDataManagerPanels, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
                 .addContainerGap())
         );
         TerminalTabbedPanelLayout.setVerticalGroup(
@@ -1640,8 +1640,8 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
                         .addGap(212, 212, 212))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(globalMessageLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
-                            .addComponent(ChocAnPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE))
+                            .addComponent(globalMessageLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
+                            .addComponent(ChocAnPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -1715,11 +1715,15 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         if (s == null) {
             globalMessageLabel.setText("Service Code not found.");
         } else {
-            svcUpDescText.setText(s.getDescription());
-            svcUpFeeText.setText(feeFormat.format(s.getFee()));
-            globalMessageLabel.setText("Service Code ready for update.");
-            svcUpNumText.setEnabled(false);
-            svcUpSearchButton.setEnabled(false);
+            if (s.getStatus() == 0) {
+                globalMessageLabel.setText("Service Code invalid.");
+            } else {
+                svcUpDescText.setText(s.getDescription());
+                svcUpFeeText.setText(feeFormat.format(s.getFee()));
+                globalMessageLabel.setText("Service Code ready for update.");
+                svcUpNumText.setEnabled(false);
+                svcUpSearchButton.setEnabled(false);
+            }
         }
         
     }//GEN-LAST:event_svcUpSearchButtonActionPerformed
@@ -1752,11 +1756,15 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         if (s == null) {
             globalMessageLabel.setText("Service Code not found.");
         } else {
-            svcDelDescText.setText(s.getDescription());
-            svcDelFeeText.setText(feeFormat.format(s.getFee()));
-            globalMessageLabel.setText("Service Code ready for delete.");
-            svcDelNumText.setEnabled(false);
-            svcDelSearchButton.setEnabled(false);
+            if (s.getStatus() == 0) {
+                globalMessageLabel.setText("Service Code invalid.");
+            } else {
+                svcUpDescText.setText(s.getDescription());
+                svcUpFeeText.setText(feeFormat.format(s.getFee()));
+                globalMessageLabel.setText("Service Code ready for update.");
+                svcUpNumText.setEnabled(false);
+                svcUpSearchButton.setEnabled(false);
+            }
         }
     }//GEN-LAST:event_svcDelSearchButtonActionPerformed
 
@@ -1803,14 +1811,18 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         if (m == null) {
             globalMessageLabel.setText("Member not found.");
         } else {
-            memberUpNameText.setText(m.getName());
-            memberUpAddressText.setText(m.getAddress());
-            memberUpCityText.setText(m.getCity());
-            memberUpStateText.setText(m.getState());
-            memberUpZipText.setText(String.valueOf(m.getZip()));
-            memberUpNumText.setEnabled(false);
-            memberUpSearchButton.setEnabled(false);
-            globalMessageLabel.setText("Member ready to update.");
+            if (m.getStatus() == 0 || m.getStatus() == 2 ) {
+                globalMessageLabel.setText("Member invalid.");
+            } else {
+                memberUpNameText.setText(m.getName());
+                memberUpAddressText.setText(m.getAddress());
+                memberUpCityText.setText(m.getCity());
+                memberUpStateText.setText(m.getState());
+                memberUpZipText.setText(String.valueOf(m.getZip()));
+                memberUpNumText.setEnabled(false);
+                memberUpSearchButton.setEnabled(false);
+                globalMessageLabel.setText("Member ready to update.");
+            }
 
         }
 }//GEN-LAST:event_memberUpSearchButtonActionPerformed
@@ -1940,15 +1952,18 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         if (m == null) {
             globalMessageLabel.setText("Member not found.");
         } else {
-            memberDelNameText.setText(m.getName());
-            memberDelAddressText.setText(m.getAddress());
-            memberDelCityText.setText(m.getCity());
-            memberDelStateText.setText(m.getState());
-            memberDelZipText.setText(String.valueOf(m.getZip()));
-            memberDelNumText.setEnabled(false);
-            memberDelSearchButton.setEnabled(false);
-            globalMessageLabel.setText("Member has been found.");
-
+            if (m.getStatus() == 0 || m.getStatus() == 2) {
+                globalMessageLabel.setText("Member invalid.");
+            } else {
+                memberDelNameText.setText(m.getName());
+                memberDelAddressText.setText(m.getAddress());
+                memberDelCityText.setText(m.getCity());
+                memberDelStateText.setText(m.getState());
+                memberDelZipText.setText(String.valueOf(m.getZip()));
+                memberDelNumText.setEnabled(false);
+                memberDelSearchButton.setEnabled(false);
+                globalMessageLabel.setText("Member has been found.");
+           }
         }
     }//GEN-LAST:event_memberDelSearchButtonActionPerformed
 
@@ -2078,14 +2093,18 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         if (p == null) {
             globalMessageLabel.setText("Provider not found.");
         } else {
-            providerUpNameText.setText(p.getName());
-            providerUpAddressText.setText(p.getAddress());
-            providerUpCityText.setText(p.getCity());
-            providerUpStateText.setText(p.getState());
-            providerUpZipText.setText(String.valueOf(p.getZip()));
-            providerUpNumText.setEnabled(false);
-            providerUpSearchButton.setEnabled(false);
-            globalMessageLabel.setText("Provider ready to update.");
+            if (p.getStatus() == 0) {
+                globalMessageLabel.setText("Provider invalid.");
+            } else {
+                providerUpNameText.setText(p.getName());
+                providerUpAddressText.setText(p.getAddress());
+                providerUpCityText.setText(p.getCity());
+                providerUpStateText.setText(p.getState());
+                providerUpZipText.setText(String.valueOf(p.getZip()));
+                providerUpNumText.setEnabled(false);
+                providerUpSearchButton.setEnabled(false);
+                globalMessageLabel.setText("Provider ready to update.");
+            }
         }
     }//GEN-LAST:event_providerUpSearchButtonActionPerformed
 
@@ -2136,15 +2155,18 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         if (p == null) {
             globalMessageLabel.setText("Provider not found.");
         } else {
-            providerDelNameText.setText(p.getName());
-            providerDelAddressText.setText(p.getAddress());
-            providerDelCityText.setText(p.getCity());
-            providerDelStateText.setText(p.getState());
-            providerDelZipText.setText(String.valueOf(p.getZip()));
-            providerDelNumText.setEnabled(false);
-            providerDelSearchButton.setEnabled(false);
-            globalMessageLabel.setText("Provider has been found.");
-
+            if (p.getStatus() == 0) {
+                globalMessageLabel.setText("Provider invalid.");
+            } else {
+                providerDelNameText.setText(p.getName());
+                providerDelAddressText.setText(p.getAddress());
+                providerDelCityText.setText(p.getCity());
+                providerDelStateText.setText(p.getState());
+                providerDelZipText.setText(String.valueOf(p.getZip()));
+                providerDelNumText.setEnabled(false);
+                providerDelSearchButton.setEnabled(false);
+                globalMessageLabel.setText("Provider has been found.");
+            }
         }
     }//GEN-LAST:event_providerDelSearchButtonActionPerformed
 

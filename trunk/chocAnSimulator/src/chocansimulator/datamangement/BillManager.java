@@ -85,21 +85,21 @@ public class BillManager extends ManageData {
         
     }
 
-    public List getList(Date startDate) {
+    /*public List getList(Date startDate) {
         //TODO -
         records = new ArrayList();
         return records;
-    }
+    }*/
 
     public Object search (int number) {
         Iterator itr = records.iterator();
-        Member m = null;
+        Bill b = null;
         int k = 0;
 
         while (itr.hasNext()) {
-            m = (Member) itr.next();
+            b = (Bill) itr.next();
             if ( k == number ) {
-                return m;
+                return b;
             }
             k = k+1;
         }
