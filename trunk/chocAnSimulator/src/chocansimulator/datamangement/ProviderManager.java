@@ -52,7 +52,7 @@ public class ProviderManager extends ManageData {
         try {
             //first use a Scanner to get each line
             while ( record.hasNextLine() ){
-                Member wrkMem = new Member(record.nextLine());
+                Provider wrkMem = new Provider(record.nextLine());
                 records.add(wrkMem);
             }
         }
@@ -95,6 +95,5 @@ public class ProviderManager extends ManageData {
 
         return null;
     }
-
 
 }

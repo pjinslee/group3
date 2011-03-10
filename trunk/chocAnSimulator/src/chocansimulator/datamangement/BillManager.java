@@ -92,9 +92,19 @@ public class BillManager extends ManageData {
     }
 
     public Object search (int number) {
-        //TODO -- this is probably not correct
-        return (new Object());
+        Iterator itr = records.iterator();
+        Member m = null;
+        int k = 0;
 
+        while (itr.hasNext()) {
+            m = (Member) itr.next();
+            if ( k == number ) {
+                return m;
+            }
+            k = k+1;
+        }
+
+        return null;
     }
 
 }

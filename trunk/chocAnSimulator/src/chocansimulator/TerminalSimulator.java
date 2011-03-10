@@ -5,8 +5,8 @@
 
 package chocansimulator;
 
-import chocansimulator.datamangement.Member;
 import chocansimulator.datamangement.Provider;
+import chocansimulator.datamangement.Member;
 import chocansimulator.datamangement.ServiceCode;
 import chocansimulator.reports.ServiceCodeDirectoryReport;
 
