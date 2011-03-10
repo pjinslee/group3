@@ -21,8 +21,18 @@ import java.util.logging.Logger;
  * @author tman
  */
 public class MemberManager extends ManageData {
+    private static MemberManager instance = null;
 
-    public MemberManager(String fileName) {
+    public static MemberManager singletonMemberManager(String inFileName) {
+        if ( instance == null ) {
+          instance = new MemberManager(inFileName);
+        }
+
+        return instance;
+
+    }
+
+    private MemberManager(String fileName) {
         super(fileName);
 
         readFile();

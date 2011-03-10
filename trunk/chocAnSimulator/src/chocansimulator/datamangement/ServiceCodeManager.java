@@ -21,8 +21,18 @@ import java.util.logging.Logger;
  * @author tman
  */
 public class ServiceCodeManager extends ManageData {
+    private static ServiceCodeManager instance = null;
 
-    public ServiceCodeManager(String fileName) {
+    public static ServiceCodeManager singletonServiceCodeManager(String inFileName) {
+        if ( instance == null ) {
+          instance = new ServiceCodeManager(inFileName);
+        }
+
+        return instance;
+
+    }
+
+    private ServiceCodeManager(String fileName) {
         super(fileName);
 
         readFile();

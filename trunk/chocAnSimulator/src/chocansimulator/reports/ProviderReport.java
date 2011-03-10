@@ -32,6 +32,10 @@ import chocansimulator.datamangement.ProviderManager;
  */
 public class ProviderReport implements Reports {
 
+    public static final String chocAnDataDir = "chocAnData";
+    public static final String chocAnMemberData = chocAnDataDir + "/member.dat";
+    public static final String chocAnProviderData = chocAnDataDir + "/provider.dat";
+    public static final String chocAnBillData = chocAnDataDir + "/bill.dat";
     public static final BillManager billMan = BillManager.singletonBillManager(chocAnBillData);
     public static final MemberManager memberMan = MemberManager.singletonMemberManager(chocAnMemberData);
     public static final ProviderManager providerMan = ProviderManager.singletonProviderManager(chocAnProviderData);

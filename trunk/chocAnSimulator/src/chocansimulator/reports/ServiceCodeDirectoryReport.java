@@ -28,7 +28,9 @@ import chocansimulator.datamangement.ServiceCodeManager;
  */
 public class ServiceCodeDirectoryReport implements Reports {
 
-    public static final ServiceCodeManager serviceCodeMan = ServiceCodeManager.singletonServiceCodeManager(chocAnServiceCodeData);
+    public static final String chocAnDataDir = "chocAnData";
+    public static final String chocAnServiceData = chocAnDataDir + "/svc.dat";
+    public static final ServiceCodeManager serviceCodeMan = ServiceCodeManager.singletonServiceCodeManager(chocAnServiceData);
 
     public List formatHeader(int dummyNumber, Date dummyDate, Date now) {
         List header = new ArrayList();

@@ -47,10 +47,11 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
     public static final String chocAnProviderData = chocAnDataDir + "/provider.dat";
     public static final String chocAnBillData = chocAnDataDir + "/bill.dat";
     public static final char chocAnFileDelimiter = '^';
-    public static final ServiceCodeManager svcMan = new ServiceCodeManager(chocAnServiceData);
-    public static final MemberManager memberMan = new MemberManager(chocAnMemberData);
-    public static final ProviderManager providerMan = new ProviderManager(chocAnProviderData);
-    public static final BillManager billMan = new BillManager(chocAnBillData);
+    public static final ServiceCodeManager svcMan = ServiceCodeManager.singletonServiceCodeManager(chocAnServiceData);
+    public static final MemberManager memberMan = MemberManager.singletonMemberManager(chocAnMemberData);
+    public static final BillManager billMan = BillManager.singletonBillManager(chocAnBillData);
+    public static final ProviderManager providerMan = ProviderManager.singletonProviderManager(chocAnProviderData);
+    
     NumberFormat feeFormat = new DecimalFormat("#0.00");
 
     /** Creates new form TopLevelMenu */

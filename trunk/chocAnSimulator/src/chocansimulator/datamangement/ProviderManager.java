@@ -21,8 +21,18 @@ import java.util.logging.Logger;
  * @author tman
  */
 public class ProviderManager extends ManageData {
+    private static ProviderManager instance = null;
 
-    public ProviderManager(String fileName) {
+    public static ProviderManager singletonProviderManager(String inFileName) {
+        if ( instance == null ) {
+          instance = new ProviderManager(inFileName);
+        }
+
+        return instance;
+
+    }
+
+    private ProviderManager(String fileName) {
         super(fileName);
 
         readFile();

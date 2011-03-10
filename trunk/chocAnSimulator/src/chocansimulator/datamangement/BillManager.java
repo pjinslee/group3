@@ -24,8 +24,18 @@ import java.util.logging.Logger;
  * @author tman
  */
 public class BillManager extends ManageData {
+    private static BillManager instance = null;
 
-    public BillManager(String fileName) {
+    public static BillManager singletonBillManager(String inFileName) {
+        if ( instance == null ) {
+          instance = new BillManager(inFileName);
+        }
+
+        return instance;
+
+    }
+
+    private BillManager(String fileName) {
         super(fileName);
 
         readFile();

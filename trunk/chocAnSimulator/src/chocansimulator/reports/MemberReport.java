@@ -33,10 +33,15 @@ import chocansimulator.datamangement.ServiceCodeManager;
  */
 public class MemberReport implements Reports {
 
+    public static final String chocAnDataDir = "chocAnData";
+    public static final String chocAnMemberData = chocAnDataDir + "/member.dat";
+    public static final String chocAnServiceData = chocAnDataDir + "/svc.dat";
+    public static final String chocAnProviderData = chocAnDataDir + "/provider.dat";
+    public static final String chocAnBillData = chocAnDataDir + "/bill.dat";
     public static final BillManager billMan = BillManager.singletonBillManager(chocAnBillData);
     public static final MemberManager memberMan = MemberManager.singletonMemberManager(chocAnMemberData);
     public static final ProviderManager providerMan = ProviderManager.singletonProviderManager(chocAnProviderData);
-    public static final ServiceCodeManager serviceCodeMan = ServiceCodeManager.singletonServiceCodeManager(chocAnServiceCodeData);
+    public static final ServiceCodeManager serviceCodeMan = ServiceCodeManager.singletonServiceCodeManager(chocAnServiceData);
 
     public List formatHeader(int memberNumber, Date starting, Date now) {
         List header = new ArrayList();
