@@ -30,15 +30,15 @@ import chocansimulator.datamangement.ProviderManager;
 public class EFTReport implements Reports {
 
     public static final String chocAnDataDir = "chocAnData";
-    public static final String chocAnProviderData = chocAnDataDir + "/provider.dat";
     public static final String chocAnBillData = chocAnDataDir + "/bill.dat";
+    public static final String chocAnProviderData = chocAnDataDir + "/provider.dat";
     public static final BillManager billMan = BillManager.singletonBillManager(chocAnBillData);
     public static final ProviderManager providerMan = ProviderManager.singletonProviderManager(chocAnProviderData);
 
     public List formatHeader(int providerNumber, Date dummyDate, Date now) {
         List header = new ArrayList();
 
-        DateFormat forFilename = new SimpleDateFormat("mmddyyyy");
+        DateFormat forFilename = new SimpleDateFormat("MMddyyyy");
 
         Provider p = new Provider();
         p = (Provider) providerMan.search(providerNumber);
@@ -73,7 +73,7 @@ public class EFTReport implements Reports {
             return false;
 
         BufferedWriter out = new BufferedWriter(new OutputStreamWriter(
-                             new FileOutputStream("chocAnData/Reports/" + itr.next())));
+                             new FileOutputStream(chocAnReportsDir + "/" + itr.next())));
 
         while (itr.hasNext()) {
             try {

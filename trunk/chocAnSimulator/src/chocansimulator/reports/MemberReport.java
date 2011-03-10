@@ -34,10 +34,10 @@ import chocansimulator.datamangement.ServiceCodeManager;
 public class MemberReport implements Reports {
 
     public static final String chocAnDataDir = "chocAnData";
-    public static final String chocAnMemberData = chocAnDataDir + "/member.dat";
-    public static final String chocAnServiceData = chocAnDataDir + "/svc.dat";
-    public static final String chocAnProviderData = chocAnDataDir + "/provider.dat";
     public static final String chocAnBillData = chocAnDataDir + "/bill.dat";
+    public static final String chocAnMemberData = chocAnDataDir + "/member.dat";
+    public static final String chocAnProviderData = chocAnDataDir + "/provider.dat";
+    public static final String chocAnServiceData = chocAnDataDir + "/svc.dat";
     public static final BillManager billMan = BillManager.singletonBillManager(chocAnBillData);
     public static final MemberManager memberMan = MemberManager.singletonMemberManager(chocAnMemberData);
     public static final ProviderManager providerMan = ProviderManager.singletonProviderManager(chocAnProviderData);
@@ -46,8 +46,8 @@ public class MemberReport implements Reports {
     public List formatHeader(int memberNumber, Date starting, Date now) {
         List header = new ArrayList();
 
-        DateFormat forFilename = new SimpleDateFormat("mmddyyyy");
-        DateFormat df = new SimpleDateFormat("mm-dd-yyyy");
+        DateFormat forFilename = new SimpleDateFormat("MMddyyyy");
+        DateFormat df = new SimpleDateFormat("MM-dd-yyyy");
 
         Member m = new Member();
         m = (Member) memberMan.search(memberNumber);
@@ -119,7 +119,7 @@ public class MemberReport implements Reports {
             return false;
 
         BufferedWriter out = new BufferedWriter(new OutputStreamWriter(
-                             new FileOutputStream("chocAnData/Reports/" + itr.next())));
+                             new FileOutputStream(chocAnReportsDir + "/" + itr.next())));
 
         while (itr.hasNext()) {
             try {

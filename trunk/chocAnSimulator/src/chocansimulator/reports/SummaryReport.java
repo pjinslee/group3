@@ -30,16 +30,17 @@ import chocansimulator.datamangement.ProviderManager;
 public class SummaryReport implements Reports {
 
     public static final String chocAnDataDir = "chocAnData";
-    public static final String chocAnProviderData = chocAnDataDir + "/provider.dat";
+    public static final String chocAnReportsDir = "/chocAnReportsDir";
     public static final String chocAnBillData = chocAnDataDir + "/bill.dat";
+    public static final String chocAnProviderData = chocAnDataDir + "/provider.dat";
     public static final BillManager billMan = BillManager.singletonBillManager(chocAnBillData);
     public static final ProviderManager providerMan = ProviderManager.singletonProviderManager(chocAnProviderData);
 
     public List formatHeader(int dummyNumber, Date starting, Date now) {
         List header = new ArrayList();
 
-        DateFormat forFilename = new SimpleDateFormat("mmddyyyy");
-        DateFormat df = new SimpleDateFormat("mm-dd-yyyy");
+        DateFormat forFilename = new SimpleDateFormat("MMddyyyy");
+        DateFormat df = new SimpleDateFormat("MM-dd-yyyy");
 
         header.add("Sum_" + forFilename.format(now) + ".dat");
         header.add("Services processed from " + df.format(starting) + " to " + df.format(now));
@@ -109,7 +110,7 @@ public class SummaryReport implements Reports {
             return false;
 
         BufferedWriter out = new BufferedWriter(new OutputStreamWriter(
-                             new FileOutputStream("chocAnData/Reports/" + itr.next())));
+                             new FileOutputStream(chocAnReportsDir + "/" + itr.next())));
 
         while (itr.hasNext()) {
             try {

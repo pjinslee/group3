@@ -33,9 +33,9 @@ import chocansimulator.datamangement.ProviderManager;
 public class ProviderReport implements Reports {
 
     public static final String chocAnDataDir = "chocAnData";
+    public static final String chocAnBillData = chocAnDataDir + "/bill.dat";
     public static final String chocAnMemberData = chocAnDataDir + "/member.dat";
     public static final String chocAnProviderData = chocAnDataDir + "/provider.dat";
-    public static final String chocAnBillData = chocAnDataDir + "/bill.dat";
     public static final BillManager billMan = BillManager.singletonBillManager(chocAnBillData);
     public static final MemberManager memberMan = MemberManager.singletonMemberManager(chocAnMemberData);
     public static final ProviderManager providerMan = ProviderManager.singletonProviderManager(chocAnProviderData);
@@ -43,8 +43,8 @@ public class ProviderReport implements Reports {
     public List formatHeader(int providerNumber, Date starting, Date now) {
         List header = new ArrayList();
 
-        DateFormat forFilename = new SimpleDateFormat("mmddyyyy");
-        DateFormat df = new SimpleDateFormat("mm-dd-yyyy");
+        DateFormat forFilename = new SimpleDateFormat("MMddyyyy");
+        DateFormat df = new SimpleDateFormat("MM-dd-yyyy");
 
         Provider p = new Provider();
         p = (Provider) providerMan.search(providerNumber);
@@ -150,7 +150,7 @@ public class ProviderReport implements Reports {
             return false;
 
         BufferedWriter out = new BufferedWriter(new OutputStreamWriter(
-                             new FileOutputStream("chocAnData/Reports/" + itr.next())));
+                             new FileOutputStream(chocAnReportsDir + "/" + itr.next())));
 
         while (itr.hasNext()) {
             try {

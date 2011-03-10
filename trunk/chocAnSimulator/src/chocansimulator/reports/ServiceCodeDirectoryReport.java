@@ -35,7 +35,7 @@ public class ServiceCodeDirectoryReport implements Reports {
     public List formatHeader(int dummyNumber, Date dummyDate, Date now) {
         List header = new ArrayList();
 
-        DateFormat df = new SimpleDateFormat("mm-dd-yyyy");
+        DateFormat df = new SimpleDateFormat("MM-dd-yyyy");
 
         header.add("Service Directory generated on " + df.format(now));
         header.add("Description            Code     Fee");
@@ -83,7 +83,7 @@ public class ServiceCodeDirectoryReport implements Reports {
 
         String line = new String();
         BufferedWriter out = new BufferedWriter(new OutputStreamWriter(
-                             new FileOutputStream("chocAnData/Reports/Service_Directory")));
+                             new FileOutputStream(chocAnReportsDir + "/Service_Directory")));
 
         while (itr.hasNext()) {
             try {
