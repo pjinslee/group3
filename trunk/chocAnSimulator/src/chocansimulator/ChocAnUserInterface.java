@@ -36,7 +36,7 @@ import java.util.Date;
 
 /**
  *
- * @author debbj
+ * @author tman
  */
 public class ChocAnUserInterface extends javax.swing.JFrame {
     public static final String chocAnDataDir = "chocAnData";
@@ -1632,16 +1632,17 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(202, Short.MAX_VALUE)
-                .addComponent(exitButton)
-                .addGap(212, 212, 212))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ChocAnPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
-                    .addComponent(globalMessageLabel))
-                .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(exitButton)
+                        .addGap(212, 212, 212))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(globalMessageLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
+                            .addComponent(ChocAnPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1953,7 +1954,6 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
 
     private void memberRptButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_memberRptButtonActionPerformed
         MemberReport r = new MemberReport();
-        r.createReport();
         if (r.createReport()) {
             globalMessageLabel.setText("Member reports are available.");
         } else {
@@ -1963,7 +1963,6 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
 
     private void providerRptButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_providerRptButtonActionPerformed
         ProviderReport r = new ProviderReport();
-        r.createReport();
         if (r.createReport()) {
             globalMessageLabel.setText("Provider reports are available.");
         } else {
@@ -1973,7 +1972,6 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
 
     private void eftRptButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eftRptButtonActionPerformed
         EFTReport r = new EFTReport();
-        r.createReport();
         if (r.createReport()) {
             globalMessageLabel.setText("EFT reports are available.");
         } else {
@@ -1983,7 +1981,6 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
 
     private void summaryRptButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_summaryRptButtonActionPerformed
         SummaryReport r = new SummaryReport();
-        r.createReport();
         if (r.createReport()) {
             globalMessageLabel.setText("Summary reports are available.");
         } else {
@@ -2163,18 +2160,21 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         int i = Integer.parseInt(valMemText.getText().trim());
 
         TerminalSimulator ts = new TerminalSimulator();
-        int rc = ts.validateMember(i);
+        int rc = (int) ts.validateMember(i);
 
         switch(rc) {
             case 0:
                 globalMessageLabel.setText("Invalid Member");
+                break;
             case 1:
                 globalMessageLabel.setText("Validated");
+                break;
             case 2:
                 globalMessageLabel.setText("Member Suspended");
-            break;
+                break;
             default:
                 globalMessageLabel.setText("Member not found");
+                break;
         }
 
     }//GEN-LAST:event_valMemButtonActionPerformed
@@ -2196,16 +2196,18 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         int i = Integer.parseInt(valProText.getText().trim());
 
         TerminalSimulator ts = new TerminalSimulator();
-        int rc = ts.validateProvider(i);
+        int rc = (int) ts.validateProvider(i);
 
         switch(rc) {
             case 0:
                 globalMessageLabel.setText("Invalid Provider");
+                break;
             case 1:
                 globalMessageLabel.setText("Validated");
-            break;
+                break;
             default:
                 globalMessageLabel.setText("Provider not found");
+                break;
         }
 
     }//GEN-LAST:event_valProButtonActionPerformed
@@ -2227,15 +2229,18 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         int i = Integer.parseInt(String.valueOf(valSvcText.getText()).trim());
 
         TerminalSimulator ts = new TerminalSimulator();
-        float rc = ts.validateProvider(i);
+        int rc = (int) ts.validateServiceCode(i);
 
         if (rc == -1) {
             globalMessageLabel.setText("Service Code not found");
+            return;
         } else {
             if ( rc == 0 ) {
                 globalMessageLabel.setText("Invalid Service Code");
+                return;
             } else {
                 globalMessageLabel.setText("Fee: " + feeFormat.format(rc));
+                return;
             }
         }
     }//GEN-LAST:event_valSvcButtonActionPerformed
@@ -2262,17 +2267,17 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
             return;
         }
 
-        int i = Integer.parseInt(billProNumText.getText().trim());
-        Provider p = (Provider) providerMan.search(i);
-        if (p == null) {
-            globalMessageLabel.setText("Provider not found.");
-            return;
-        }
-
-        i = Integer.parseInt(billMemNumText.getText().trim());
+        int i = Integer.parseInt(billMemNumText.getText().trim());
         Member m = (Member) memberMan.search(i);
         if (m == null) {
             globalMessageLabel.setText("Member not found.");
+            return;
+        }
+
+        i = Integer.parseInt(billProNumText.getText().trim());
+        Provider p = (Provider) providerMan.search(i);
+        if (p == null) {
+            globalMessageLabel.setText("Provider not found.");
             return;
         }
 

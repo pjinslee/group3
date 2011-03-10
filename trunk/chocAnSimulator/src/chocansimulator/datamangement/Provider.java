@@ -12,7 +12,7 @@ import chocansimulator.ChocAnUserInterface;
  * @author tman
  */
 public class Provider extends Contact {
-    public Provider () {
+    public Provider() {
         super();
 
         int number = Id.singletonId(ChocAnUserInterface.chocAnId).getProviderId();
