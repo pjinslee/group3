@@ -29,7 +29,7 @@ import chocansimulator.datamangement.ServiceCodeManager;
 public class ServiceCodeDirectoryReport implements Reports {
 
     public static final String chocAnDataDir = "chocAnData";
-    public static final String chocAnReportsDir = "/chocAnReportsDir";
+    public static final String chocAnReportsDir = chocAnDataDir + "/Reports";
     public static final String chocAnServiceData = chocAnDataDir + "/svc.dat";
     public static final ServiceCodeManager serviceCodeMan = ServiceCodeManager.singletonServiceCodeManager(chocAnServiceData);
 
@@ -39,8 +39,8 @@ public class ServiceCodeDirectoryReport implements Reports {
         DateFormat df = new SimpleDateFormat("MM-dd-yyyy");
 
         header.add("Service Directory generated on " + df.format(now));
-        header.add("Description            Code     Fee");
-        header.add("-------------------- ------ -------");
+        header.add("Description               Code        Fee");
+        header.add("--------------------    ------    -------");
 
         return header;
     }
@@ -55,21 +55,22 @@ public class ServiceCodeDirectoryReport implements Reports {
             svc = (ServiceCode) itr.next();
             String[] token = (svc.fileDataToString()).split("\\^");
 
-            String description = new String(token[2]);
-            String code = new String();
-            String fee = new String();
+            StringBuilder description = new StringBuilder(token[2].trim());
+            StringBuilder code = new StringBuilder();
+            StringBuilder fee = new StringBuilder();
+            String temp = new String(String.format("%.2f", svc.getFee()));
 
             for (int i = description.length(); i < 20; i++)
-                description.concat(" ");
-            for (int i = token[0].length(); i < 6; i++)
-                code.concat(" ");
-            fee.concat(token[0]);
-            for (int i = token[3].length(); i < 6; i++)
-                fee.concat(" ");
-            fee.concat("$");
-            fee.concat(token[3]);
+                description.append(' ');
+            for (int i = (token[0].trim()).length(); i < 6; i++)
+                code.append(' ');
+            code.append(token[0]);
+            for (int i = (temp.length()); i < 6; i++)
+                fee.append(' ');
+            fee.append('$');
+            fee.append(temp);
 
-            body.add(description + " " + code + " " + fee);
+            body.add(description + "    " + code + "    " + fee);
         }
 
         Collections.sort(body);
@@ -84,8 +85,7 @@ public class ServiceCodeDirectoryReport implements Reports {
 
         String line = new String();
         BufferedWriter out = new BufferedWriter(new OutputStreamWriter(
-                             new FileOutputStream(chocAnReportsDir + "
-/Service_Directory")));
+                             new FileOutputStream(chocAnReportsDir + "/Service_Directory")));
 
         while (itr.hasNext()) {
             try {
@@ -110,10 +110,11 @@ public class ServiceCodeDirectoryReport implements Reports {
         ServiceCode svc = new ServiceCode();
         List allServiceCodes = new ArrayList();
 
-        for (int i = 0;; i++){
+        for (int i = 1;; i++){
             svc = (ServiceCode) serviceCodeMan.search(i);
             if (svc == null)
                 break;
+
             allServiceCodes.add(svc);
         }
 

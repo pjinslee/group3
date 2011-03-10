@@ -33,7 +33,7 @@ import chocansimulator.datamangement.ProviderManager;
 public class ProviderReport implements Reports {
 
     public static final String chocAnDataDir = "chocAnData";
-    public static final String chocAnReportsDir = "/chocAnReportsDir";
+    public static final String chocAnReportsDir = chocAnDataDir + "/Reports";
     public static final String chocAnBillData = chocAnDataDir + "/bill.dat";
     public static final String chocAnMemberData = chocAnDataDir + "/member.dat";
     public static final String chocAnProviderData = chocAnDataDir + "/provider.dat";
@@ -77,8 +77,8 @@ public class ProviderReport implements Reports {
         }
 
         header.add("Services processed from " + df.format(starting) + " to " + df.format(now));
-        header.add("Svc. Date  Timestamp           Member                       Number   Code     Fee");
-        header.add("---------- ------------------- ------------------------- --------- ------ -------");
+        header.add("Svc. Date     Timestamp              Member                          Number      Code        Fee");
+        header.add("----------    -------------------    -------------------------    ---------    ------    -------");
 
         return header;
     }
@@ -112,25 +112,26 @@ public class ProviderReport implements Reports {
                     String[] token = (b.fileDataToString()).split("\\^");
 
                     m = (Member) memberMan.search(b.getMemberNumber());
-                    String memberName = new String(m.getName());
-                    String memberNumber = new String();
-                    String serviceCode = new String();
-                    String fee = new String();
+                    StringBuilder memberName = new StringBuilder((m.getName()).trim());
+                    StringBuilder memberNumber = new StringBuilder();
+                    StringBuilder serviceCode = new StringBuilder();
+                    StringBuilder fee = new StringBuilder();
+                    String temp = new String(String.format("%.2f", b.getFee()));
 
                     for (int i = memberName.length(); i < 25; i++)
-                        memberName.concat(" ");
+                        memberName.append(' ');
                     for (int i = token[2].length(); i < 9; i++)
-                        memberNumber.concat(" ");
-                    memberNumber.concat(token[2]);
+                        memberNumber.append(' ');
+                    memberNumber.append(token[2]);
                     for (int i = token[3].length(); i < 6; i++)
-                        serviceCode.concat(" ");
-                    serviceCode.concat(token[3]);
-                    for (int i = token[4].length(); i < 6; i++)
-                        fee.concat(" ");
-                    fee.concat("$");
-                    fee.concat(token[4]);
+                        serviceCode.append(' ');
+                    serviceCode.append(token[3]);
+                    for (int i = (temp.length()); i < 6; i++)
+                        fee.append(' ');
+                    fee.append('$');
+                    fee.append(String.format(temp));
 
-                    body.add(token[0] + " " + token[6] + " " + memberName + " " + memberNumber + " " + serviceCode + " " + fee);
+                    body.add(token[0].trim() + "    " + token[6].trim() + "    " + memberName + "    " + memberNumber + "    " + serviceCode + "    " + fee);
 
                     consultations++;
                     feeTotal = feeTotal + b.getFee();
@@ -139,7 +140,7 @@ public class ProviderReport implements Reports {
         }
 
         body.add("Total number of consultations with members: " + consultations);
-        body.add("Total fee for week: " + feeTotal);
+        body.add(String.format("Total fee for week: $%.2f", feeTotal));
 
         return body;
     }
@@ -150,9 +151,17 @@ public class ProviderReport implements Reports {
         if (!itr.hasNext())
             return false;
 
+        String firstLine = new String((String) itr.next());
         BufferedWriter out = new BufferedWriter(new OutputStreamWriter(
-                             new FileOutputStream(chocAnReportsDir + "/" + itr.next())));
+                             new FileOutputStream(chocAnReportsDir + "/" + firstLine)));
 
+        try {
+            out.write(firstLine + "\n");
+        } catch (IOException ex) {
+            Logger.getLogger(EFTReport.class.getName()).log(Level.SEVERE, null, ex);
+            out.close();
+            return false;
+        }
         while (itr.hasNext()) {
             try {
                 out.write(itr.next() + "\n");
@@ -215,7 +224,7 @@ public class ProviderReport implements Reports {
                 if (b == null)
                     break;
 
-                if (((startingDate.compareTo(b.getTimeStamp())) <= 0) && (providerNumber == b.getProviderNumber()));
+                if (((startingDate.compareTo(b.getTimeStamp())) <= 0) && (providerNumber == b.getProviderNumber()))
                     allBillsFromProvider.add(b);
             }
 

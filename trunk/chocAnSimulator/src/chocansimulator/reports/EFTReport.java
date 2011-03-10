@@ -30,7 +30,7 @@ import chocansimulator.datamangement.ProviderManager;
 public class EFTReport implements Reports {
 
     public static final String chocAnDataDir = "chocAnData";
-    public static final String chocAnReportsDir = "/chocAnReportsDir";
+    public static final String chocAnReportsDir = chocAnDataDir + "/Reports";
     public static final String chocAnBillData = chocAnDataDir + "/bill.dat";
     public static final String chocAnProviderData = chocAnDataDir + "/provider.dat";
     public static final BillManager billMan = BillManager.singletonBillManager(chocAnBillData);
@@ -50,21 +50,9 @@ public class EFTReport implements Reports {
         return header;
     }
 
-    public List formatBody(List allBillsFromProvider) {
-        List body = new ArrayList();
-
-        Bill b = new Bill();
-        float feeSum = 0;
-
-        Iterator itr = allBillsFromProvider.iterator();
-        while (itr.hasNext()) {
-            b = (Bill) itr.next();
-            feeSum = feeSum + b.getFee();
-        }
-
-        body.add(feeSum);
-
-        return body;
+    public List formatBody(List dummyList) {
+        /* not used */
+        return dummyList;
     }
 
     public boolean printReport(List preparedReport) throws IOException {
@@ -73,9 +61,17 @@ public class EFTReport implements Reports {
         if (!itr.hasNext())
             return false;
 
+        String firstLine = new String((String) itr.next());
         BufferedWriter out = new BufferedWriter(new OutputStreamWriter(
-                             new FileOutputStream(chocAnReportsDir + "/" + itr.next())));
+                             new FileOutputStream(chocAnReportsDir + "/" + firstLine)));
 
+        try {
+            out.write(firstLine + "\n");
+        } catch (IOException ex) {
+            Logger.getLogger(EFTReport.class.getName()).log(Level.SEVERE, null, ex);
+            out.close();
+            return false;
+        }
         while (itr.hasNext()) {
             try {
                 out.write(itr.next() + "\n");
@@ -112,6 +108,7 @@ public class EFTReport implements Reports {
         Bill b = new Bill();
         int providerNumber = 0;
         List allBillingProviders = new ArrayList();
+        float feeTotal = 0;
 
         for (int i = 0;; i++){
             b = (Bill) billMan.search(i);
@@ -126,11 +123,12 @@ public class EFTReport implements Reports {
 
         List allBillsFromProvider = new ArrayList();
         List preparedReport = new ArrayList();
-        String lastLine = new String();
+        StringBuilder lastLine = new StringBuilder();
 
         Iterator itr = allBillingProviders.iterator();
         while (itr.hasNext()) {
             providerNumber = (Integer) itr.next();
+            feeTotal = 0;
 
             allBillsFromProvider.clear();
             for (int i = 0;; i++){
@@ -139,17 +137,20 @@ public class EFTReport implements Reports {
                 if (b == null)
                     break;
 
-                if (((startingDate.compareTo(b.getTimeStamp())) <= 0) && (providerNumber == b.getProviderNumber()));
+                if (((startingDate.compareTo(b.getTimeStamp())) <= 0) && (providerNumber == b.getProviderNumber())) {
                     allBillsFromProvider.add(b);
+                    feeTotal = feeTotal + b.getFee();
+                }
             }
 
             preparedReport.clear();
             Date now = new Date();
             preparedReport = formatHeader(providerNumber, startingDate, now);
 
-            lastLine = (String) preparedReport.get(1);
-            lastLine.concat((String) formatBody(allBillsFromProvider).get(0));
-            preparedReport.add(lastLine);
+            lastLine.setLength(0);
+            lastLine.append((String) preparedReport.get(1));
+            lastLine.append(String.format("%.2f", feeTotal));
+            preparedReport.set(1, lastLine);
 
             try {
                 printReport(preparedReport);

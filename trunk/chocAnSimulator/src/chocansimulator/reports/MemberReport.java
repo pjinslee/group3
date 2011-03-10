@@ -34,7 +34,7 @@ import chocansimulator.datamangement.ServiceCodeManager;
 public class MemberReport implements Reports {
 
     public static final String chocAnDataDir = "chocAnData";
-    public static final String chocAnReportsDir = "/chocAnReportsDir";
+    public static final String chocAnReportsDir = chocAnDataDir + "/Reports";
     public static final String chocAnBillData = chocAnDataDir + "/bill.dat";
     public static final String chocAnMemberData = chocAnDataDir + "/member.dat";
     public static final String chocAnProviderData = chocAnDataDir + "/provider.dat";
@@ -80,8 +80,8 @@ public class MemberReport implements Reports {
         }
 
         header.add("Services processed from " + df.format(starting) + " to " + df.format(now));
-        header.add("Svc. Date  Provider                  Service");
-        header.add("---------- ------------------------- --------------------");
+        header.add("Svc. Date     Provider                     Service");
+        header.add("----------    -------------------------    --------------------");
 
         return header;
     }
@@ -92,7 +92,7 @@ public class MemberReport implements Reports {
         Bill b = new Bill();
         String serviceDate;
         Provider p = new Provider();
-        String providerName;
+        StringBuilder providerName = new StringBuilder();
         ServiceCode svc = new ServiceCode();
 
         Iterator itr = allSessionsForMember.iterator();
@@ -101,13 +101,14 @@ public class MemberReport implements Reports {
             //serviceDate = (b.fileDataToString()).substring(0, 10);
             serviceDate = ((b.fileDataToString()).split("\\^"))[0];
             p = (Provider) providerMan.search(b.getProviderNumber());
-            providerName = p.getName();
+            providerName.setLength(0);
+            providerName.append(p.getName().trim());
             for (int i = providerName.length(); i < 25; i++)
-                providerName.concat(" ");
+                providerName.append(' ');
 
             svc = (ServiceCode) serviceCodeMan.search(b.getServiceCode());
 
-            body.add(serviceDate + " " + providerName + " " + svc.getDescription());
+            body.add(serviceDate + "    " + providerName + "    " + svc.getDescription());
         }
 
         return body;
@@ -119,9 +120,17 @@ public class MemberReport implements Reports {
         if (!itr.hasNext())
             return false;
 
+        String firstLine = new String((String) itr.next());
         BufferedWriter out = new BufferedWriter(new OutputStreamWriter(
-                             new FileOutputStream(chocAnReportsDir + "/" + itr.next())));
+                             new FileOutputStream(chocAnReportsDir + "/" + firstLine)));
 
+        try {
+            out.write(firstLine + "\n");
+        } catch (IOException ex) {
+            Logger.getLogger(EFTReport.class.getName()).log(Level.SEVERE, null, ex);
+            out.close();
+            return false;
+        }
         while (itr.hasNext()) {
             try {
                 out.write(itr.next() + "\n");
@@ -184,7 +193,7 @@ public class MemberReport implements Reports {
                 if (b == null)
                     break;
 
-                if (((startingDate.compareTo(b.getTimeStamp())) <= 0) && (memberNumber == b.getMemberNumber()));
+                if (((startingDate.compareTo(b.getTimeStamp())) <= 0) && (memberNumber == b.getMemberNumber()))
                     allSessionsForMember.add(b);
             }
 
