@@ -72,21 +72,21 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         }
 
         if  (memberMan.numOfRecords() > 0 ) {
-            if (Id.singletonId(chocAnId).getMemberId() == 1) {
+            if (Id.singletonId(chocAnId).getCurrentMemberId() == 0) {
                 System.out.println("member.dat does not match id.dat");
                 System.exit(1);
             }
         }
 
         if  (providerMan.numOfRecords() > 0 ) {
-            if (Id.singletonId(chocAnId).getProviderId() == 1) {
+            if (Id.singletonId(chocAnId).getCurrentProviderId() == 0) {
                 System.out.println("provider.dat does not match id.dat");
                 System.exit(1);
             }
         }
 
         if  (svcMan.numOfRecords() > 0 ) {
-            if (Id.singletonId(chocAnId).getServiceCodeId() == 1) {
+            if (Id.singletonId(chocAnId).getCurrentServiceCodeId() == 0) {
                 System.out.println("svc.dat does not match id.dat");
                 System.exit(1);
             }
@@ -648,9 +648,8 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         MemberTabbedPanelLayout.setVerticalGroup(
             MemberTabbedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MemberTabbedPanelLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(memberDataManagerPanels)
-                .addContainerGap())
+                .addGap(24, 24, 24))
         );
 
         ChocAnPanel.addTab("Member", MemberTabbedPanel);
@@ -2151,7 +2150,7 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         }
 
         int i = Integer.parseInt(providerDelNumText.getText().trim());
-        p = (Provider) memberMan.search(i);
+        p = (Provider) providerMan.search(i);
         if (p == null) {
             globalMessageLabel.setText("Provider not found.");
         } else {

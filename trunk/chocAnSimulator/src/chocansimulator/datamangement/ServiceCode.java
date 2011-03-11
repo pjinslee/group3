@@ -19,7 +19,7 @@ public class ServiceCode {
     private int status;
 
     public ServiceCode() {
-        number = Id.singletonId(ChocAnUserInterface.chocAnId).getServiceCodeId();
+        number = Id.singletonId(ChocAnUserInterface.chocAnId).getServiceCodeId() + 1;
         setStatus(1);
     }
 

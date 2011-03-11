@@ -12,7 +12,7 @@ public class Member extends Contact {
     public Member() {
         super();
 
-        int number = Id.singletonId(ChocAnUserInterface.chocAnId).getMemberId();
+        int number = Id.singletonId(ChocAnUserInterface.chocAnId).getMemberId() + 1;
         setNumber(number);
 
     }

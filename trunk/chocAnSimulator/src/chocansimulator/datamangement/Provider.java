@@ -15,7 +15,7 @@ public class Provider extends Contact {
     public Provider() {
         super();
 
-        int number = Id.singletonId(ChocAnUserInterface.chocAnId).getProviderId();
+        int number = Id.singletonId(ChocAnUserInterface.chocAnId).getProviderId() + 1;
         setNumber(number);
     }
 

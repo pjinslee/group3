@@ -20,9 +20,9 @@ import java.util.logging.Logger;
  * @author tman
  */
 public class Id {
-    private static int memberId = 1;
-    private static int providerId = 1;
-    private static int serviceCodeId = 1;
+    private static int memberId = 0;
+    private static int providerId = 0;
+    private static int serviceCodeId = 0;
     private static String fileName;
     private static Id instance = null;
 
@@ -80,8 +80,8 @@ public class Id {
                              new FileOutputStream(fileName)));
 
         try {
-            out.write(getMemberId() + "^" + getProviderId() + "^" +
-                      getServiceCodeId() + "\n");
+            out.write(getCurrentMemberId() + "^" + getCurrentProviderId() + "^" +
+                      getCurrentServiceCodeId() + "\n");
         } catch ( IOException ex ) {
             Logger.getLogger(ProviderManager.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -109,6 +109,48 @@ public class Id {
      */
     public int getServiceCodeId() {
         return serviceCodeId++;
+    }
+
+     /**
+     * @return the memberId
+     */
+    //public int getFinalMemberId() {
+    //    return (memberId -1);
+    //}
+
+    /**
+     * @return the providerId
+     */
+    //public int getFinalProviderId() {
+     //   return (providerId - 1);
+    //}
+
+    /**
+     * @return the ServiceCodeId
+     */
+    //public int getFinalServiceCodeId() {
+    //    return (serviceCodeId - 1);
+    //}
+
+    /**
+     * @return the memberId
+     */
+    public int getCurrentMemberId() {
+        return memberId;
+    }
+
+    /**
+     * @return the providerId
+     */
+    public int getCurrentProviderId() {
+        return providerId;
+    }
+
+    /**
+     * @return the ServiceCodeId
+     */
+    public int getCurrentServiceCodeId() {
+        return serviceCodeId;
     }
 
 }
