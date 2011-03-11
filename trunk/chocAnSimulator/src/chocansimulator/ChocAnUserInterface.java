@@ -2309,7 +2309,7 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
             return;
         }
 
-        DateFormat dfServiceDate = new SimpleDateFormat("mm/dd/yyyy");
+        DateFormat dfServiceDate = new SimpleDateFormat("MM/dd/yyyy");
         try {
             Date svcDate = dfServiceDate.parse(billDateText.getText());
             b.setServiceDate(svcDate);
