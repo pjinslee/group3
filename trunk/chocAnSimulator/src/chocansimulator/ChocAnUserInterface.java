@@ -316,6 +316,7 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
         billClearButton = new javax.swing.JButton();
         globalMessageLabel = new javax.swing.JLabel();
         exitButton = new javax.swing.JButton();
+        saveButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CHOCHOLICS");
@@ -1620,10 +1621,17 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
 
         ChocAnPanel.addTab("Terminal", TerminalTabbedPanel);
 
-        exitButton.setText("Write and Exit");
+        exitButton.setText("Exit");
         exitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitButtonActionPerformed(evt);
+            }
+        });
+
+        saveButton.setText("Save");
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
             }
         });
 
@@ -1635,6 +1643,8 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(saveButton)
+                        .addGap(80, 80, 80)
                         .addComponent(exitButton)
                         .addGap(212, 212, 212))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -1651,7 +1661,9 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(globalMessageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                 .addGap(40, 40, 40)
-                .addComponent(exitButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(exitButton)
+                    .addComponent(saveButton))
                 .addContainerGap())
         );
 
@@ -2366,16 +2378,6 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_runProDirButtonActionPerformed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
-        try {
-            Id.singletonId(chocAnId).writeFile();
-            billMan.writeFile();
-            memberMan.writeFile();
-            providerMan.writeFile();
-            svcMan.writeFile();
-
-        } catch (IOException ex) {
-            System.out.println("Error encountered while writing files.");
-        }
         System.exit(1);
     }//GEN-LAST:event_exitButtonActionPerformed
 
@@ -2398,6 +2400,20 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
     private void terminalManagerPanelsMouseClick(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_terminalManagerPanelsMouseClick
         globalMessageLabel.setText(" ");
     }//GEN-LAST:event_terminalManagerPanelsMouseClick
+
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        try {
+            Id.singletonId(chocAnId).writeFile();
+            billMan.writeFile();
+            memberMan.writeFile();
+            providerMan.writeFile();
+            svcMan.writeFile();
+
+        } catch (IOException ex) {
+            System.out.println("Error encountered while writing files.");
+        }
+        globalMessageLabel.setText("Progress Saved.");
+    }//GEN-LAST:event_saveButtonActionPerformed
 
     /**
     * @param args the command line arguments
@@ -2535,6 +2551,7 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
     private javax.swing.JButton providerUpdateButton;
     private javax.swing.JPanel providerUpdatePanel;
     private javax.swing.JButton runProDirButton;
+    private javax.swing.JButton saveButton;
     private javax.swing.JButton summaryRptButton;
     private javax.swing.JButton svcAddButton;
     private javax.swing.JButton svcAddClearButton;
