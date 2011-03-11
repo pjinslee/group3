@@ -1758,11 +1758,11 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
             if (s.getStatus() == 0) {
                 globalMessageLabel.setText("Service Code invalid.");
             } else {
-                svcUpDescText.setText(s.getDescription());
-                svcUpFeeText.setText(feeFormat.format(s.getFee()));
+                svcDelDescText.setText(s.getDescription());
+                svcDelFeeText.setText(feeFormat.format(s.getFee()));
                 globalMessageLabel.setText("Service Code ready for update.");
-                svcUpNumText.setEnabled(false);
-                svcUpSearchButton.setEnabled(false);
+                svcDelNumText.setEnabled(false);
+                svcDelSearchButton.setEnabled(false);
             }
         }
     }//GEN-LAST:event_svcDelSearchButtonActionPerformed
@@ -2294,6 +2294,14 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
             globalMessageLabel.setText("Member not found.");
             return;
         }
+        if (m.getStatus() == 0){
+            globalMessageLabel.setText("Member Invalid.");
+            return;
+        }
+        if (m.getStatus() == 2){
+            globalMessageLabel.setText("Member is suspended.");
+            return;
+        }
 
         i = Integer.parseInt(billProNumText.getText().trim());
         Provider p = (Provider) providerMan.search(i);
@@ -2301,11 +2309,19 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
             globalMessageLabel.setText("Provider not found.");
             return;
         }
+        if (p.getStatus() == 0){
+            globalMessageLabel.setText("Provider Invalid.");
+            return;
+        }
 
         i = Integer.parseInt(billSvcText.getText().trim());
         ServiceCode s = (ServiceCode) svcMan.search(i);
         if (s == null) {
             globalMessageLabel.setText("Service code not found.");
+            return;
+        }
+        if (s.getStatus() == 0){
+            globalMessageLabel.setText("Service code Invalid.");
             return;
         }
 

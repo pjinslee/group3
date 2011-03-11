@@ -52,8 +52,8 @@ public class Bill {
             System.exit(1);
         }
 
-        DateFormat dfServiceDate = new SimpleDateFormat("mm dd yyyy");
-        DateFormat dfTimeStamp = new SimpleDateFormat("mm dd yyyy HH:mm:ss");
+        DateFormat dfServiceDate = new SimpleDateFormat("MM dd yyyy");
+        DateFormat dfTimeStamp = new SimpleDateFormat("MM dd yyyy HH:mm:ss");
 
         try {
             setServiceDate(dfServiceDate.parse(wrkStringDate));
@@ -68,8 +68,8 @@ public class Bill {
     
     @Override
     public String toString() {
-       DateFormat dfServiceDate = new SimpleDateFormat("mm dd yyyy");
-       DateFormat dfTimeStamp = new SimpleDateFormat("mm dd yyyy HH:mm:ss");
+       DateFormat dfServiceDate = new SimpleDateFormat("MM dd yyyy");
+       DateFormat dfTimeStamp = new SimpleDateFormat("MM dd yyyy HH:mm:ss");
 
        return(dfServiceDate.format(getServiceDate()) + " " +
                getProviderNumber() + " " + getMemberNumber() + " " +
@@ -79,8 +79,8 @@ public class Bill {
     }
 
     public String fileDataToString() {
-        DateFormat dfServiceDate = new SimpleDateFormat("mm dd yyyy");
-        DateFormat dfTimeStamp = new SimpleDateFormat("mm dd yyyy HH:mm:ss");
+        DateFormat dfServiceDate = new SimpleDateFormat("MM dd yyyy");
+        DateFormat dfTimeStamp = new SimpleDateFormat("MM dd yyyy HH:mm:ss");
            
         return(dfServiceDate.format(getServiceDate()) + "^" +
                getProviderNumber() + "^" + getMemberNumber() + "^" +

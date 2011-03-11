@@ -12,7 +12,7 @@ import chocansimulator.reports.ServiceCodeDirectoryReport;
 
 /**
  *
- * @author debbj
+ * @author tman
  */
 public class TerminalSimulator {
 

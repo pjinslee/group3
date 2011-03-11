@@ -147,7 +147,7 @@
                               <Component id="memberAddButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                               <Component id="memberAddClearButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="134" max="32767" attributes="0"/>
+                              <EmptySpace pref="248" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -655,7 +655,7 @@
                               <Component id="providerAddButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                               <Component id="providerAddClearButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="134" max="32767" attributes="0"/>
+                              <EmptySpace pref="248" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
