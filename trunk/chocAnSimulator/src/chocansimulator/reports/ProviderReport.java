@@ -50,7 +50,7 @@ public class ProviderReport implements Reports {
         Provider p = new Provider();
         p = (Provider) providerMan.search(providerNumber);
 
-        header.add("P" + providerNumber + "_" + forFilename.format(now) + ".dat");
+        header.add("P" + providerNumber + "_" + forFilename.format(now) + ".txt");
         header.add("Provider / Number: " + p.getName() + " / " + providerNumber);
         header.add("          Address: " + p.getAddress());
         header.add("                   " + p.getCity() + " " +
@@ -155,8 +155,10 @@ public class ProviderReport implements Reports {
         BufferedWriter out = new BufferedWriter(new OutputStreamWriter(
                              new FileOutputStream(chocAnReportsDir + "/" + firstLine)));
 
+        String newline = System.getProperty("line.separator");
+
         try {
-            out.write(firstLine + "\n");
+            out.write(firstLine + newline);
         } catch (IOException ex) {
             Logger.getLogger(EFTReport.class.getName()).log(Level.SEVERE, null, ex);
             out.close();
@@ -164,7 +166,7 @@ public class ProviderReport implements Reports {
         }
         while (itr.hasNext()) {
             try {
-                out.write(itr.next() + "\n");
+                out.write(itr.next() + newline);
             } catch (IOException ex) {
                 Logger.getLogger(ProviderReport.class.getName()).log(Level.SEVERE, null, ex);
                 out.close();

@@ -85,11 +85,13 @@ public class ServiceCodeDirectoryReport implements Reports {
 
         String line = new String();
         BufferedWriter out = new BufferedWriter(new OutputStreamWriter(
-                             new FileOutputStream(chocAnReportsDir + "/Service_Directory")));
+                             new FileOutputStream(chocAnReportsDir + "/Service_Directory.txt")));
+
+        String newline = System.getProperty("line.separator");
 
         while (itr.hasNext()) {
             try {
-                out.write(itr.next() + "\n");
+                out.write(itr.next() + newline);
             } catch (IOException ex) {
                 Logger.getLogger(ServiceCodeDirectoryReport.class.getName()).log(Level.SEVERE, null, ex);
                 out.close();

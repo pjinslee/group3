@@ -42,7 +42,7 @@ public class SummaryReport implements Reports {
         DateFormat forFilename = new SimpleDateFormat("MMddyyyy");
         DateFormat df = new SimpleDateFormat("MM-dd-yyyy");
 
-        header.add("Sum_" + forFilename.format(now) + ".dat");
+        header.add("Sum_" + forFilename.format(now) + ".txt");
         header.add("Services processed from " + df.format(starting) + " to " + df.format(now));
         header.add("Provider                    Provider #    Consults          Fee");
         header.add("-------------------------    ---------         ---    ---------");
@@ -120,8 +120,10 @@ public class SummaryReport implements Reports {
         BufferedWriter out = new BufferedWriter(new OutputStreamWriter(
                              new FileOutputStream(chocAnReportsDir + "/" + firstLine)));
 
+        String newline = System.getProperty("line.separator");
+
         try {
-            out.write(firstLine + "\n");
+            out.write(firstLine + newline);
         } catch (IOException ex) {
             Logger.getLogger(EFTReport.class.getName()).log(Level.SEVERE, null, ex);
             out.close();
@@ -129,7 +131,7 @@ public class SummaryReport implements Reports {
         }
         while (itr.hasNext()) {
             try {
-                out.write(itr.next() + "\n");
+                out.write(itr.next() + newline);
             } catch (IOException ex) {
                 Logger.getLogger(SummaryReport.class.getName()).log(Level.SEVERE, null, ex);
                 out.close();

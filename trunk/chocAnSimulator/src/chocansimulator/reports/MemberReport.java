@@ -53,7 +53,7 @@ public class MemberReport implements Reports {
         Member m = new Member();
         m = (Member) memberMan.search(memberNumber);
 
-        header.add("M" + memberNumber + "_" + forFilename.format(now) + ".dat");
+        header.add("M" + memberNumber + "_" + forFilename.format(now) + ".txt");
         header.add("Name / Number: " + m.getName() + " / " + memberNumber);
         header.add("      Address: " + m.getAddress());
         header.add("               " + m.getCity() + " " +
@@ -124,8 +124,10 @@ public class MemberReport implements Reports {
         BufferedWriter out = new BufferedWriter(new OutputStreamWriter(
                              new FileOutputStream(chocAnReportsDir + "/" + firstLine)));
 
+        String newline = System.getProperty("line.separator");
+
         try {
-            out.write(firstLine + "\n");
+            out.write(firstLine + newline);
         } catch (IOException ex) {
             Logger.getLogger(EFTReport.class.getName()).log(Level.SEVERE, null, ex);
             out.close();
@@ -133,7 +135,7 @@ public class MemberReport implements Reports {
         }
         while (itr.hasNext()) {
             try {
-                out.write(itr.next() + "\n");
+                out.write(itr.next() + newline);
             } catch (IOException ex) {
                 Logger.getLogger(MemberReport.class.getName()).log(Level.SEVERE, null, ex);
                 out.close();
