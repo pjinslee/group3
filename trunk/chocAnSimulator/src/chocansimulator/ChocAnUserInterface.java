@@ -2378,6 +2378,16 @@ public class ChocAnUserInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_runProDirButtonActionPerformed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
+        try {
+            Id.singletonId(chocAnId).writeFile();
+            billMan.writeFile();
+            memberMan.writeFile();
+            providerMan.writeFile();
+            svcMan.writeFile();
+
+        } catch (IOException ex) {
+            System.out.println("Error encountered while writing files.");
+        }
         System.exit(1);
     }//GEN-LAST:event_exitButtonActionPerformed
 
