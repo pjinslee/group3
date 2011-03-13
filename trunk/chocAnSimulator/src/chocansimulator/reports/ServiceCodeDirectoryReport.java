@@ -116,7 +116,8 @@ public class ServiceCodeDirectoryReport implements Reports {
             svc = (ServiceCode) serviceCodeMan.search(i);
             if (svc == null)
                 break;
-
+            if (svc.getStatus() != 1)
+                continue;
             allServiceCodes.add(svc);
         }
 
